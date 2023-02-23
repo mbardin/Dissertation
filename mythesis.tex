@@ -198,14 +198,47 @@ At its core, the Cyberinet contains a small collection of sensors build into the
 All these chips were selected for their ability to be dropped into the main board without an extensive need for the user to solder many components, and their use of standard 0.1 inch spacing. [fix this sentence]
 
 \section{Micro-controller}
-ESP-32 DEVKIT
+The ESP-32 DEVKIT was selected for a handful of reasons, including:
 
+\begin{itemize}
+    \item Board's narrow size
+    \item Large number of ports
+    \item Arduino compatibility
+    \item Wireless communications
+\end{itemize}
+
+The first two items on the list are closely related. While being narrower that comparable Arduino units, the ESP-32 DEVKIT has 30 unique I/O Pins. While four pins are dedicated to power distribution and another for the 'enable' functionality (EN), the remaining 20 can be utilized for sensors in a variety of ways. All of this potential functionality is compressed to just 3 centimeters wide. Because of the ultimate physical design of the Cyberinet unit, having a large amount of accessible pins in a smaller unit was considered ideal. The DEVKIT was preferred over the significantly smaller base chip to increase the simplicity of prototyping, repair, and future changes due to its 0.1 inch pin spacing, and the popularity of the board among the community.
+
+It should be noted that if using the ESP-32, but not the DEVKIT board, the number of available pins increases to 48, but the majority of these new pins are utilized for internal features. 
+
+Because of the large number of Pulse-Width-Modulation-Controlled GPIO pins, the Cyberinet has the potential for a large number of sensors and expansions, but to help contain the form factor, only a handful are being utilized at any time. We can see the included sensors attached to the pins as shown below. More details about each of the sensors are discussed in each of the following sub-chapters. The labels in the figure below utilizes the pin labels that are printed on the DEKVIT. (look at pic for GPIO number)
+
+\begin{itemize}
+    \item VIN: Power from Battery
+    \item GND: Ground
+    \item 2: Power LED
+    \item 4: Togglable LED
+    \item 12: Button 1
+    \item 14: Button 2
+    \item 21: Gyroscope and Airflow Data
+    \item 22: Gyroscope and Airflow Clock
+\end{itemize}
+
+Both the Gyroscope and Airflow pressure sensors utilize the same pins. These are the I2C pins on the DEVKIT. More details will be discussed in the chapter discussing the Arduino programming, but it should be noted now that these sensors are able to utilize the same pins because they utilize different I2C addresses. The code is able to access these different addresses in sequence when collecting data.
+
+The code written for the ESP-32 DEVKIT was created using the Arduino IDE and coding language. For similar reasons to the choice of the DEVKIT, this was done for greater accessibility and simplicity in programming. More details about the Arduino Code are discussed later, and the code as a whole is included in the appendices.
+
+The final item from the initial list was the wireless capabilities. The ESP-32 is able to perform serial communications with a connected computer via a micro-USB or USB-C cable (depending on the board version). While useful, the goal of the Cyberinet is to provide affordable instrument augmentation with minimal alterations to the clarinetist's performance practice. Towards this goal, minimizing the number of extra cables was a design concern from the first prototypes. By utilizing the built-in Bluetooth capabilities, the performer is able communicate with the computer easily while meeting this requirement.
+
+The ESP-32 also has WiFi connectivity capabilities which may be involved in a future version, but at the current time is currently not utilized. The DEVKIT is able to support Bluetooth version 4.2 and Low Energy protocols for local wireless communication. This allows for the Cyberinet to easily pair with any computer that it has previously connected to using the BTSerial Arduino library. A code library that brings the normal wired Serial functionality to the Bluetooth functionality.
+
+While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet.
 
 \section{Gyroscope \& Accelrometer}
 MPU-6050
 
 
-\section{Power Distrubution}
+\section{Power Distribution}
 TP-4056 Type C
 The TP-4056 is a standard chip utilized for the charging of lithium ion polymer batteries. This variant utilizes a USB type C connector over the micro-USB connector of the base model and allows for both the charging of the battery as well as the distribution of power from that battery. When charging, it is the USB-C port that is connected to the power supply. As seen in the hardware diagrams, no other USB-C port is directly connected to this chip.
 
@@ -356,15 +389,15 @@ snapshots of the Max patches
 
 \chapter{Puzzle of a Park Score}
 
-\includepdf[pages=1-12]{Scores/PPFull.pdf}
+\includepdf[pages=1-17]{Scores/PPFull.pdf}
 
 \chapter{Ethereal Presence Score}
 
 \includepdf[pages=1-9]{Scores/EP.pdf}
 
 \chapter{Raindrops on a Tin Roof Score}
-Link to PDF 
-% \includepdf[pages=1-9]{Scores/EP.pdf}
+
+\includepdf[pages=1-8]{Scores/raindrops.pdf}
 %  list page range and file location
 
 \chapter{Raindrops on a Tin Roof Short Story}
