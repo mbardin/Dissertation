@@ -162,7 +162,17 @@ The core units of both devices contain a similar array of sensors. In fact, the 
 
 As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the Sabre sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
 
+\section{Other Similar Sensors}
+
+
+\section{Improvisation}
+
+
+
+
 \chapter{Intended Uses}
+
+While widely adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As in, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet.
 
 \section{Composition Tool}
 One of the main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
@@ -251,12 +261,18 @@ Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized
 \section{LiPo Battery}
 In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit [show picture]. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
 The Battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
-Powered on, not connected: 4 hours.
-Powered on, Bluetooth connected, no expansions added: 4-5 hours.
-Powered on, Bluetooth connected, expansions added: 3 hours
 
-It should be noted that the device can also run when connected directly to the wall socket power supply. This will also charge the battery. 
-When the battery capacity becomes critical, the device will stop transmitting data, however the LEDs may stay on due to residual amounts of electricity present in the system. To avoid accidental drop outs during a performance, it is recommended to fully charge the device prior to any performances. Then the battery reaches 20\% charge, the red LED on the device will illuminate, and then flash as shown below:
+\begin{itemize}
+    \item Powered on, not connected: 4 hours.
+    \item Powered on, Bluetooth connected, no expansions added: 4-5 hours.
+    \item Powered on, Bluetooth connected, expansions added: 3 hours.
+\end{itemize}
+
+
+It should be noted that the device can also run when connected directly to the wall socket power supply. This will also charge the battery, which, while resulting in yet another wire, can result in an indefinite run time.
+
+When the battery capacity becomes critically low, the device will stop transmitting data, however the LEDs may stay on due to residual amounts of electricity present in the system. To avoid accidental drop outs during a performance, it is recommended to fully charge the device prior to any performances to avoid this. When the battery reaches 20\% charge, the red LED on the device will illuminate, and then flash as shown below:
+
 \begin{itemize}
     \item 15\%: 1 flash
     \item 10\%: 2 flashes
@@ -273,8 +289,18 @@ These attachments are optional and not needed for the Cyberinet main unit to be 
 This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
 
 \chapter{Physical Design}
+This chapter discusses the physical characteristics of the Cyberinet.
+
+The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the performer's right side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
+
+The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
+
+
+\section{Button Board}
+
 
 \chapter{Software}
+This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools. Discussion of the software portion of each of the included music compositions will be discussed in that chapter. 
 
 \section{Arduino Code}
 
@@ -293,6 +319,7 @@ While not necessary for the functionality of the Cyberinet, I have also created 
     \item Multi-Delay: A delay line utilizing 4 different tapout~ objects to create multiple delay lines. Each one can have its individual output level set for unique mixing capabilities.
     \item Feedback Delay: Identical to the simple delay, but with a feedback option added.
     \item Vibrato Delay: Functions similar to the Simple delay object, but includes a basic implementation of FM synthesis to adjust the pitch of the signal to be delayed. 
+    \item Tuner: This object functions like most other tuners available on the market. It will determine the pitch of an incoming signal and display its equal temperament tuning visually on the screen. This is useful for checking and maintaining tuning within the Max environment, and for having the Max patch respond to certain pitches. This object requires a microphone be used to monitor the input as the ADC capabilities of the ESP-32 DEVKIT are unable to pull off this effect
 \end{itemize}
 
 In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. 
