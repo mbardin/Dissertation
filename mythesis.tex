@@ -314,6 +314,8 @@ This board, while optional, is incredibly useful for a performer on stage. They 
 \chapter{Physical Design}
 This chapter discusses the physical characteristics of the Cyberinet.
 
+\section{Main Body}
+
 The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the performer's right side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
 
 The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
@@ -429,14 +431,97 @@ Lastly, Plans for the expansion and revision of the software environment are alr
 %% The command ``\appendix'' switches into appendix-mode, meaning that subsequent ``\chapter'' commands will instead produce appendices.
 \appendix
 
-\chapter{Cyberinet Hardware Diagrams}
-Include 3D models
-PCB diagrams
-maybe pics of the chips
+\chapter{Cyberinet Hardware Resources}
+This appendix contains images for all of the 3D models and PCBs used within the Cyberinet. It also contains close-up images of each of the individual OEM sensors.
+
+\section{3D models}
+Below are all of the 3D models utilized to 3d print the case and accessories of the Cyberinet
+
+\subsection{Main Body}
+\vspace{5mm}
+
+
+\subsection{Button Board}
+\vspace{5mm}
+
+
+\subsection{Accessories}
+\vspace{5mm}
+
+
+\section{PCB Diagrams}
+Below are the PCB diagrams for the Cyberinet.
+
+\subsection{Cyberinet Main Unit PCB}
+\vspace{5mm}
+
+\begin{center}
+    \includegraphics[scale=0.5]{diagrams/PCBs/mainBoard.png}
+    \caption{Main Board Top View}
+\end{center}
+
+\subsection{Button Board}
+\vspace{5mm}
+
+\section{Sensor Chips Detailed Photos}
+
+\subsection{ESP-32}
+\vspace{5mm}
+
+\subsection{SDP-31}
+\vspace{5mm}
+
+\subsection{MPU-6050}
+\vspace{5mm}
+
+\subsection{TP-4056 Type C}
+
+
+
 
 \chapter{Cyberinet Software Components}
-include Arduino code, list libraries needed
-snapshots of the Max patches
+This appendix contains all of the Arduino code flashed to the Cyberinet. (Version 1), as well as screenshots of the various max patches and objects included in the software bundle.
+
+\section{Arduino .ino Code}
+
+\section{Max Objects}
+
+\subsection{Functional Objects}
+
+\subsubsection{receive~}
+\vspace{5mm}
+
+\subsubsection{omnireceive~}
+\vspace{5mm}
+
+\subsubsection{tuner}
+\vspace{5mm}
+
+\subsection{Audio Effects}
+
+
+\subsubsection{reverb}
+\vspace{5mm}
+
+\subsubsection{delay}
+\vspace{5mm}
+
+\subsubsection{feedback delay}
+\vspace{5mm}
+
+\subsubsection{multi delay}
+\vspace{5mm}
+
+\subsubsection{vibrato delay}
+\vspace{5mm}
+
+\subsubsection{compressor}
+\vspace{5mm}
+
+\subsubsection{karplusStrong}
+\vspace{5mm}
+
+
 
 \chapter{Puzzle of a Park Score}
 
