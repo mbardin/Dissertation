@@ -16,7 +16,7 @@
 %\usepackage{amsmath}
 %\usepackage{amsthm}
 \usepackage{pdfpages}
-
+\usepackage{url}
 \usepackage{lsutitle}
 \title{CYBERINET: INTEGRATED SEMI-MODULAR SENSORS FOR THE
 COMPUTER-AUGMENTED CLARINET}
@@ -56,10 +56,10 @@ Matthew Asher Bardin
 
 
 %% The following ``Epigraph'' page is optional.
-\begin{centeredpage}
-\epigraph{All these months I’ve been trying to find find a pattern. Trying not so much to draw hands as gestures. Not so much faces as the expressions of people.}{--Vincent Van Gogh}
+% \begin{centeredpage}
+% \epigraph{All these months I’ve been trying to find find a pattern. Trying not so much to draw hands as gestures. Not so much faces as the expressions of people.}{--Vincent Van Gogh}
 
-\end{centeredpage}
+% \end{centeredpage}
 
 
 \chapter{Acknowledgments}
@@ -93,9 +93,9 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was in the
 % \listoffigures
 
 
-\chapter{Nomenclature, Symbols, Acronyms}
+% \chapter{Nomenclature, Symbols, Acronyms}
 
-The ``nomenclature, symbols, acronyms'' page is optional.
+% The ``nomenclature, symbols, acronyms'' page is optional.
 
 
 \chapter{Abstract}
@@ -118,26 +118,32 @@ Several works have been developed over the years towards this goal. Within the p
 Unlike the Metasax, the Overtone Violin is built from scratch. This instrument replicates the violin in terms of form and sound production, but contains several internal pickups, sensors, and control buttons built into its form factor. In short, the various buttons can be used to adjust the performance modes and help adjust the data being collected and sent to a USB receiver located on a separate glove that the performer would wear. Bertner has written several pieces and performed in several conferences utilizing this instrument. \textit{Windsketches} (performed 2011) and \textit{Endprint} (2004) are two such compositions.
 
 Both Of these instruments have something similar between them that this project is working to improve upon. That factor is that the performer must either acquire a completely new instrument or potentially permanently alter their instrument to perform with their augmented capabilities. They also require hard-wire connections in some regard, but this is less of a drawback in the context of this project. While these instruments do base their performance practices off of common instruments, there will have to be some level of re-learning the instrument in order to properly make use of its abilities. 
-My project works to be minimally invasive to the performance practice of whomever is using the hardware. It is also designed to be easily added or removed to/from a performer’s instrument, eliminating the need for an additional instrument. Two projects that are designed to be minimally invasive are the MIGSI trumpet and the SABRE multisensor. These augmentations both attach to brass and woodwind instruments respectively. 
+My project works to be minimally invasive to the performance practice of whomever is using the hardware. It is also designed to be easily added or removed to/from a performer’s instrument, eliminating the need for an additional instrument. Two projects that are designed to be minimally invasive are the MIGSI trumpet and the SABRe multisensor. These augmentations both attach to brass and woodwind instruments respectively. 
 
 The MIGSI (Minimally Invasive Gesture Sensing Interface) trumpet is a collection of sensors that attach to the bottom of a trumpet. These sensors work to capture control data such as valve placement, instrument position, etc. and send it wireless to a computer. All of the sensors are positioned in a way that does not impede the traditional performance of a trumpet, although it does not appear to be something that can be easily removed in the moment if desired.
-The creator of the MIGSI trumpet, Sarah Belle Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017). The SABRE is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. With the exception of an optional remote, this sensor is only able to utilize the sensors built into it, which include a gyroscope, accelerometer, thermometer, and airflow sensor.
+The creator of the MIGSI trumpet, Sarah Belle Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017). The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. With the exception of an optional remote, this sensor is only able to utilize the sensors built into it, which include a gyroscope, accelerometer, thermometer, and airflow sensor.
 
-These are all potentially useful, but if the performer does not need or want all of these, then they are stuck paying for the sensors that they will never utilize. The effectiveness of the SABRE Multisensor can be seen in compositions such as \textit{Sails} by Matthias Muller (2018). 
+These are all potentially useful, but if the performer does not need or want all of these, then they are stuck paying for the sensors that they will never utilize. The effectiveness of the SABRe Multisensor can be seen in compositions such as \textit{Sails} by Matthias Muller (2018). 
 My project seeks to combine the best aspects from these projects and synthesize them into a new semi-modular design that any woodwind player can utilize. It takes the intention of using traditional performance practice to generate its augmentation, while still being something that can be adapted or easily removed in a performance based on the performer’s needs. My hardware is also something that does not impede the movements of the performer. In terms of form factor, My hardware takes inspiration from artist Pamala Z. when in use, one of her sets of sensors is located on her hands, and responds to various gestures to control her performances. Various iterations of these sensors can be seen in several of her compositions, including \textit{Breathing} and \textit{STEIM} (2007)
-Taking inspiration from the SABRE, The Cyberinet's main hardware will be located on the instrument itself. This device will contain the majority of the sensors, batteries, and transmitters. To help with this, the instrument’s mouthpiece and barrel will be 3D printed as a housing for the embedded sensor, which will transmit its data via Bluetooth to a nearby computer.
+Taking inspiration from the SABRe, The Cyberinet's main hardware will be located on the instrument itself. This device will contain the majority of the sensors, batteries, and transmitters. To help with this, the instrument’s mouthpiece and barrel will be 3D printed as a housing for the embedded sensor, which will transmit its data via Bluetooth to a nearby computer.
 Additional sensors can be connected to this unit via USB-C cables. These modular units are designed with the Pamala Z influence in mind. These sensors can be attached to various points on the body, instrument, or performance environment, and are intended to be easily adaptable for any performance setting.
 Optional buttons can also be attached via wire to allow for additional performance control if desired. The wires connecting the optional units and the main hardware are all that is required for the Cyberinet. All of the data is wirelessly sent to the paired control computer. Where it will be utilized to augment the instrument sound and other elements.
 
 \chapter{Historical Context}
 
 \section{MIGSI Trumpet}
-The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet. Towards this goal, creator Sarah Belle Reid 
+The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet.
 
-\section{SABRE}
-The Sabre is a system of sensors that is the device most closely related to the Cyberinet. Specifically comparing the two devices, we can see clear pros and cons to each.
+Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The entirety of the MIGSI augmentations are located to match the form of a standard B-flat or C trumpet, and is placed at the instrument's center of gravity to minimize fatigue from the extra weight. While not as streamlined as the MIGSI trumpet, the Cyberinet's sensors are located in a similar location in relation to the design of the Clarinet.
 
-\textbf{Sabre:}
+\subsection{Music Written for MIGSI Trumpet}
+
+Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah Belle Reid\footnote{A performance video of \textit{Pocket Fig} can be found at \url{https://www.youtube.com/watch?v=5szWkbVjYxg}}. In this work, Reid utilizes Force Sensitive Resistors as well as Infrared sensors to collect data related to the valve displacement on the instrument. This data is then wirelessly sent to the computer to control a Max patch's granular synthesis processing.
+
+\section{SABRe}
+The SABRe is a system of sensors that is the device most closely related to the Cyberinet. Specifically comparing the two devices, we can see clear pros and cons to each.
+
+\textbf{SABRe:}
 
 \begin{itemize}
     \item Pros: small, completely wireless, easily removable.
@@ -147,11 +153,11 @@ The Sabre is a system of sensors that is the device most closely related to the 
 \textbf{Cyberinet:} 
 
 \begin{itemize}
-    \item Pros: integrated within the instrument, expandable with add-ons, relatively inexpensive to produce.
+    \item Pros: integrated within the instrument, expandable with add-ons, relatively inexpensive to produce, open source-components.
     \item Cons: less easily removable, some wires involved.
 \end{itemize}
 
-The core units of both devices contain a similar array of sensors. In fact, the Sabre was an inspirational starting point for the development of the Cyberinet. Both devices have a main unit containing the following sensors:
+The core units of both devices contain a similar array of sensors. In fact, the SABRe was an inspirational starting point for the development of the Cyberinet. Both devices have a main unit containing the following sensors:
 
 \begin{itemize}
     \item Gyroscope
@@ -160,12 +166,27 @@ The core units of both devices contain a similar array of sensors. In fact, the 
     \item Temperature
 \end{itemize}
 
-As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the Sabre sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
+From the similar sensors between the two different devices, one can infer a similar usage case as well. Both of the SABRe and the Cyberinet are add-ons for a clarinet. By being attached to the instrument, the sensors collect the data they are designed to collect and transmit it to a nearby computer.
+
+The goal of the SABRe is to provide augmentation features to performers, regardless of their technical abilities\cite{Schiesser2012}.
+
+As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the SABRe sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
+
+\subsection{Music written for the SABRe}
+
+Prior to 2023, SABRe had been on a hiatus in terms of development and is currently in the process of designing a relaunch of the system. It is perhaps for this reason that there is a limited number of works for the system, but discussing the reasons behind the hiatus is beyond the scope of this paper.
+
+One piece that will be discussed is  \textit{Sailing}\footnote{The performance of \textit{Sailing} can be found at \url{https://www.youtube.com/watch?v=Eiuacb5nJc8}} by the SABRe's creator: Matthias Mueller.  
+
+In this work, Mueller takes the gyroscopic information from the SABRe to control audio effects in real time. The first one heard is the control of the amount reverb and delay time as the performer moves from right to left. This is followed by triggering a tremolo effect that combines with the clarinet timbre. Due to a lack of a score, it is my best guess from the video that this effect is being toggled on with the buttons located on the back of the instrument. By combing these effects with micro-tonal notes, Mueller is able to create a unique sound world easily and effectively.
+
+Mueller also utilizes a pitch shifting effect, but it is unclear if it is created as a unique harmonizing effect, or is created as a by product of adjusting delay times. The final effect is a little distortion present when the performer reaches the extreme ends of the gyroscopic data.
+
+In the future, should a performance score become available, it would warrant more in depth analysis of the performance practice and specific utilization of the SABRe's sensors. However, there is still much that can be learned with Mueller's performance video. It can be seen that Mueller clearly focusing on only one or two sensors present within the SABRe: Gyroscope and Buttons. By focusing on a smaller subset of the sensors, it allows Mueller to allow the capabilities to the system to stand out. It becomes very clear what the correlation between the clarinetist's physical position and the timbres being created are.
+
+Mueller's utilization of the button is worth bringing up individually. in \textit{Sailing}, Mueller is using this button to trigger a tremolo-like effect to be applied to the clarinet's signal. Unfortunately without the software patch or score the fine details of this are left to speculation, but I want to focus on the idea of manually triggering an effect with a button. Unlike a foot pedal, these buttons follow the performer, allowing them to take full advantage of the buttons along with the movement sensors. A performer can access the buttons regardless of their on-stage location. In the Cyberinet compositions discussed later, I utilize a larger-scale use of the main buttons. In \textit{Puzzle of a Park}, the buttons are used to trigger recordings and playback, whereas in \textit{Raindrops on a Tin Roof} I utilize the button's instant binary functionality to cycle through different signal routing and effect presets to alter the tones.
 
 \section{Other Similar Sensors}
-
-
-\section{Improvisation}
 
 
 
@@ -180,18 +201,20 @@ One of the main intended uses of the Cyberinet is as a compositional tool. Effec
 \section{Improvisation}
 % a la stomp boxes
 
+While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
 
+This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
 
-\section{Audience}
+% \section{Audience}
 
-This is a paragraph inside of a section.
+% This is a paragraph inside of a section.
 
-\subsection{Background}
-\label{sec:background}
+% \subsection{Background}
+% \label{sec:background}
 
-A paragraph in a subsection.
+% A paragraph in a subsection.
 
-\section{Citing bibliography entries, figures, tables, and }
+% \section{Citing bibliography entries, figures, tables, and }
 
 % As shown in \cite{latexCompanion}, you
 % can reference bibliography entries using the ``\verb|\cite|'' command.
@@ -333,7 +356,7 @@ The main downside to the tuner object is that it requires the use of a microphon
 In addition to creating the hardware and software for this dissertation, I have also created a handful of musical compositions that show off various features of the Cyberinet. These three compositions as listed below, show a gradient from simpler to more complex uses of the Cyberinet’s features.
 
 \section{Puzzle of a Park}
-At its core, this work is the simplest of the three written especially for this project. Puzzle of a Park functions as a work written for a loop pedal, but without the pedal. The performer plays through the material from beginning to end, periodically pressing one of the two buttons on the button board accessory. Looking at the max patch we can see that one button will trigger the computer to record a microphone input into a buffer while the second triggers the synchronized playback of all recorded buffers. 
+At its core, this work is the simplest of the three written especially for this project. \textit{Puzzle of a Park}\footnote{A performance video of \textit{Puzzle of a Park} is available at} functions as a work written for a loop pedal, but without the pedal. The performer plays through the material from beginning to end, periodically pressing one of the two buttons on the button board accessory. Looking at the max patch we can see that one button will trigger the computer to record a microphone input into a buffer while the second triggers the synchronized playback of all recorded buffers. 
 [show patch snapshot]
 This functionality allows for multiple recordings to be saved and layered, much like loop pedals such as the Boss RC line of pedals. [do I talk about multi tracking?]
 When writing this work, I viewed the musical content as a quartet, with four unique voices rather than a single voice repeated several times. This allowed the musical content to flow and feel more organic once the final layer was added. 
@@ -342,14 +365,14 @@ When ordering the voices, I began with one of the middle voices as the opening t
 
 
 \section{Ethereal Presence}
-The second work created for this project begins to utilize the more complicated sensors present in the Cyberinet. These primarily include the gyroscope and airflow meter. Once received, the Max patch for the composition utilizes the values to control two different synthesizers and their parameters. 
+The second work\footnote{A performance video of \textit{Etherial Presence} is available at} created for this project begins to utilize the more complicated sensors present in the Cyberinet. These primarily include the gyroscope and airflow meter. Once received, the Max patch for the composition utilizes the values to control two different synthesizers and their parameters. 
 [chart showing the value and parameter mapping]
 The first synthesizer outputs a single tone with the goal of harmonizing with the soloist. This is the Ethereal Presence as mentioned in the title. [add more when this synth is done]
 Accompanied by this is a more textural synthesizer designed to help support and fill out the atmosphere of the composition. This synthesizer outputs noise before being run through an FFT, based filter created by Dr. Austin Franklin [ how much info on the project do I need?]. This filter takes the incoming noise and performs an FFT operation on it to determine the frequency content, then based on the values received from the Cyberinet, filters out certain frequency bins. 
 
 
 \section{Raindrops on a Tin Roof}
-Of the three debut compositions for the Cyberinet, \textit{Raindrops} is the most involved with the Cyberinet. This composition utilizes all of the default sensors present in the hardware in some way. 
+Of the three debut compositions for the Cyberinet, \textit{Raindrops on a Tin Roof}\footnote{A performance video of \textit{Raindrops on a Tin Roof} is available at} is the most involved with the Cyberinet sensors. Contrasting from Mueller's usage of the SABRe, this composition utilizes all of the default sensors present in the hardware in some way. 
 
 The inspiration comes from a short story [summarize the text here]
 
@@ -393,6 +416,7 @@ Outside of the aforementioned hardware needed to make the Cyberinet framework co
 \subsection{Software}
 Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
 \begin{itemize}
+    \item Adapt messages to OSC formatting for a greater range of software compatibility.
     \item Revising the current collection: small tweaks to improve appearance and functionality.
     \item Increasing Effects: Expanding for additional audio effects. Plans include filters, synthesizers, and automatic harmonizers.
     \item Troubleshooting \& Help Patches: While the current software environment contains help patches, in the future this area will be expanded and improved in a manner similar the the aforementioned revisions.
@@ -428,7 +452,8 @@ snapshots of the Max patches
 %  list page range and file location
 
 \chapter{Raindrops on a Tin Roof Short Story}
-Have story text here
+
+\includepdf[pages=1-4]{Scores/Raindrops Text.pdf}
 
 
 
@@ -444,8 +469,20 @@ Have story text here
 
 \begin{thebibliography}{99}
 
+\bibitem{puzzleScore} Bardin, Matthew. \emph{Puzzle of a Park} Performance Score, MaBMusic, 2023.
 
-\bibitem[]{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay (2016) \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression
+\bibitem{EPScore} ---. \emph{Ethereal Presence} Performance Score, MaBMusic, 2023.
+
+\bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
+
+\bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+
+\bibitem{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay. \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2016.
+
+\bibitem{Schiesser2012} Schiesser, S{\'e}bastien and Schacher, Jan C. \emph{SABRe: The Augmented Bass Clarinet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2012.
+
+
+
 % look at a way to make this better. I HATE how the template is handling references.
 
 
@@ -457,8 +494,6 @@ Have story text here
 
 
 \chapter{Vita}
-
-Definitely revise this. It is currently what is on the website.
 
 Matthew Bardin, originally a native of Central Florida, is currently based in Baton Rouge, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. Matthew is currently working towards a Ph.D in Experimental Music \& Digital Media from Louisiana State University. He is currently affiliated with the American Society of Composer, Authors, and Publishers. His works are often performed by several student soloists and groups throughout the course of the academic year. He also has presented his music at the annual Electric LaTex festival, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design.
 
