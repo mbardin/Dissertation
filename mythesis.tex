@@ -201,12 +201,21 @@ While widely adaptable, the Cyberinet was envisioned with a handful of specific 
 \section{Composition Tool}
 One of the main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
 
+\subsection{Instrument Compatibility \& Future Directions}
+At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
+First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components.
+
+Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
+
 \section{Improvisation}
 % a la stomp boxes
 
 While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
 
 This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
+
+
+
 
 % \section{Audience}
 
@@ -270,21 +279,28 @@ The ESP-32 also has WiFi connectivity capabilities which may be involved in a fu
 
 While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet.
 
-\section{Gyroscope \& Accelrometer}
-MPU-6050
+\section{OEM Sensors}
+\subsection{MPU-6050}
+
+
+\subsection{Differential Airflow Pressure}
+
+SDP-31
+Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
+Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized over the MPU-6050. Temperature is measured in degrees Celsius.
+
+\subsection{Button Expansion}
+
+These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. [make this true] While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
+
+This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
 
 
 \section{Power Distribution}
 TP-4056 Type C
 The TP-4056 is a standard chip utilized for the charging of lithium ion polymer batteries. This variant utilizes a USB type C connector over the micro-USB connector of the base model and allows for both the charging of the battery as well as the distribution of power from that battery. When charging, it is the USB-C port that is connected to the power supply. As seen in the hardware diagrams, no other USB-C port is directly connected to this chip.
 
-\section{Differential Airflow Pressure}
-
-SDP-31
-Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
-Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized over the MPU-6050. Temperature is measured in degrees Celsius.
-
-\section{LiPo Battery}
+\subsection{LiPo Battery}
 In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit [show picture]. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
 The Battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
 
@@ -305,26 +321,49 @@ When the battery capacity becomes critically low, the device will stop transmitt
     \item 5\%: 3 flashes
 \end{itemize}
 
-[have the device auto power off? Look into doing that at 2%] More information about how the Cyberinet responds to internal battery levels can be found in the software discussion portion of this document.
-
-
-\section{Button Board}
-
-These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. [make this true] While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
-
-This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
+%[have the device auto power off? Look into doing that at 2%]
 
 \chapter{Physical Design}
-This chapter discusses the physical characteristics of the Cyberinet.
+In order to minimize the total number of parts required for the Cyberinet, the electronics are housed in a newly designed plastic unit. This Main Unit is intended to replace the barrel and mouthpiece of the original instrument when in use. In addition to the main unit, the Button Expansion as well as any future expansions have a 3D printed body in order to control the expansion's ergonomics and protect the electronics.
 
-\section{Main Body}
+All materials are printed using either PLA or PetG material during prototyping. These materials were chosen for their relative low cost, ease of production, and density. For the final version, LIST FINAL MATERIAL HERE was utilized because the sound quality of the material most closely resembled that of the original clarinet. All parts were printed on an Original Prusa i3 MK3S+. Because of the texting of different materials, several images in this document may be in largely varying colors. The final version was printed to be black, however future revisions could see an option for custom colors when printing. 
 
-The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the performer's right side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
+While it is intended to remove the Clarinet's uppermost parts and replace them with the Cyberinet when needed, it is possible to perform using the hardware while powered off for a traditionally acoustic performance. The usage of this feature is at the discretion of the performer.
 
-The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
+\section{Main Unit}
+
+The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
+
+The electronics were housed in the upper portion of the clarinet for two main reasons. The more minimal of the reasons is that the differential airflow pressure is much greater in the clarinet before the air can escape through the key holes. By locating the sensor here a wider range of values are possible than if it was located lower on the clarinet's tube. However, this could be remedied with additional tubing if the location of a unit needed to be otherwise located. Speculating on this is outside of the scope of this document however.
+
+The second and more necessary reason for the placement of the Main Unit in the upper portion of the clarinet is weight. While not overly heave at GIVE THE WEIGHT OF THE FINAL UNIT HERE one may not think it would cause difficulties in performance. But when thinking of the clarinetist as a Second Class lever, insight can be gained on the specifics of this issue.
+
+In this simplified example, the performer's mouth is the system's fulcrum, the weight of the unit is the load, and the performer's hands are the effort against the load. Because the performer's hands are acting upward against the gravitational weight of the Cyberinet and do not move, the Cyberinet must move to maintain its minimally invasive design philosophy. Having the load closer to the fulcrum of the performer's mouth results in a lesser force being required to lift the instrument into performance position\cite{Body Levers Webpage}. As the load moves down the length of the instrument, that force increases resulting in more effort being needed to maintain the same performance position. Moving the weight of the Cyberinet past the hands would result in a Third Class lever. This level arrangement would still require a large amount of force (comparatively speaking) to move the instrument to perform acne position\cite{Body Levers Webpage}. This would also cause the Main unit to move a larger distance than the performer, potentially skewing the gyroscope value\cite{Body Levers Webpage}. It would also increase the inertia of the instrument, making it more likely to be pulled apart by its own weight during a performance. \footnote{An expansion with a second gyroscope placed at the end of the instrument has been discussed, but at the time of writing is not planned for future releases.}
+
+Overall, placing the Main Unit's bulkiest components as close to the performer's mouth as possible results in the least amount of extra effort required to perform with the instrument. It is impossible to completely remove the added weight of the system additional, but this placement minimizes its impact on the performer.
+
+% The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
 
 
-\section{Button Board}
+\subsection{Future Hardware Directions}
+Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, an increase in modular expansions is also planned. Initially only additional buttons and a volume-sensing microphone are available, but plans for the following sensors to be released in the future have been made:
+
+\begin{itemize}
+    \item Pressure Sensor: responds to varying pressure on the instrument's keys. Needs special mounting of Force-Sensitive-Resistors, as well as doughnut-shaped FSRs.
+    \item Pitch Detection: Works like the tuner software object. This will display tuning information and transmit pitch information to the computer. Needs hardware with adequate Analog-to-Digital Conversion.
+\end{itemize}
+
+\section{Button Expansion}
+
+The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button Expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
+
+In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
+
+
+
+
+
+
 
 
 \chapter{Software}
@@ -355,6 +394,21 @@ The main downside to the tuner object is that it requires the use of a microphon
 
 [tutorial and help patches]
 [make it into a standalone program? Maybe if there is time, maybe as a future endeavor]
+
+
+\section{Future Software Directions}
+Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
+\begin{itemize}
+    \item Adapt messages to OSC formatting for a greater range of software compatibility.
+    \item Revising the current collection: small tweaks to improve appearance and functionality.
+    \item Increasing Effects: Expanding for additional audio effects. Plans include filters, synthesizers, and automatic harmonizers.
+    \item Troubleshooting \& Help Patches: While the current software environment contains help patches, in the future this area will be expanded and improved in a manner similar the the aforementioned revisions.
+    \item Max Library: Once fully expanded, Plans to reach out to Cycling74 to have this collection of Max objects listed in the program as an available-for-download library will be made. This will make it simpler for people to access various tools for their Cyberinet unit.
+    \item Standalone Software: The final planned software expansion is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
+\end{itemize}
+
+
+
 
 \chapter{Music Works Written for the Cyberinet}
 
@@ -398,36 +452,6 @@ The airflow information is used to apply distortion and other processing to the 
 Unlike the other compositions discussed here, \textit{Raindrops} utilizes notated accompaniment. This accompaniment is meant to represent the monster in the basement in a less literal sense. For the premiere, these sounds are generated with the UVI 8-Bit Synth. This instrument is loaded into the Max environment using the vst~ object and is intended to create a spooky, slightly incongruous sound when compared to the other sounds in the environment. 
 The musical content for this synthesizer was generated using the MIDI information from the notation software that created the score. Instructions for generating your own audio clip for this voice are indicated in the score. This freedom allows for the performer to create a timbre and environment that is unique to them.
 
-\chapter{Future Directions}
-
-In general, the Cyberinet has a few areas for future expansion. These can be broken into two main categories: instrument compatibility and functionality expansions. 
-
-\section{Instrument Compatibility}
-At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
-First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components.
-Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
-
-\section{Functionality}
-
-
-\subsection{Hardware}
-Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, an increase in modular expansions is also planned. Initially only additional buttons and a volume-sensing microphone are available, but plans for the following sensors to be released in the future have been made:
-
-\begin{itemize}
-    \item Pressure Sensor: responds to varying pressure on the instrument's keys. Needs special mounting of Force-Sensitive-Resistors, as well as doughnut-shaped FSRs.
-    \item Pitch Detection: Works like the tuner software object. This will display tuning information and transmit pitch information to the computer. Needs hardware with adequate Analog-to-Digital Conversion.
-\end{itemize}
-
-\subsection{Software}
-Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
-\begin{itemize}
-    \item Adapt messages to OSC formatting for a greater range of software compatibility.
-    \item Revising the current collection: small tweaks to improve appearance and functionality.
-    \item Increasing Effects: Expanding for additional audio effects. Plans include filters, synthesizers, and automatic harmonizers.
-    \item Troubleshooting \& Help Patches: While the current software environment contains help patches, in the future this area will be expanded and improved in a manner similar the the aforementioned revisions.
-    \item Max Library: Once fully expanded, Plans to reach out to Cycling74 to have this collection of Max objects listed in the program as an available-for-download library will be made. This will make it simpler for people to access various tools for their Cyberinet unit.
-    \item Standalone Software: The final planned software expansion is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
-\end{itemize}
 
 
 
@@ -460,7 +484,7 @@ Below are the PCB diagrams for the Cyberinet.
 
 \begin{center}
     \includegraphics[scale=0.5]{diagrams/PCBs/mainBoard.png}
-    \caption{Main Board Top View}
+    \caption{Main Unit Top View}
 \end{center}
 
 \subsection{Button Board}
@@ -564,6 +588,8 @@ This appendix contains all of the Arduino code flashed to the Cyberinet. (Versio
 \bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
 
 \bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+
+\bibitem{Body Levers Webpage} Davis Lawrence. \emph{Body Levers}, LibreTexts Physics, 09/09/2020. Accessed 06/03/2023. \url{https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Book%3A_Body_Physics_-_Motion_to_Metabolism_(Davis)/06%3A_Forces_within_the_Body/6.02%3A_Body_Levers}
 
 \bibitem{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay. \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2016.
 
