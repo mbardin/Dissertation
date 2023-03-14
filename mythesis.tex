@@ -112,12 +112,13 @@ The goal of this project is to provide a method of computer-enhanced performance
 \chapter{Introduction}
 \label{chap:intro}
 
-what and why
+% what and why
 
 The practice of creating augmented musical instruments has been a method of creating new and unique timbres in musical performance for centuries. Some of the earliest instrument augmentations still in use today can be traced back to the early brass mutes of the 16th century. In the mid 20th century, John Cage developed a method for augmenting the possible timbres of the piano to vastly increase its sound-color-palette in compositions such as Sonatas and Interludes. 
-As computer power has increased over the past 50 years,
-computer processing has allowed for a more dynamic and varied application of instrument augmentation during live performance. As previously stated, the concept of altering an instrument’s method of performing and potential musical timbres has been around for several decades. In fact, this is a potential important step in the development of new instruments. 
+
+As computer power has increased over the past 50 years, computer processing has allowed for a more dynamic and varied application of instrument augmentation during live performance. As previously stated, the concept of altering an instrument’s method of performing and potential musical timbres has been around for several decades. In fact, this is a potential important step in the development of new instruments. 
 Several works have been developed over the years towards this goal. Within the past 20 years, the Metasax and the Overtone Violin have been two instruments that fall into this category. These instruments take the mechanisms of performing on a alto saxophone and violin respectively, and build upon it to develop that instrument’s augmentation. The Metasax is built from a regular saxophone with various sensors built into the base instrument. These sensors allow for data to be collected and used to process sounds via an external computer. 
+
 Unlike the Metasax, the Overtone Violin is built from scratch. This instrument replicates the violin in terms of form and sound production, but contains several internal pickups, sensors, and control buttons built into its form factor. In short, the various buttons can be used to adjust the performance modes and help adjust the data being collected and sent to a USB receiver located on a separate glove that the performer would wear. Bertner has written several pieces and performed in several conferences utilizing this instrument. \textit{Windsketches} (performed 2011) and \textit{Endprint} (2004) are two such compositions.
 
 Both Of these instruments have something similar between them that this project is working to improve upon. That factor is that the performer must either acquire a completely new instrument or potentially permanently alter their instrument to perform with their augmented capabilities. They also require hard-wire connections in some regard, but this is less of a drawback in the context of this project. While these instruments do base their performance practices off of common instruments, there will have to be some level of re-learning the instrument in order to properly make use of its abilities. 
@@ -127,9 +128,11 @@ The MIGSI (Minimally Invasive Gesture Sensing Interface) trumpet is a collection
 The creator of the MIGSI trumpet, Sarah Belle Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017). The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. With the exception of an optional remote, this sensor is only able to utilize the sensors built into it, which include a gyroscope, accelerometer, thermometer, and airflow sensor.
 
 These are all potentially useful, but if the performer does not need or want all of these, then they are stuck paying for the sensors that they will never utilize. The effectiveness of the SABRe Multisensor can be seen in compositions such as \textit{Sails} by Matthias Muller (2018). 
-My project seeks to combine the best aspects from these projects and synthesize them into a new semi-modular design that any woodwind player can utilize. It takes the intention of using traditional performance practice to generate its augmentation, while still being something that can be adapted or easily removed in a performance based on the performer’s needs. My hardware is also something that does not impede the movements of the performer. In terms of form factor, My hardware takes inspiration from artist Pamala Z. when in use, one of her sets of sensors is located on her hands, and responds to various gestures to control her performances. Various iterations of these sensors can be seen in several of her compositions, including \textit{Breathing} and \textit{STEIM} (2007)
+My project seeks to combine the best aspects from these projects and synthesize them into a new semi-modular design that any woodwind player can utilize. It takes the intention of using traditional performance practice to generate its augmentation, while still being something that can be adapted or easily removed in a performance based on the performer’s needs. My hardware is also something that does not impede the movements of the performer. In terms of form factor, My hardware takes inspiration from artist Pamala Z. when in use, one of her sets of sensors is located on her hands, and responds to various gestures to control her performances. Various iterations of these sensors can be seen in several of her compositions, including \textit{Breathing} and \textit{STEIM} (2007).
+
 Taking inspiration from the SABRe, The Cyberinet's main hardware will be located on the instrument itself. This device will contain the majority of the sensors, batteries, and transmitters. To help with this, the instrument’s mouthpiece and barrel will be 3D printed as a housing for the embedded sensor, which will transmit its data via Bluetooth to a nearby computer.
 Additional sensors can be connected to this unit via USB-C cables. These modular units are designed with the Pamala Z influence in mind. These sensors can be attached to various points on the body, instrument, or performance environment, and are intended to be easily adaptable for any performance setting.
+
 Optional buttons can also be attached via wire to allow for additional performance control if desired. The wires connecting the optional units and the main hardware are all that is required for the Cyberinet. All of the data is wirelessly sent to the paired control computer. Where it will be utilized to augment the instrument sound and other elements.
 
 \chapter{Historical Context}
@@ -140,6 +143,8 @@ The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augment
 Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The entirety of the MIGSI augmentations are located to match the form of a standard B-flat or C trumpet, and is placed at the instrument's center of gravity to minimize fatigue from the extra weight. While not as streamlined as the MIGSI trumpet, the Cyberinet's sensors are located in a similar location in relation to the design of the Clarinet.
 
 \subsection{Music Written for MIGSI Trumpet}
+
+DO I WANT TO DO THIS OR ANOTHER PIECE? MAKE SURE IT MATCHES THE MUSIC REFERENCED EARLIER IN THE DOC
 
 Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah Belle Reid\footnote{A performance video of \textit{Pocket Fig} can be found at \url{https://www.youtube.com/watch?v=5szWkbVjYxg}}. In this work, Reid utilizes Force Sensitive Resistors as well as Infrared sensors to collect data related to the valve displacement on the instrument. This data is then wirelessly sent to the computer to control a Max patch's granular synthesis processing.
 
@@ -189,12 +194,22 @@ In the future, should a performance score become available, it would warrant mor
 
 Mueller's utilization of the button is worth bringing up individually. in \textit{Sailing}, Mueller is using this button to trigger a tremolo-like effect to be applied to the clarinet's signal. Unfortunately without the software patch or score the fine details of this are left to speculation, but I want to focus on the idea of manually triggering an effect with a button. Unlike a foot pedal, these buttons follow the performer, allowing them to take full advantage of the buttons along with the movement sensors. A performer can access the buttons regardless of their on-stage location. In the Cyberinet compositions discussed later, I utilize a larger-scale use of the main buttons. In \textit{Puzzle of a Park}, the buttons are used to trigger recordings and playback, whereas in \textit{Raindrops on a Tin Roof} I utilize the button's instant binary functionality to cycle through different signal routing and effect presets to alter the tones.
 
-\section{Other Similar Sensors}
+\section{Other Similar Devices \& Studies}
+
+FIND THE PAPER I'M REMEMBERING BUT CAN'T QUITE RECALL FOR THIS STUDY, OR ADAPT IT TO FIT ANOTHER PAPER IF IT CANNOT BE FOUND
+
+On its own, the collection of performance data as done in the Cyberinet is not a new practice. However having an easy degree of flexibility and user-friendliness has not been common practice. Generally speaking, most studies or works written that utilize performance data like the Cyberinet have been crested in near-sterile environments with sensors placed all over the performer and their instrument. 
+
+HOW CAN I SIGHT THE PRESENTATION AT THE DMC? LOOK AT HER WEBSITE AND OTHER PAPERS ABOUT THE DEVICES
+
+Even in less academic and laboratory uses, one finds that the devices present are far from accessible. Looking at artist Pamala Z can see many ways that sensors can be utilized in creating new music content. Her music will not be broken down here, but we will look at her sensors. Mainly, Pamala Z utilizes two main sensor units placed on stands and another pair of sensors, although not always at the same time. In terms of design and performance function, the hand-mounted sensors are the closest to the Cyberinet: mounted on the performer, captures natural expressive movements, but can be manipulated for specific effects, controlled by a separate computer via Bluetooth, etc.
+
+Where these sensors begin to differentiate from the Cyberinet is in their inherent accessibility. Pamala Z's sensors were developed by another person (FIND HIS NAME), and were intended to be utilized by specific people in specific circumstances. While the devices could certainly be hacked or their protocols copied to control other, more recent compositions and Max patches, these were never intended for anything other than allowing Pamala Z to create her Art. 
+
+The Cyberinet on the other hand serves to bring all of the sensors and processing capabilities into the hands of as many people as possible. The Cyberinet's form factor is designed to incorporate the electronics with no hassle. Literally the first thing a new clarinettist is thought is how to put the instrument together and hold it. With no external wires (not including the optional expansions), a beginner would be able to utilize the hardware once they have adjusted to the weight. While Pamala Z's sensors are designed to work in specific scenarios and in specific compositions, the Cyberinet is designed as a performance and composition tool for the ground up. The included software bundle includes both examples of composed music for the Cyberinet as well as a collection of objects needed to quickly receive and process sounds in the Max programming environment. 
 
 
-
-
-\chapter{Intended Uses}
+\chapter{Intended Uses} % this can frame/provide context for the parts described below
 
 While widely adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As in, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet.
 
@@ -560,7 +575,7 @@ This appendix contains all of the Arduino code flashed to the Cyberinet. (Versio
 
 \chapter{Raindrops on a Tin Roof Score}
 
-\includepdf[pages=1-17]{Scores/raindrops.pdf} % still need notation key images in front matter.
+\includepdf[pages=1-21]{Scores/raindrops.pdf} 
 %  list page range and file location
 
 \chapter{Raindrops on a Tin Roof Short Story}
