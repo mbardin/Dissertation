@@ -101,6 +101,7 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was in the
 \chapter{Abstract}
 
 % The ``abstract'' is required and is limited to 350 words.
+REVISE THIS ONCE PAPER IS DONE
 
 The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal routine. The end goal if for a performer to be able to seamless switch between a traditional performance setting and an augmented one with a press of a button. Towards this goal, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data such as gyroscopic data of the performer and air flow within the instrument. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. In addition to the base unit which is embedded within a 3D printed clarinet barrel, the Cyberinet was also designed to accept various expansion units through USB-C ports on the side of the device. This allows for the unit to become customizable based on various performance needs. The final portion of this project consists of a collection of Max objects designed from the ground up to utilize the Cyberinet’s data in musical contexts. These Max objects were utilized in the performance of three new compositions for the instrument on April 18th, 2023 in the Digital Media Center on LSU’s Baton Rouge campus.
 
@@ -122,10 +123,9 @@ Several works have been developed over the years towards this goal. Within the p
 Unlike the Metasax, the Overtone Violin is built from scratch. This instrument replicates the violin in terms of form and sound production, but contains several internal pickups, sensors, and control buttons built into its form factor. In short, the various buttons can be used to adjust the performance modes and help adjust the data being collected and sent to a USB receiver located on a separate glove that the performer would wear. Bertner has written several pieces and performed in several conferences utilizing this instrument. \textit{Windsketches} (performed 2011) and \textit{Endprint} (2004) are two such compositions.
 
 Both Of these instruments have something similar between them that this project is working to improve upon. That factor is that the performer must either acquire a completely new instrument or potentially permanently alter their instrument to perform with their augmented capabilities. They also require hard-wire connections in some regard, but this is less of a drawback in the context of this project. While these instruments do base their performance practices off of common instruments, there will have to be some level of re-learning the instrument in order to properly make use of its abilities. 
-My project works to be minimally invasive to the performance practice of whomever is using the hardware. It is also designed to be easily added or removed to/from a performer’s instrument, eliminating the need for an additional instrument. Two projects that are designed to be minimally invasive are the MIGSI trumpet and the SABRe multisensor. These augmentations both attach to brass and woodwind instruments respectively. 
 
-The MIGSI (Minimally Invasive Gesture Sensing Interface) trumpet is a collection of sensors that attach to the bottom of a trumpet. These sensors work to capture control data such as valve placement, instrument position, etc. and send it wireless to a computer. All of the sensors are positioned in a way that does not impede the traditional performance of a trumpet, although it does not appear to be something that can be easily removed in the moment if desired.
-The creator of the MIGSI trumpet, Sarah Belle Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017). The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. With the exception of an optional remote, this sensor is only able to utilize the sensors built into it, which include a gyroscope, accelerometer, thermometer, and airflow sensor.
+The Cyberinet works to be minimally invasive to the performance practice of whomever is using the hardware. It is also designed to be easily added or removed to/from a performer’s instrument, eliminating the need for an additional instrument. Two projects that are designed to be minimally invasive are the MIGSI trumpet and the SABRe multisensor. These augmentations both attach to brass and woodwind instruments respectively. 
+
 
 These are all potentially useful, but if the performer does not need or want all of these, then they are stuck paying for the sensors that they will never utilize. The effectiveness of the SABRe Multisensor can be seen in compositions such as \textit{Sails} by Matthias Muller (2018). 
 My project seeks to combine the best aspects from these projects and synthesize them into a new semi-modular design that any woodwind player can utilize. It takes the intention of using traditional performance practice to generate its augmentation, while still being something that can be adapted or easily removed in a performance based on the performer’s needs. My hardware is also something that does not impede the movements of the performer. In terms of form factor, My hardware takes inspiration from artist Pamala Z. when in use, one of her sets of sensors is located on her hands, and responds to various gestures to control her performances. Various iterations of these sensors can be seen in several of her compositions, including \textit{Breathing} and \textit{STEIM} (2007).
@@ -138,18 +138,24 @@ Optional buttons can also be attached via wire to allow for additional performan
 \chapter{Historical Context}
 
 \section{MIGSI Trumpet}
-The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet.
+The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, instrument position, etc. and send it wirelessly to a computer.
 
 Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The entirety of the MIGSI augmentations are located to match the form of a standard B-flat or C trumpet, and is placed at the instrument's center of gravity to minimize fatigue from the extra weight. While not as streamlined as the MIGSI trumpet, the Cyberinet's sensors are located in a similar location in relation to the design of the Clarinet.
+
 
 \subsection{Music Written for MIGSI Trumpet}
 
 DO I WANT TO DO THIS OR ANOTHER PIECE? MAKE SURE IT MATCHES THE MUSIC REFERENCED EARLIER IN THE DOC
 
+Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017).
+
 Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah Belle Reid\footnote{A performance video of \textit{Pocket Fig} can be found at \url{https://www.youtube.com/watch?v=5szWkbVjYxg}}. In this work, Reid utilizes Force Sensitive Resistors as well as Infrared sensors to collect data related to the valve displacement on the instrument. This data is then wirelessly sent to the computer to control a Max patch's granular synthesis processing.
 
 \section{SABRe}
-The SABRe is a system of sensors that is the device most closely related to the Cyberinet. Specifically comparing the two devices, we can see clear pros and cons to each.
+
+The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument.
+
+Of the discussed instruments, the SABRe is a system of sensors that is the device most closely related to the Cyberinet. Specifically comparing the two devices, we can see clear pros and cons to each.
 
 \textbf{SABRe:}
 
@@ -211,10 +217,10 @@ The Cyberinet on the other hand serves to bring all of the sensors and processin
 
 \chapter{Intended Uses} % this can frame/provide context for the parts described below
 
-While widely adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As in, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet.
+While adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As is, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet. This add on allows for the user to easily include computer augmentation into their timbre repertoire. 
 
 \section{Composition Tool}
-One of the main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
+One of the three main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
 
 \subsection{Instrument Compatibility \& Future Directions}
 At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
@@ -222,10 +228,13 @@ First, adapting the unit for the A Clarinet and Bass Clarinets. At this time the
 
 Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
 
-\section{Improvisation}
-% a la stomp boxes
+\section{New Instrument}
 
-While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
+As mentioned, the Cyberinet is intended as a new tool for the composer, but what about the performer? The Cyberinet straddles a line between new and old. It works to bring new sounds and functionality to a traditional instrument with its own performance practice. WHERE DO I WANT TO PLACE THE INSTRUMENT? 
+
+\section{Improvisation Tool}
+% a la stomp boxes
+Straddling the line between composer and performer brings us to the final intended use for the Cyberinet: an improvisation tool. While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
 
 This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
 
@@ -429,6 +438,27 @@ Lastly, Plans for the expansion and revision of the software environment are alr
 
 In addition to creating the hardware and software for this dissertation, I have also created a handful of musical compositions that show off various features of the Cyberinet. These three compositions as listed below, show a gradient from simpler to more complex uses of the Cyberinet’s features.
 
+Before we begin looking at the compositions in detail, I want to explore what it is like performing with the Cyberinet through an interview with the premiere artist for all three of the works mentioned in this chapter\footnote{The scores for all pieces discussed in this chapter are available in the appendices and online at \url{matthewbardin.com}}.
+
+\section{Performing with the Cyberinet}
+The following is an interview with Adam Cope, the premiere artist for the three Cyberinet compositions mentioned in this paper. At the time of the premiere, Adam was a DMA Student in clarinet performance. His full biographical statement is provided in the appendices. This interview was conducted following the premiere of the pieces, over email. Adam was asked the following questions:
+
+\begin{itemize}
+    \item Question 1: How easy or difficult was it to implement the Cyberinet into your normal performance routine?
+    \item Answer 1:
+    \item Question 2: What was your favorite and least favorite part about working with the Cyberinet?
+    \item Answer 2: 
+    \item Question 3: How confident do you feel in being able to remove or add the Cyberinet to your clarinet in a performance setting?
+    \item Answer 3:
+    \item Question 4: How confident do you feel in being able to work with the Cyberinet's software capabilities to create unique sounds?
+    \item Answer 4:
+    \item Question 5: What thing or things did you dislike, or would change, about the Cyberinet?
+    \item Answer 5:
+\end{itemize}
+
+
+
+
 \section{Puzzle of a Park}
 At its core, this work is the simplest of the three written especially for this project. \textit{Puzzle of a Park}\footnote{A performance video of \textit{Puzzle of a Park} is available at} functions as a work written for a loop pedal, but without the pedal. The performer plays through the material from beginning to end, periodically pressing one of the two buttons on the button board accessory. Looking at the max patch we can see that one button will trigger the computer to record a microphone input into a buffer while the second triggers the synchronized playback of all recorded buffers. 
 [show patch snapshot]
@@ -440,33 +470,58 @@ When ordering the voices, I began with one of the middle voices as the opening t
 
 \section{Ethereal Presence}
 The second work\footnote{A performance video of \textit{Etherial Presence} is available at} created for this project begins to utilize the more complicated sensors present in the Cyberinet. These primarily include the gyroscope and airflow meter. Once received, the Max patch for the composition utilizes the values to control two different synthesizers and their parameters. 
-[chart showing the value and parameter mapping]
-The first synthesizer outputs a single tone with the goal of harmonizing with the soloist. This is the Ethereal Presence as mentioned in the title. [add more when this synth is done]
-Accompanied by this is a more textural synthesizer designed to help support and fill out the atmosphere of the composition. This synthesizer outputs noise before being run through an FFT, based filter created by Dr. Austin Franklin [ how much info on the project do I need?]. This filter takes the incoming noise and performs an FFT operation on it to determine the frequency content, then based on the values received from the Cyberinet, filters out certain frequency bins. 
+
+Melodic Synth:
+\begin{itemize}
+    \item 
+\end{itemize}
+
+Background Synth:
+\begin{itemize}
+    \item 
+\end{itemize}
+
+The first synthesizer outputs a single tone with the goal of harmonizing with the soloist. This is the Ethereal Presence as mentioned in the title. The goal is to make the tone as simple as possible, but with a large potential for timbral changes. Towards this, I chose to use FM synthesis to generate this tone. Because the clarinet excels at performing with discreet pitches rather than instruments like the trombone or strings that can more easily shift around their tuning in the moment. While one could connect the Cyberinet's data outputs directly into the FM synthesizer, the instrument will have a more difficulty time fitting into a well-tempered tuning environment. 
+
+To help avoid this issue, a microphone is placed either on-stage or attached to the instrument. This microphone picks up the performer and sends the signal to a tuner object in Max. This object determines the pitch being performed by the Cyberinet, and outputs both the musical pitch and frequency of the note. From there, the numerical pitch is sent to a series of mathematical operators in order to alter it before sending the information to the FM synthesizer. The end result is a synthesizer that harmonizes with the Cyberinet in the following ways:
+
+\begin{itemize}
+    \item Perfect 5th above: 3:2 ratio from original frequency.
+    \item Minor Third above: 6:5 ratio from the original frequency.
+    \item Perfect 5th below: 4:6 ratio from the original frequency (perfect 4th ratio of 4:3, then divided by 2 to lower the octave) 
+\end{itemize}
+
+The synthesizer randomly swaps between the harmonizations every 10-15 seconds, but this random change can be triggered by the performer utilizing the button expansion.
+
+Accompanied by this is a more textural synthesizer designed to help support and fill out the atmosphere of the composition. This synthesizer outputs noise before being run through an FFT, based filter created by Dr. Austin Franklin. This filter takes the incoming noise and performs an FFT operation on it to determine the frequency content, then based on the values received from the Cyberinet, filters out certain frequency bins. The end result is a fluctuating cloud of noise that adapts its frequency range based on the Cyberinet's position.
 
 
 \section{Raindrops on a Tin Roof}
 Of the three debut compositions for the Cyberinet, \textit{Raindrops on a Tin Roof}\footnote{A performance video of \textit{Raindrops on a Tin Roof} is available at} is the most involved with the Cyberinet sensors. Contrasting from Mueller's usage of the SABRe, this composition utilizes all of the default sensors present in the hardware in some way. 
 
-The inspiration comes from a short story [summarize the text here]
+The inspiration comes from a short story I wrote in late 2022. The full text is provided in the appendices, but the general outline is as follows:
+
+The main character is exhausted after a week of overtime at work and plans to enjoy a rainy weekend alone at home. during the storm, the protagonist falls asleep and wakes up to find the house completely dark and unfamiliar. Assuming the power has just cut out, they head to the basement to find some emergency lights when they discover an un-knowable eldrich abomination in the basement. Because of the un-knowable nature of the being, the protagonist forgets everything about it as soon as they run away. The end result is a bloodthirsty monster chasing the protagonist through the house and onto a rooftop veranda where the protagonist accepts their fate, and the monster has its dinner.
 
 Formally, the music follows the narrative of the story, with ambient storm sounds and monster noises coming in as indicated. 
 
 Gyroscopic information is used to control the live mixing of the pre-rendered tracks. These include:
 \begin{itemize}
-    \item Two different storm ambience tracks.
     \item Sounds created by the monster.
-    \item Creaking floorboards.
+    \item Creaking floorboards and other ambience.
     \item Synthesizer Accompaniment.
+    \item Narrator readings.
 \end{itemize}
 
 The gyroscopic information is also used to alter effects applied to all of the aforementioned sounds as well as the clarinet. This is combined with the accelerometer information to avoid having the correlation become predictable.
 
 The airflow information is used to apply distortion and other processing to the audio signals. In short as the performer's breathing increases, so does the effect application.
 
-Unlike the other compositions discussed here, \textit{Raindrops} utilizes notated accompaniment. This accompaniment is meant to represent the monster in the basement in a less literal sense. For the premiere, these sounds are generated with the UVI 8-Bit Synth. This instrument is loaded into the Max environment using the vst~ object and is intended to create a spooky, slightly incongruous sound when compared to the other sounds in the environment. 
-The musical content for this synthesizer was generated using the MIDI information from the notation software that created the score. Instructions for generating your own audio clip for this voice are indicated in the score. This freedom allows for the performer to create a timbre and environment that is unique to them.
+Unlike the other compositions discussed here, \textit{Raindrops} utilizes notated accompaniment. This accompaniment is meant to represent the monster in the basement in a less literal sense. For the premiere, these sounds are generated with the UVI 8-Bit Synth. The sounds were all pre-rendered using Studio One 6 Professional, and are intended to create a spooky, slightly incongruous sound when compared to the other sounds in the environment. 
 
+The narrator files are a processed recording of the composer reading the story. the processing adds a distorted, low-fi sound to the voice to make it appear more ethereal in nature than the clean recordings. 
+
+The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and ariflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
 
 
 
@@ -481,14 +536,11 @@ Below are all of the 3D models utilized to 3d print the case and accessories of 
 
 \subsection{Main Body}
 \vspace{5mm}
-
+ 3d printed part prototype and final pretty version
 
 \subsection{Button Board}
 \vspace{5mm}
-
-
-\subsection{Accessories}
-\vspace{5mm}
+3d printed completed version
 
 
 \section{PCB Diagrams}
@@ -498,26 +550,36 @@ Below are the PCB diagrams for the Cyberinet.
 \vspace{5mm}
 
 \begin{center}
-    \includegraphics[scale=0.5]{diagrams/PCBs/mainBoard.png}
+    \includegraphics[scale=0.25]{diagrams/PCBs/mainBoard.png}\\
     \caption{Main Unit Top View}
 \end{center}
 
 \subsection{Button Board}
 \vspace{5mm}
 
-\section{Sensor Chips Detailed Photos}
+\section{OEM Detailed Photos}
 
 \subsection{ESP-32}
 \vspace{5mm}
 
-\subsection{SDP-31}
+\subsection{SDP-3x Breakout Board}
 \vspace{5mm}
 
 \subsection{MPU-6050}
 \vspace{5mm}
 
-\subsection{TP-4056 Type C}
+\begin{center}
+    \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}\\
+    \caption{Gyroscope and Accelrometer\footnote{Image courtesy of HiLetGo and Amazon.com}}
+\end{center}
 
+\subsection{TP-4056 Type C}
+\vspace{5mm}
+
+\begin{center}
+    \includegraphics[scale=0.25]{diagrams/oem/4056.jpg}\\
+    \caption{Charging and Power Distribution}
+\end{center}
 
 
 
@@ -526,6 +588,227 @@ This appendix contains all of the Arduino code flashed to the Cyberinet. (Versio
 
 \section{Arduino .ino Code}
 
+Below is the .ino code that is running on the ESP-32 microcontroller. This code was developed using the Arduino IDE and coding language.
+
+\begin{verbatim}
+
+//libraries to include
+#include <SparkFun_SDP3x_Arduino_Library.h>
+#include<Wire.h>
+#include <BluetoothSerial.h>
+#include <MPU6050.h>
+
+// create instances of the libraries above
+BluetoothSerial SerialBT;
+MPU6050 mpu;
+SDP3X airFlow; // constant sensing is on I2C address 0x21
+
+// Global Variables
+// dedicated pins
+const int pwrLED = 23; // green 330 Ohm
+const int msgLED = 4; // red 220 Ohm
+const int button1 = 13;
+const int button2 = 14;
+const int b1LED = 26;
+const int b2LED = 27;
+
+const int MPU_ADDR = 0x68; // I2C address of the MPU-6050
+int16_t AcX, AcY, AcZ, GyX, GyY, GyZ; // values for 6050
+
+int pB1 = 0;
+int pB2 = 0;
+int button1State = 0;
+int button2State = 0;
+
+float pDiff, pTemp, rotX, rotY, rotZ, gForceX, gForceY, gForceZ;
+float diffPressure = 0.0;
+float temperature = 0.0;
+bool buttonConnectCheck = false;
+
+void setup() {
+  // Pin mode assignment
+  pinMode(pwrLED, OUTPUT);
+  pinMode(msgLED, OUTPUT);
+  pinMode(button1, INPUT_PULLUP); // use ESP32's built in pullup resistors
+  pinMode(button2, INPUT_PULLUP);
+
+  Serial.begin(115200);
+  SerialBT.begin("Cyberinet V.1.3.1"); // Device name that will appear on computer
+  delay(1000); // pause before checking
+  // various startup and checks
+  gyroStartup();
+  airflowStartup();
+  buttonCheck(); 
+
+  // if everything clears
+  startLights();
+}
+
+void loop() { // check the sensors and transmit each loop.
+  get6050();
+  if (buttonConnectCheck == true) { // find a way to not have to check every loop
+    getButtons();
+  }
+  getAir(); // put 6050 and sdp31 on ends of sensor checks to give time between accessing the I2C pin.
+}
+
+void get6050() {
+
+  Wire.beginTransmission(MPU_ADDR);
+  Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+  Wire.endTransmission(true);
+
+  Wire.requestFrom(MPU_ADDR, 6); //Request Accel Registers (3B - 40)
+  while (Wire.available() < 6);
+  AcX = Wire.read() << 8 | Wire.read();
+  AcY = Wire.read() << 8 | Wire.read();
+  AcZ = Wire.read() << 8 | Wire.read();
+
+  Wire.beginTransmission(MPU_ADDR); //I2C address of the MPU
+  Wire.write(0x43); //Starting register for Gyro Readings
+  Wire.endTransmission();
+  Wire.requestFrom(MPU_ADDR, 6); //Request Gyro Registers (43 - 48)
+  while (Wire.available() < 6);
+  GyX = Wire.read() << 8 | Wire.read();
+  GyY = Wire.read() << 8 | Wire.read();
+  GyZ = Wire.read() << 8 | Wire.read();
+
+  rotX = GyX *  0.007633587786; 
+  rotY = GyY *  0.007633587786;
+  rotZ = GyZ *  0.007633587786;
+
+  Serial.print("GyroX ");
+  Serial.println(rotX);
+
+  Serial.print("GyroY ");
+  Serial.println(rotY);
+
+  Serial.print("GyroZ ");
+  Serial.println(rotZ);
+
+  gForceX = AcX * 0.00006103515;
+  gForceY = AcY * 0.00006103515;
+  gForceZ = AcZ * 0.00006103515;
+
+  Serial.print("AcelX ");
+  Serial.println(gForceX);
+
+  Serial.print("AclY ");
+  Serial.println(gForceY);
+
+  Serial.print("AcelZ ");
+  Serial.println(gForceZ);
+
+}
+
+void getButtons() {
+  pB1 = button1State;
+  pB2 = button2State;
+  // get new values for this loop
+  button1State = digitalRead(button1);
+  button2State = digitalRead(button2);
+  
+  if (pB1 != button1State) {
+    Serial.print("Button1 ");
+    Serial.println(button1State);
+    digitalWrite(b1LED, button1State);
+  }
+
+  if (pB2 != button2State) {
+    Serial.print("Button2 ");
+    Serial.println(button2State);
+    digitalWrite(b1LED, button2State);
+  }
+}
+
+void getAir() {
+  // store previous values
+  pDiff = diffPressure;
+  pTemp = temperature;
+
+  airFlow.readMeasurement(&diffPressure, &temperature); // get values
+
+  // transmit values if they are above a range
+  if (abs(pDiff) - abs(diffPressure) > 0.5) {
+  // check the ranges for more effective values
+    Serial.print(F("AirP "));
+    Serial.println(diffPressure, 2);
+  }
+
+  Serial.print(F("Temp "));
+  Serial.println(temperature, 2);
+}
+
+// startup functions
+void buttonCheck() {
+  // currently trying to compare states over time.
+  // if pin is floating it will fail
+  int pState1[6]; // array to compare
+
+  for (int i = 0; i < 6; i++) {
+
+    pState1[i] = button1State; // collects values to check
+  }
+
+  if (pState1[0] == pState1[1]) { // compare values
+    if (pState1[1] == pState1[2]) {
+      if (pState1[2] == pState1[3]) {
+        if (pState1[3] == pState1[4]) {
+          if (pState1[4] == pState1[5]) {
+            buttonConnectCheck = true; 
+          } else {
+            buttonConnectCheck = false;
+          }
+        } else {
+          buttonConnectCheck = false;
+        }
+      } else {
+        buttonConnectCheck = false;
+      }
+    } else {
+      buttonConnectCheck = false;
+    }
+  } else {
+    buttonConnectCheck = false;
+  }
+}
+
+void gyroStartup() {
+  Wire.begin(21, 22, 100000); // sda, scl, clock speed
+  Wire.beginTransmission(MPU_ADDR);
+  Wire.write(0x6B);  // PWR_MGMT_1 register
+  Wire.write(0);     // (wakes up the MPU−6050)
+  Wire.endTransmission(true);
+  SerialBT.println("6050 Setup Complete");
+}
+
+void airflowStartup() {
+  // Initialize sensor
+  if (airFlow.begin() == false)
+  {
+    Serial.println(F("SDP31 not detected. Check connections. Freezing..."));
+    while (1);
+  }
+
+  airFlow.startContinuousMeasurement(true, true);
+  Serial.println("SDP31 Setup Complete");
+}
+
+void startLights() { // flashes startup LED in apecific pattern
+  digitalWrite(pwrLED, HIGH);
+  digitalWrite(msgLED, HIGH);
+  delay(500);
+  digitalWrite(msgLED, LOW);
+  delay(500);
+  digitalWrite(msgLED, HIGH);
+  delay(500);
+  digitalWrite(msgLED, LOW);
+  delay(1000);
+  digitalWrite(msgLED, HIGH);
+}
+
+\end{verbatim}
+
 \section{Max Objects}
 
 \subsection{Functional Objects}
@@ -533,11 +816,15 @@ This appendix contains all of the Arduino code flashed to the Cyberinet. (Versio
 \subsubsection{receive~}
 \vspace{5mm}
 
+This object receives data coming from the Cyberinet, but only outputs a single sensor's values at a time. This can be changed as an argument in the object. This is recommended when only utilizing a small amount of sensors at a time.
+
 \subsubsection{omnireceive~}
 \vspace{5mm}
+This object receives data coming from the Cyberinet and outputs all sensor values at the same time. These are all given a unique output from the object. This is recommended when utilizing multiple sensors at once.
 
 \subsubsection{tuner}
 \vspace{5mm}
+This object is a simple tuner based off of the one included in the RNBO max collection. It receives a signal from an external microphone and outputs the pitch and frequency of the sound. In this version of the Cyberinet, it must be located in the software as the ESP-32's ADC's are not powerful enough to run a tuner along with everything else. It is recommended for both tuning purposes, as well as pitch identification purposes. 
 
 \subsection{Audio Effects}
 
