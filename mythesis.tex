@@ -2,7 +2,7 @@
   \Title{Your Thesis Title}
   \Author{Matthew Asher Bardin}
   \Keywords{comma, separated, keywords}
-  \Date{2015-05-15}
+  \Date{2023-05-31}
   \Language{en-US}
 \end{filecontents*}
 %
@@ -139,14 +139,21 @@ Put simply, these augmented instruments begin with an acoustic instrument that h
 % Optional buttons can also be attached via wire to allow for additional performance control if desired. The wires connecting the optional units and the main hardware are all that is required for the Cyberinet. All of the data is wirelessly sent to the paired control computer. Where it will be utilized to augment the instrument sound and other elements.
 
 \chapter{Historical Context}
+\section{Augmented Instruments}
 
-\section{MIGSI Trumpet}
+\subsection{Pre-20th Century Instruments}
+
+\subsection{20th Century Instruments}
+
+
+\subsection{21st Century Instruments}
+\subsubsection{MIGSI Trumpet}
 The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, instrument position, etc. and send it wirelessly to a computer.
 
 Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The entirety of the MIGSI augmentations are located to match the form of a standard B-flat or C trumpet, and is placed at the instrument's center of gravity to minimize fatigue from the extra weight. While not as streamlined as the MIGSI trumpet, the Cyberinet's sensors are located in a similar location in relation to the design of the Clarinet.
 
 
-\subsection{Music Written for MIGSI Trumpet}
+\subsubsection{Music Written for MIGSI Trumpet}
 
 DO I WANT TO DO THIS OR ANOTHER PIECE? MAKE SURE IT MATCHES THE MUSIC REFERENCED EARLIER IN THE DOC
 
@@ -154,7 +161,7 @@ Ried, has created several improvisations utilizing the apparatus, and written se
 
 Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah Belle Reid\footnote{A performance video of \textit{Pocket Fig} can be found at \url{https://www.youtube.com/watch?v=5szWkbVjYxg}}. In this work, Reid utilizes Force Sensitive Resistors as well as Infrared sensors to collect data related to the valve displacement on the instrument. This data is then wirelessly sent to the computer to control a Max patch's granular synthesis processing.
 
-\section{SABRe}
+\subsubsection{SABRe}
 
 The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument.
 
@@ -189,7 +196,7 @@ The goal of the SABRe is to provide augmentation features to performers, regardl
 
 As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the SABRe sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
 
-\subsection{Music written for the SABRe}
+\subsubsection{Music written for the SABRe}
 
 Prior to 2023, SABRe had been on a hiatus in terms of development and is currently in the process of designing a relaunch of the system. It is perhaps for this reason that there is a limited number of works for the system, but discussing the reasons behind the hiatus is beyond the scope of this paper.
 
@@ -203,7 +210,7 @@ In the future, should a performance score become available, it would warrant mor
 
 Mueller's utilization of the button is worth bringing up individually. in \textit{Sailing}, Mueller is using this button to trigger a tremolo-like effect to be applied to the clarinet's signal. Unfortunately without the software patch or score the fine details of this are left to speculation, but I want to focus on the idea of manually triggering an effect with a button. Unlike a foot pedal, these buttons follow the performer, allowing them to take full advantage of the buttons along with the movement sensors. A performer can access the buttons regardless of their on-stage location. In the Cyberinet compositions discussed later, I utilize a larger-scale use of the main buttons. In \textit{Puzzle of a Park}, the buttons are used to trigger recordings and playback, whereas in \textit{Raindrops on a Tin Roof} I utilize the button's instant binary functionality to cycle through different signal routing and effect presets to alter the tones.
 
-\section{Other Similar Devices \& Studies}
+\subsection{Other Similar Devices \& Studies}
 
 FIND THE PAPER I'M REMEMBERING BUT CAN'T QUITE RECALL FOR THIS STUDY, OR ADAPT IT TO FIT ANOTHER PAPER IF IT CANNOT BE FOUND
 
@@ -218,29 +225,49 @@ Where these sensors begin to differentiate from the Cyberinet is in their inhere
 The Cyberinet on the other hand serves to bring all of the sensors and processing capabilities into the hands of as many people as possible. The Cyberinet's form factor is designed to incorporate the electronics with no hassle. Literally the first thing a new clarinettist is thought is how to put the instrument together and hold it. With no external wires (not including the optional expansions), a beginner would be able to utilize the hardware once they have adjusted to the weight. While Pamala Z's sensors are designed to work in specific scenarios and in specific compositions, the Cyberinet is designed as a performance and composition tool for the ground up. The included software bundle includes both examples of composed music for the Cyberinet as well as a collection of objects needed to quickly receive and process sounds in the Max programming environment. 
 
 
-\chapter{Intended Uses} % this can frame/provide context for the parts described below
+\section{Cybernetics}
+In addition to being an augmented instrument, the Cyberinet utilizes cybernetic principles in its design and intended uses. To better understand this connection, let us look into the concepts of Cybernetics and Cybernetic music.
 
-While adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As is, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet. This add on allows for the user to easily include computer augmentation into their timbre repertoire. 
+\subsection{General Cybernetic Concepts}
+The concept of modern cybernetics was defined by Norbert Wiener in his 1948 book \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}, which has been republished by MIT press in recent years.\cite{WeinerCybernetics2019} The republished versions contain additional supplementary chapters not included in the original 1948 publication.
 
-\section{Composition Tool}
-One of the three main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
+%finish book and verify that this is indeed the correct first definition.
+In its original context, Cybernetics is defined as \textit{The science of communications and automatic control systems in both machines and living things}. I feel that Weiner's analogy for cybernetics shown below does an excellent job of clarifying what is meant by "automatic control systems".
 
-\subsection{Instrument Compatibility \& Future Directions}
-At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
-First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components.
+\begin{quote}
+    find original text because this is a paraphrase
+    As a captain steers a boat, they see rocks in their path, and turn the wheel to avoid them. Then the captain turns the wheel again to remain on-course. They are not directly adjusting the rudder, and have not planned an automatic course, but rather are acting as a sensor responding to the environment and affecting that system (the boat's movement) based on that system's performance.
+\end{quote}
 
-Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
+As time progressed, the definition of cybernetics has evolved. Scientifically, the definition is relatively unchanged, still focusing on feedback systems and automated responses, but now also refers to the combination of mechanical an organic components to help achieve this. %citation needed
 
-\section{New Instrument}
+For example, take the Omnipod 5 system used for diabetics to manage their insulin delivery. This device has the capability to be paired with a constant glucose monitor embedded within the user's abdomen. This sensor will read the glucose levels of the user and automatically adjust the Omnipod 5's insulin delivery rate to compensate for any changes to the blood glucose levels. This system is cybernetic in every sense of the word. It both combines organic and inorganic components, as well as the internal feedback loops to control the blood glucose level of a diabetic in a manner similar to a person without diabetes.
 
-As mentioned, the Cyberinet is intended as a new tool for the composer, but what about the performer? The Cyberinet straddles a line between new and old. It works to bring new sounds and functionality to a traditional instrument with its own performance practice. WHERE DO I WANT TO PLACE THE INSTRUMENT? 
+The focus on combining organic and inorganic components comes in no small part from popular culture. Cyborgs were first introduced in science fiction during the middle o the 19th century and have become a major part of the entertainment industry since then. the word cyborg is a portmanteau of cybernetic and organism, and serves to show the melding of organic and inorganic components to form a new being.
 
-\section{Improvisation Tool}
-% a la stomp boxes
-Straddling the line between composer and performer brings us to the final intended use for the Cyberinet: an improvisation tool. While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
+\subsection{Cybernetic Music Practices}
+Cybernetic principals have also been utilized in music composition. % fininsh introduction
 
-This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
+A selection of composers utilizing cybernetic concepts in their music:
 
+\subsubsection{Herbert Brün \textit{(1918-2000)}}
+
+
+
+\subsubsection{Roland Kayn \textit{(1933-2011)}}
+German born composer who was heavily inspired by information sciences when creating his unique style of mainly electronic and electroacoustic music.\cite{rolandKaynBio} His earliest works to utilize the cybernetic concepts was \textit{Galaxis} (1962) for a variable acoustic instrumental ensemble and \textit{Cybernetic} (1969) for electronics. These works Incorporated cybernetic principals in what Kayn referred to as being "self-governing".\cite{rolandKaynBio} In the context of Kayn's electronic music, this was present in algorithmic processes which incorporated semi-random calculations. These unpredictable results were then fed back into the system which resulted in unpredictable, autonomous results.\cite{rolandKaynBio}
+
+\vspace{10mm}
+\begin{center}
+\includegraphics[scale=0.3]{diagrams/kayn_cybernetics.jpeg}
+\label{cyberneticsScore}\\
+\caption{\textit{Cybernetics} (1969) score\footnote{Score image shown originally scanned from the \textit{Eletroakustische Projekte I} LP jacket. Image found on Socks-Studio.com\cite{cyberneticsScoreSite}}
+\end{center}
+
+% show randomsness in the score to make point.
+
+
+\subsubsection{Pauline Oliveros \textit{1932-2016}}
 
 
 
@@ -264,12 +291,28 @@ This modularity in signal processing is similar to the practice of using guitar 
 % track of the changes.
 
 
-\chapter{Cyberinet Hardware Components}
+\chapter{Building the Cyberinet}
 
 At its core, the Cyberinet contains a small collection of sensors build into the hardware. These include: [list of sensor names]. In addition to these sensors, the unit contain two USB-C connectors on its side. The first one is intended for the button board expansion, which gives the performer access to two buttons positioned on the thumb rest of their instrument. The functionality of these buttons can then be programmed using Max or another audio programming environment. The second USB-C port is designed to connect to a variety of other sensors, allowing for the performer to adjust their setup for whatever is needed for a particular performance. This is the origin of the phrase “semi-modular” in the project title. At the time of writing, one expansion sensor has been created and tested. This is the [figure something out, a mic that will respond to volume and transmit a bang.] Additional expansions have been planned and explored in more detail in the “Further Directions” section of this document. 
 All these chips were selected for their ability to be dropped into the main board without an extensive need for the user to solder many components, and their use of standard 0.1 inch spacing. [fix this sentence]
 
-\section{Micro-controller}
+
+
+\section{OEM Sensors}
+\subsection{MPU-6050}
+
+
+\subsection{Differential Airflow Pressure}
+
+SDP-31
+Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
+Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized over the MPU-6050. Temperature is measured in degrees Celsius.
+
+
+
+\section{Controllers \& Power Distribution}
+
+\subsection{Micro-controller}
 The ESP-32 DEVKIT was selected for a handful of reasons, including:
 
 \begin{itemize}
@@ -304,30 +347,12 @@ The final item from the initial list was the wireless capabilities. The ESP-32 i
 
 The ESP-32 also has WiFi connectivity capabilities which may be involved in a future version, but at the current time is currently not utilized. The DEVKIT is able to support Bluetooth version 4.2 and Low Energy protocols for local wireless communication. This allows for the Cyberinet to easily pair with any computer that it has previously connected to using the BTSerial Arduino library. A code library that brings the normal wired Serial functionality to the Bluetooth functionality.
 
-While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet.
-
-\section{OEM Sensors}
-\subsection{MPU-6050}
+While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet. 
 
 
-\subsection{Differential Airflow Pressure}
-
-SDP-31
-Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
-Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized over the MPU-6050. Temperature is measured in degrees Celsius.
-
-\subsection{Button Expansion}
-
-These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. [make this true] While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
-
-This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
-
-
-\section{Power Distribution}
-TP-4056 Type C
 The TP-4056 is a standard chip utilized for the charging of lithium ion polymer batteries. This variant utilizes a USB type C connector over the micro-USB connector of the base model and allows for both the charging of the battery as well as the distribution of power from that battery. When charging, it is the USB-C port that is connected to the power supply. As seen in the hardware diagrams, no other USB-C port is directly connected to this chip.
 
-\subsection{LiPo Battery}
+\subsection{Power Distribution}
 In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit [show picture]. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
 The Battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
 
@@ -350,14 +375,23 @@ When the battery capacity becomes critically low, the device will stop transmitt
 
 %[have the device auto power off? Look into doing that at 2%]
 
-\chapter{Physical Design}
+\subsection{Optional Expansion Sensors}
+
+\subsubsection{Button Expansion}
+
+These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. [make this true] While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
+
+This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
+
+
+\section{}{Physical Design}
 In order to minimize the total number of parts required for the Cyberinet, the electronics are housed in a newly designed plastic unit. This Main Unit is intended to replace the barrel and mouthpiece of the original instrument when in use. In addition to the main unit, the Button Expansion as well as any future expansions have a 3D printed body in order to control the expansion's ergonomics and protect the electronics.
 
 All materials are printed using either PLA or PetG material during prototyping. These materials were chosen for their relative low cost, ease of production, and density. For the final version, LIST FINAL MATERIAL HERE was utilized because the sound quality of the material most closely resembled that of the original clarinet. All parts were printed on an Original Prusa i3 MK3S+. Because of the texting of different materials, several images in this document may be in largely varying colors. The final version was printed to be black, however future revisions could see an option for custom colors when printing. 
 
 While it is intended to remove the Clarinet's uppermost parts and replace them with the Cyberinet when needed, it is possible to perform using the hardware while powered off for a traditionally acoustic performance. The usage of this feature is at the discretion of the performer.
 
-\section{Main Unit}
+\section{Main Unit Assembly}
 
 The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
 
@@ -372,7 +406,15 @@ Overall, placing the Main Unit's bulkiest components as close to the performer's
 % The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
 
 
-\subsection{Future Hardware Directions}
+
+\subsection{Expansion Assembly}
+
+The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button Expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
+
+In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
+
+
+\section{Future Hardware Directions}
 Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, an increase in modular expansions is also planned. Initially only additional buttons and a volume-sensing microphone are available, but plans for the following sensors to be released in the future have been made:
 
 \begin{itemize}
@@ -380,29 +422,28 @@ Outside of the aforementioned hardware needed to make the Cyberinet framework co
     \item Pitch Detection: Works like the tuner software object. This will display tuning information and transmit pitch information to the computer. Needs hardware with adequate Analog-to-Digital Conversion.
 \end{itemize}
 
-\section{Button Expansion}
-
-The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button Expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
-
-In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
 
 
 
 
-
-
-
-
-\chapter{Software}
+\chapter{Programming the Cyberinet}
 This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools. Discussion of the software portion of each of the included music compositions will be discussed in that chapter. 
 
 \section{Arduino Code}
 
-\section{Max Library}
+\subsection{Collecting Data}
+
+\subsection{Transmitting Data}
+
+\section{Max Programming}
 
 To utilize the data being collected by the Cyberinet’s hardware, I have created a small library of Max objects to help with the collection and usage of said data. While detailed below, it is important to mention that Max is a paid software. The software and hardware components are all open source, however in order to create your own patches, the end-user will need to download the software. If saving patches is desired, then they must purchase a software license. Potential freeware options are being considered and will be explored upon more in a later chapter, but at the time of writing, are not in active development.
 
+\subsection{Receiving \& Routing Data}
+
 The main core of the Max library consists of two main objects. These are the .receive and omnirecieve objects respectively. Looking at the former of the two, This object is designed to receive serial data from the Cyberinet, but filters out all data except that from a given sensor. This is useful for scenarios when the full functionality of the Cyberinet is not needed. omnireceive, as the name implies, receives data from the Cyberinet as well and outputs the data from each sensor to unique outputs. This allows for the user to easily access any of the incoming data at once, and is useful for prototyping which sensor control could be useful for ran effect, or in a performance scenario when multiple sensors are required.
+
+\subsection{CNET Objects}
 
 While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. These objects were all used within the Compositions discussed in chapter 7. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality. These include:
 
@@ -434,6 +475,31 @@ Lastly, Plans for the expansion and revision of the software environment are alr
     \item Standalone Software: The final planned software expansion is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
 \end{itemize}
 
+\chapter{Intended Uses} % this can frame/provide context for the parts described below
+Now that we have looked into aspects of augmented instruments and cybernetic music, let us take a moment to see how they apply to the Cyberinet and the device's intended uses before we dive into the creation of and working with the Cyberinet.
+
+While adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As is, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet. This add on allows for the user to easily include computer augmentation into their timbre repertoire. 
+
+\section{Composition Tool}
+One of the three main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
+
+\subsection{Instrument Compatibility \& Future Directions}
+At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
+First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components.
+
+Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
+
+\section{New Instrument}
+
+As mentioned, the Cyberinet is intended as a new tool for the composer, but what about the performer? The Cyberinet straddles a line between new and old. It works to bring new sounds and functionality to a traditional instrument with its own performance practice. WHERE DO I WANT TO PLACE THE INSTRUMENT? 
+
+\section{Improvisation Tool}
+% a la stomp boxes
+Straddling the line between composer and performer brings us to the final intended use for the Cyberinet: an improvisation tool. While mainly intended as a compositional tool, the Cyberinet leads to a large amount of exploration. Another use of the Cyberinet is in the practice of improvisation. A few audio effects are provided with the Cyberinet to allow for the user to easily begin creating their own sounds, however the system can easily send its data to any object within the Max environment. By exploring which sensors are connected to different audio effects, the performer can create a large number of sounds based on a single performance movement that they are already used to.
+
+This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
+
+\section{Educational Tool}
 
 
 
@@ -442,22 +508,6 @@ Lastly, Plans for the expansion and revision of the software environment are alr
 In addition to creating the hardware and software for this dissertation, I have also created a handful of musical compositions that show off various features of the Cyberinet. These three compositions as listed below, show a gradient from simpler to more complex uses of the Cyberinet’s features.
 
 Before we begin looking at the compositions in detail, I want to explore what it is like performing with the Cyberinet through an interview with the premiere artist for all three of the works mentioned in this chapter\footnote{The scores for all pieces discussed in this chapter are available in the appendices and online at \url{matthewbardin.com}}.
-
-\section{Performing with the Cyberinet}
-The following is an interview with Adam Cope, the premiere artist for the three Cyberinet compositions mentioned in this paper. At the time of the premiere, Adam was a DMA Student in clarinet performance. His full biographical statement is provided in the appendices. This interview was conducted following the premiere of the pieces, over email. Adam was asked the following questions:
-
-\begin{itemize}
-    \item Question 1: How easy or difficult was it to implement the Cyberinet into your normal performance routine?
-    \item Answer 1:
-    \item Question 2: What was your favorite and least favorite part about working with the Cyberinet?
-    \item Answer 2: 
-    \item Question 3: How confident do you feel in being able to remove or add the Cyberinet to your clarinet in a performance setting?
-    \item Answer 3:
-    \item Question 4: How confident do you feel in being able to work with the Cyberinet's software capabilities to create unique sounds?
-    \item Answer 4:
-    \item Question 5: What thing or things did you dislike, or would change, about the Cyberinet?
-    \item Answer 5:
-\end{itemize}
 
 
 
@@ -494,7 +544,7 @@ To help avoid this issue, a microphone is placed either on-stage or attached to 
     \item Perfect 5th below: 4:6 ratio from the original frequency (perfect 4th ratio of 4:3, then divided by 2 to lower the octave) 
 \end{itemize}
 
-The synthesizer randomly swaps between the harmonizations every 10-15 seconds, but this random change can be triggered by the performer utilizing the button expansion.
+The synthesizer randomly swaps between the harmonization every 10-15 seconds, but this random change can be triggered by the performer utilizing the button expansion.
 
 Accompanied by this is a more textural synthesizer designed to help support and fill out the atmosphere of the composition. This synthesizer outputs noise before being run through an FFT, based filter created by Dr. Austin Franklin. This filter takes the incoming noise and performs an FFT operation on it to determine the frequency content, then based on the values received from the Cyberinet, filters out certain frequency bins. The end result is a fluctuating cloud of noise that adapts its frequency range based on the Cyberinet's position.
 
@@ -526,6 +576,24 @@ The narrator files are a processed recording of the composer reading the story. 
 
 The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and ariflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
 
+\section{ImprovImpisaImptionImpprovisation in Reverb}
+
+
+\section{Performer Opinions}
+As previously stated, being a new augmented instrument, the aforementioned four works are the only compositions for the Cyberinet at the time of writing. To better inform future revisions and compositions, the two performers who premiered the above works were asked a series of questions following their usage of the Cyberinet. These questions were:
+
+\begin{itemize}
+    \item Question 1: How easy or difficult was it to implement the Cyberinet into your normal performance routine?
+    \item Answer 1:
+    \item Question 2: What was your favorite and least favorite part about working with the Cyberinet?
+    \item Answer 2: 
+    \item Question 3: How confident do you feel in being able to remove or add the Cyberinet to your clarinet in a performance setting?
+    \item Answer 3:
+    \item Question 4: How confident do you feel in being able to work with the Cyberinet's software capabilities to create unique sounds?
+    \item Answer 4:
+    \item Question 5: What thing or things did you dislike, or would change, about the Cyberinet?
+    \item Answer 5:
+\end{itemize}
 
 
 %% The command ``\appendix'' switches into appendix-mode, meaning that subsequent ``\chapter'' commands will instead produce appendices.
@@ -816,14 +884,11 @@ void startLights() { // flashes startup LED in apecific pattern
 
 \subsection{Functional Objects}
 
-\subsubsection{receive~}
+\subsubsection{receive}
 \vspace{5mm}
 
 This object receives data coming from the Cyberinet, but only outputs a single sensor's values at a time. This can be changed as an argument in the object. This is recommended when only utilizing a small amount of sensors at a time.
 
-\subsubsection{omnireceive~}
-\vspace{5mm}
-This object receives data coming from the Cyberinet and outputs all sensor values at the same time. These are all given a unique output from the object. This is recommended when utilizing multiple sensors at once.
 
 \subsubsection{tuner}
 \vspace{5mm}
@@ -831,23 +896,10 @@ This object is a simple tuner based off of the one included in the RNBO max coll
 
 \subsection{Audio Effects}
 
-
-\subsubsection{reverb}
+\subsubsection{Reverb}
 \vspace{5mm}
 
-\subsubsection{delay}
-\vspace{5mm}
-
-\subsubsection{feedback delay}
-\vspace{5mm}
-
-\subsubsection{multi delay}
-\vspace{5mm}
-
-\subsubsection{vibrato delay}
-\vspace{5mm}
-
-\subsubsection{compressor}
+\subsubsection{Various Delays}
 \vspace{5mm}
 
 \subsubsection{karplusStrong}
@@ -888,19 +940,21 @@ This object is a simple tuner based off of the one included in the RNBO max coll
 
 \bibitem{puzzleScore} Bardin, Matthew. \emph{Puzzle of a Park} Performance Score, MaBMusic, 2023.
 
-\bibitem{EPScore} ---. \emph{Ethereal Presence} Performance Score, MaBMusic, 2023.
+\bibitem{EPScore} Bardin, Matthew. \emph{Ethereal Presence} Performance Score, MaBMusic, 2023.
 
-\bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
+\bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
 
-\bibitem{Raindrops Score} ---. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+\bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
 
-\bibitem{Body Levers Webpage} Davis Lawrence. \emph{Body Levers}, LibreTexts Physics, 09/09/2020. Accessed 06/03/2023. \url{https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Book%3A_Body_Physics_-_Motion_to_Metabolism_(Davis)/06%3A_Forces_within_the_Body/6.02%3A_Body_Levers}
+\bibitem{cyberneticsScoreSite} Lucarelli, Fosco. \emph{Roland Kayn and the Development of Cybernetic Music}, Socks Studio, \url{https://socks-studio.com/2014/11/03/roland-kayn-and-the-development-of-cybernetic-music/}. 11/03/2013. Accessed 04/10/2023.
 
 \bibitem{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay. \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2016.
 
+\bibitem{rolandKaynBio} Ricci, Massimo. \emph{Roland Kayn: Biography}, \url{https://kayn.nl/biography/}. Accessed 04/15/2023.
+
 \bibitem{Schiesser2012} Schiesser, S{\'e}bastien and Schacher, Jan C. \emph{SABRe: The Augmented Bass Clarinet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2012.
 
-
+\bibitem{WeinerCybernetics2019} Weiner, Norbert. \emph{Cybernetics or Control and Communication in the Animal and the Machine}, MIT Press, 2019
 
 % look at a way to make this better. I HATE how the template is handling references.
 
