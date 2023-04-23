@@ -268,7 +268,17 @@ German born composer who was heavily inspired by information sciences when creat
 
 
 \subsubsection{Pauline Oliveros \textit{1932-2016}}
+An American composer, performer, and educator. Oliveros was a founder of the San Francisco Tape Music Center and pioneer of Deep Listening.\cite{HolmesElectronicMusic2020} Deep Listening is a school of thought at method of listening described by Oliveros as:
 
+\begin{quote}
+    ... For me [Oliveros], Deep Listening is a lifelong practice. The more I listen the more I learn to listen. Deep Listening involves going below the surface of what is heard, expanding the whole field of sound while finding focus. This is the way to Connect with the acoustic environment, all that inhabits it , and all there it.
+
+    For others, Deep Listening is a practice consisting of listening and sounding exercises and pieces I and others have composed since 1970. The results are proceeded by a group of discussions in workshops and retreats. 
+
+    Deep Listening is for musicians as well as participants from other disciplines and interests. Previous musical training is not required.\cite{cultureandHumanity2002}
+\end{quote}
+
+In short, the idea of Deep Listening itself is a cybernetic practice.\cite{gordosOliverosCybernetics} This is because of Deep Listening's core principle of listening to how you listen. The act of a system responding to itself in a feedback loop is a core concept in cybernetics. In relation to Olivero's music, the concepts of deep listening and cybernetics can be clearly seen in her tape improvisations of the 1950's and 60's. In these works Oliveros along with a variety of collaborators would record themselves improvising, then listen to the recording and discuss what they heard. Following this the group would repeat the process until they were pleased with the results.\cite{gordosOliverosCybernetics} 
 
 
 % \section{Audience}
@@ -299,10 +309,11 @@ All these chips were selected for their ability to be dropped into the main boar
 
 
 \section{OEM Sensors}
-\subsection{MPU-6050}
+
+\subsection{Gyroscope \& Accelerometer}
 
 
-\subsection{Differential Airflow Pressure}
+\subsection{Differential Airflow Pressure \& Thermometer}
 
 SDP-31
 Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
@@ -354,12 +365,13 @@ The TP-4056 is a standard chip utilized for the charging of lithium ion polymer 
 
 \subsection{Power Distribution}
 In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit [show picture]. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
+
 The Battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
 
 \begin{itemize}
-    \item Powered on, not connected: 4 hours.
-    \item Powered on, Bluetooth connected, no expansions added: 4-5 hours.
-    \item Powered on, Bluetooth connected, expansions added: 3 hours.
+    \item Powered on, not connected: 5 hours.
+    \item Powered on, Bluetooth connected, no expansions added: 5-6 hours.
+    \item Powered on, Bluetooth connected, expansions added: 4-5 hours.
 \end{itemize}
 
 
@@ -376,6 +388,7 @@ When the battery capacity becomes critically low, the device will stop transmitt
 %[have the device auto power off? Look into doing that at 2%]
 
 \subsection{Optional Expansion Sensors}
+In addition to the built-in sensors, the Cyberinet utilizes a variety of optional expansions that can be implemented as needed to customize the array of sensors. The main expansion unit contains two momentary push buttons and is discussed in greater detail below.
 
 \subsubsection{Button Expansion}
 
@@ -383,8 +396,12 @@ These attachments are optional and not needed for the Cyberinet main unit to be 
 
 This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
 
+\subsubsection{Other Expansions}
+At the time of writing, only a single other expansion unit has been completed. This is the Volume Detection unit which contains an Adafuit I2S MEMS Microphone Breakout board. Like the Button Expansion, this unit is housed in a 3D printed case and connects to the Main unit with a USB-C cable. 
 
-\section{}{Physical Design}
+This unit is designed to respond to the volume of the local area, and is designed to be placed in a variety of different areas. By placing the sensor at different distances from the performer or speakers, the sensor can more or less sensitively respond to the volume. The user is only limited by the length of USB-C cable they can utilize. The Cyberinet detects when the volume at the sensor exceeds 0 dB, and transmits the data as a Boolean value to the computer in a similar manner to the Button Expansion.
+
+\section{Physical Design}
 In order to minimize the total number of parts required for the Cyberinet, the electronics are housed in a newly designed plastic unit. This Main Unit is intended to replace the barrel and mouthpiece of the original instrument when in use. In addition to the main unit, the Button Expansion as well as any future expansions have a 3D printed body in order to control the expansion's ergonomics and protect the electronics.
 
 All materials are printed using either PLA or PetG material during prototyping. These materials were chosen for their relative low cost, ease of production, and density. For the final version, LIST FINAL MATERIAL HERE was utilized because the sound quality of the material most closely resembled that of the original clarinet. All parts were printed on an Original Prusa i3 MK3S+. Because of the texting of different materials, several images in this document may be in largely varying colors. The final version was printed to be black, however future revisions could see an option for custom colors when printing. 
@@ -427,13 +444,47 @@ Outside of the aforementioned hardware needed to make the Cyberinet framework co
 
 
 \chapter{Programming the Cyberinet}
-This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools. Discussion of the software portion of each of the included music compositions will be discussed in that chapter. 
+This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools. Discussion of the software portion of each of the included music compositions will be discussed in that chapter. In short, the Arduino code and the Max objects work together in order to achieve the four main steps in the functionality loop of the Cyberinet:
+
+\begin{itemize}
+    \item Step 1: Collect Data
+    \item Step 2: Transmit Data
+    \item Step 3: Receive Date
+    \item Step 4: Route Data
+\end{itemize}
 
 \section{Arduino Code}
 
+
 \subsection{Collecting Data}
+In order to collect the data from the sensors, each sensor has been given a function within the Arduino code. These functions serve the main focus of collecting and transmitting data. However because of the differing OEM sensors, each one utilizes a slightly different method of data collection and has a different range of values that can be expected. These functions are called in every loop of the program.
+
+Looking at the function getButtons(), we can see the simplest of these functions. This function looks at pins 12 and 14 on the ESP-32, which are connected to the Button Expansion's USB-C connector. By utilizing the ESP-32's built-in pull-up resistors, the Button Expansion returns a 1 when the button is not being pressed and a 0 when the button has been detected as being clicked.
+
+getAir() works in a similar function to getButtons(), but with a slightly different code because of the SDP-31's I2C connection and coding library. Because of this, the ESP-32 contacts the SDP-31 on its I2c address and requests the specific data at 2 registers. These data are labelled as 'diffPressure' and 'Temperature' respectively. 
 
 \subsection{Transmitting Data}
+The final portion of the data collection functions is the transmission of the data. This is done using the bluetoothSerial library, which allows for the ESP-32 to utilize serial communications over a Bluetooth connection. The .ino code's setup function is responsible for setting up these connections. The port is titled "CyberinetV13", indicating the version number with no spaces or punctuation, and utilizes a baud rate of 115200. This library contains the main Serial functionality present in Arduino, and simply is called with the instance name SerialBT to indicate the transmission is a wireless one.
+
+Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, seperated from the label with a space and ending with a carriage return. Each of the labels are as follows:
+
+\begin{itemize}
+    \item gyroX
+    \item gyroY
+    \item gyroZ
+    \item accelX
+    \item accelY
+    \item accelX
+    \item airP
+    \item temp
+    \item b1
+    \item b2
+    \item vol
+\end{itemize}
+
+The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case.
+
+% screenshot of the max console with all the values
 
 \section{Max Programming}
 
@@ -577,6 +628,22 @@ The narrator files are a processed recording of the composer reading the story. 
 The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and ariflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
 
 \section{ImprovImpisaImptionImpprovisation in Reverb}
+Similarly to \textit{Ethereal Presence}, \textit{ImprovImpisaImptionImpprovisation in Reverb} utilizes the gyroscope and accelerometer to control the computer processing. However instead of using the sensor data to control audio synthesis, this composition's algorithm controls multiple reverb and delay effects applied to the incoming signal from an onstage microphone.
+
+% include a snapshot of the patch here
+
+The specific control mapping for this composition are as follows: 
+
+\begin{itemize}
+    \item gyroX:
+    \item gyroY:
+    \item gyroZ:
+    \item accelX: 
+    \item accelY: 
+    \item accelZ:
+\end{itemize}
+
+Of the four compositions discussed in this document, \textit{ImprovImpisaImptionImpprovisation in Reverb} is the only one that does not have a dedicated score. This was done to focus on the potential use of the Cyberinet as an improvisation tool. By utilizing the movement data from the Cyberinet, the patch encourages the performer to explore the performance space. However, by only applying the effects to signal coming in from a microphone, it helps to create an area of more effectiveness on the stage. These contrasting features are intended to help \textit{ImprovImpisaImptionImpprovisation in Reverb} result in a noticeable effect regardless of how comfortable the performer is with moving around the stage.
 
 
 \section{Performer Opinions}
@@ -584,15 +651,30 @@ As previously stated, being a new augmented instrument, the aforementioned four 
 
 \begin{itemize}
     \item Question 1: How easy or difficult was it to implement the Cyberinet into your normal performance routine?
-    \item Answer 1:
-    \item Question 2: What was your favorite and least favorite part about working with the Cyberinet?
-    \item Answer 2: 
+    \item Question 2: What was your favorite and least favorite part about working with the Cyberinet? 
     \item Question 3: How confident do you feel in being able to remove or add the Cyberinet to your clarinet in a performance setting?
-    \item Answer 3:
     \item Question 4: How confident do you feel in being able to work with the Cyberinet's software capabilities to create unique sounds?
-    \item Answer 4:
     \item Question 5: What thing or things did you dislike, or would change, about the Cyberinet?
-    \item Answer 5:
+\end{itemize}
+
+In order to protect the identity of the performers, they are referred to by number. Performer 1's responses are shown below: % Adam
+
+\begin{itemize}
+    \item A1:
+    \item A2:
+    \item A3:
+    \item A4:
+    \item A5:
+\end{itemize}
+
+The below responses belong to performer 2. % Me
+
+\begin{itemize}
+    \item A1: It was simple enough to implement, however there was a bit of a learning curve needed to reliably connect the device to the computer. Once I had the steps memorized it was reliable and simple to use.
+    \item A2: My least favorite part was having to install all of the various drivers the first time. My favorite part was exploring with the gyroscope sensor and a reverb effect. the result was fun and intuitive.
+    \item A3: I've already mentioned the issues in setting up the Cyberinet at the beginning, but being able to simply turn off the power and utilize the instrument completely acoustically as needed. This is easier than removing the unit.
+    \item A4: I am already familiar with the Max environment so I feel that I could easily set up a lot of scenarios with the Cyberinet without much difficulties, but more reference material would be helpful. 
+    \item A5: Other than the things I've already mentioned, I suppose I'd say relocating the port on the Button Expansion to a better location and potentially reducing the size of the main unit a little. It isn't too large, but a think a little smaller would be easier to work with.
 \end{itemize}
 
 
@@ -946,6 +1028,10 @@ This object is a simple tuner based off of the one included in the RNBO max coll
 
 \bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
 
+\bibitem{gordosOliverosCybernetics} Gordon, Theodore. \emph{'Androgynous Music': Pauline Oliveros's Early Cybernetic Improvisation}, Contemporary Music Review Vol. 40 Issue 4, 2022.
+
+\bibitem{HolmesElectronicMusic2020} Holmes, Thom. \emph{Electronic and Experimental Music: Technology, Music and Culture, 6th Edition}. Routledge/Taylor \& Francis Group, 2020. 
+
 \bibitem{cyberneticsScoreSite} Lucarelli, Fosco. \emph{Roland Kayn and the Development of Cybernetic Music}, Socks Studio, \url{https://socks-studio.com/2014/11/03/roland-kayn-and-the-development-of-cybernetic-music/}. 11/03/2013. Accessed 04/10/2023.
 
 \bibitem{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay. \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2016.
@@ -953,6 +1039,8 @@ This object is a simple tuner based off of the one included in the RNBO max coll
 \bibitem{rolandKaynBio} Ricci, Massimo. \emph{Roland Kayn: Biography}, \url{https://kayn.nl/biography/}. Accessed 04/15/2023.
 
 \bibitem{Schiesser2012} Schiesser, S{\'e}bastien and Schacher, Jan C. \emph{SABRe: The Augmented Bass Clarinet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2012.
+
+\bibitem{cultureandHumanity2002} Oliveros, Pauline. Edited by Tong, Kwok Siu and Sin-wai, Chan. \emph{Culture and Humanity in the New Millennium: The Future of Human Values} Chinese University Press 2002
 
 \bibitem{WeinerCybernetics2019} Weiner, Norbert. \emph{Cybernetics or Control and Communication in the Animal and the Machine}, MIT Press, 2019
 
