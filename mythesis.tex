@@ -531,15 +531,16 @@ To assemble the unit, all components are soldered to the PCB. Like the Main Unit
 
 
 \section{Future Hardware Directions}
+At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
+
+First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components. Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
+
 Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, an increase in modular expansions is also planned. Initially only additional buttons and a volume-sensing microphone are available, but plans for the following sensors to be released in the future have been made:
 
 \begin{itemize}
     \item Pressure Sensor: responds to varying pressure on the instrument's keys. Needs special mounting of Force-Sensitive-Resistors, as well as doughnut-shaped FSRs.
     \item Pitch Detection: Works like the tuner software object. This will display tuning information and transmit pitch information to the computer. Needs hardware with adequate Analog-to-Digital Conversion.
 \end{itemize}
-
-
-
 
 
 \chapter{Programming the Cyberinet}
@@ -601,7 +602,7 @@ Once all of the data is collected it is transmitted using the SerialBT.print() a
     \item temp
     \item b1
     \item b2
-    \item vol
+    \item exp
 \end{itemize}
 
 The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case.
@@ -645,19 +646,18 @@ While not necessary for the functionality of the Cyberinet, I have also created 
 In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. 
 The main downside to the tuner object is that it requires the use of a microphone input to the computer. This is due to the limited ADC capabilities on the Cyberinet's main ESP-32 Board. However, an unexpected upside to the object is it's pitch detection capabilities. The tuner object is able to detect both the musical pitch of the incoming signal, but also fine tuning in cents. Because this information is expressed in MIDI, it can be used to trigger a variety of other events in the max environment. While the list of possibilities is extensive, the idea of having the max patch harmonize with the clarinet is one of particular interest to the author.
 
-[tutorial and help patches]
-[make it into a standalone program? Maybe if there is time, maybe as a future endeavor]
+\subsubsection{Help \& Tutorial Patches}
+The final software element of the Cyberinet is the implementation of Max help patches. These patches provide relevant documentation for each of the objects mentioned both in this chapter and Appendix B. They also provide a short tutorial for how to utilize the object both with and with out the Cyberinet hardware. 
 
 
 \section{Future Software Directions}
 Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
 \begin{itemize}
     \item Adapt messages to OSC formatting for a greater range of software compatibility.
-    \item Revising the current collection: small tweaks to improve appearance and functionality.
+    \item OS compatibility: Version one of  the Cyberinet currently only works on MacOS devices. Future plans involve compatibility with Windows devices as well.
     \item Increasing Effects: Expanding for additional audio effects. Plans include filters, synthesizers, and automatic harmonizers.
-    \item Troubleshooting \& Help Patches: While the current software environment contains help patches, in the future this area will be expanded and improved in a manner similar the the aforementioned revisions.
-    \item Max Library: Once fully expanded, Plans to reach out to Cycling74 to have this collection of Max objects listed in the program as an available-for-download library will be made. This will make it simpler for people to access various tools for their Cyberinet unit.
-    \item Standalone Software: The final planned software expansion is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
+    \item Max Library: Once expanded and revised, Plans to reach out to Cycling74 to have this collection of Max objects listed in the program as an available-for-download library will be made. This will make it simpler for people to access various tools for their Cyberinet unit.
+    \item Standalone Software: The final planned software expansion for version one is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
 \end{itemize}
 
 \chapter{Intended Uses} % this can frame/provide context for the parts described below
@@ -668,11 +668,8 @@ While adaptable, the Cyberinet was envisioned with a handful of specific uses in
 \section{Composition Tool}
 One of the three main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat Clarinet.
 
-\subsection{Instrument Compatibility \& Future Directions}
-At the time of writing, the Cyberinet is only available for B-flat soprano clarinets. While this is the most commonly found Clarinet, it represents only a fraction of the total woodwind family. In the future, plans to adapt the hardware case to fit different instruments will allow for the Cyberinet to be utilized in an exponentially larger number of scenarios. 
-First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components.
+Early versions of the Cyberinet are intended to focus more on the alteration of the clarinet sound and controlling the Max environment.
 
-Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
 
 \section{New Instrument}
 
@@ -702,19 +699,20 @@ In addition to creating the hardware and software for this dissertation, I have 
 Before we begin looking at the compositions in detail, I want to explore what it is like performing with the Cyberinet through an interview with the premiere artist for all three of the works mentioned in this chapter\footnote{The scores for all pieces discussed in this chapter are available in the appendices and online at \url{matthewbardin.com}}.
 
 
-
-
 \section{Puzzle of a Park}
 At its core, this work is the simplest of the three written especially for this project. \textit{Puzzle of a Park}\footnote{A performance video of \textit{Puzzle of a Park} is available at} functions as a work written for a loop pedal, but without the pedal. The performer plays through the material from beginning to end, periodically pressing one of the two buttons on the button board accessory. Looking at the max patch we can see that one button will trigger the computer to record a microphone input into a buffer while the second triggers the synchronized playback of all recorded buffers. 
-[show patch snapshot]
+
+%[show patch snapshot]
+
 This functionality allows for multiple recordings to be saved and layered, much like loop pedals such as the Boss RC line of pedals. [do I talk about multi tracking?]
 When writing this work, I viewed the musical content as a quartet, with four unique voices rather than a single voice repeated several times. This allowed the musical content to flow and feel more organic once the final layer was added. 
 Once I had completed the short musical section, it was simply a matter of repeating the sequence of time signature and meter changes so that the score would form a repeating pattern. From there I had to decide exactly how to organize the sounds in time. Because I wanted this to be the simplest of the works in terms of performance and programming, I refrained from breaking down the recordings into smaller chunks and assembling them in Max. Instead, I choose the loop pedal approach and had the performer play through each voice before starting the playback and recording for the following voice. 
 When ordering the voices, I began with one of the middle voices as the opening to the solo part. When comparing the voices in the score, these helped to provide a large amount of the background and a steady, albeit syncopated, pulse to the music. Something that helps to give the following bass voice more context during the measures where it is simply holding a pedal tone during the second section. Looking at the large-scale musical form of the solo, I would describe it as \emph{ABA'C} since the third and first voice are often coordinated, providing harmonic content. I viewed them like a horn part in a Sousa march in this regard. When combined, the first three voices provide a complete backing track to the main melodic line. Like fitting together, the pieces of a puzzle, it is this final line that helps to give context to all the phrases we have heard so far. Down beats become upbeats, harmonic implications shift with the addition of new chord tones, and the texture is filled out to include the full range of the instrument.
 
+\textit{Puzzle of a Park} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre
 
 \section{Ethereal Presence}
-The second work\footnote{A performance video of \textit{Etherial Presence} is available at} created for this project begins to utilize the more complicated sensors present in the Cyberinet. These primarily include the gyroscope and airflow meter. Once received, the Max patch for the composition utilizes the values to control two different synthesizers and their parameters. 
+The second work\footnote{A performance video of \textit{Ethereal Presence} is available at} created for this project begins to utilize the more complicated sensors present in the Cyberinet. These primarily include the gyroscope and airflow meter. Once received, the Max patch for the composition utilizes the values to control two different synthesizers and their parameters. 
 
 Melodic Synth:
 \begin{itemize}
@@ -740,13 +738,14 @@ The synthesizer randomly swaps between the harmonization every 10-15 seconds, bu
 
 Accompanied by this is a more textural synthesizer designed to help support and fill out the atmosphere of the composition. This synthesizer outputs noise before being run through an FFT, based filter created by Dr. Austin Franklin. This filter takes the incoming noise and performs an FFT operation on it to determine the frequency content, then based on the values received from the Cyberinet, filters out certain frequency bins. The end result is a fluctuating cloud of noise that adapts its frequency range based on the Cyberinet's position.
 
+\textit{Ethereal Presence} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre
 
 \section{Raindrops on a Tin Roof}
 Of the three debut compositions for the Cyberinet, \textit{Raindrops on a Tin Roof}\footnote{A performance video of \textit{Raindrops on a Tin Roof} is available at} is the most involved with the Cyberinet sensors. Contrasting from Mueller's usage of the SABRe, this composition utilizes all of the default sensors present in the hardware in some way. 
 
 The inspiration comes from a short story I wrote in late 2022. The full text is provided in the appendices, but the general outline is as follows:
 
-The main character is exhausted after a week of overtime at work and plans to enjoy a rainy weekend alone at home. during the storm, the protagonist falls asleep and wakes up to find the house completely dark and unfamiliar. Assuming the power has just cut out, they head to the basement to find some emergency lights when they discover an un-knowable eldrich abomination in the basement. Because of the un-knowable nature of the being, the protagonist forgets everything about it as soon as they run away. The end result is a bloodthirsty monster chasing the protagonist through the house and onto a rooftop veranda where the protagonist accepts their fate, and the monster has its dinner.
+The main character is exhausted after a week of overtime at work and plans to enjoy a rainy weekend alone at home. during the storm, the protagonist falls asleep and wakes up to find the house completely dark and unfamiliar. Assuming the power has just cut out, they head to the basement to find some emergency lights when they discover an un-knowable eldritch abomination in the basement. Because of the un-knowable nature of the being, the protagonist forgets everything about it as soon as they run away. The end result is a bloodthirsty monster chasing the protagonist through the house and onto a rooftop veranda where the protagonist accepts their fate, and the monster has its dinner.
 
 Formally, the music follows the narrative of the story, with ambient storm sounds and monster noises coming in as indicated. 
 
@@ -766,7 +765,9 @@ Unlike the other compositions discussed here, \textit{Raindrops} utilizes notate
 
 The narrator files are a processed recording of the composer reading the story. the processing adds a distorted, low-fi sound to the voice to make it appear more ethereal in nature than the clean recordings. 
 
-The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and ariflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
+The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and airflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
+
+\textit{Raindrops on a Tin Roof} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre
 
 \section{ImprovImpisaImptionImpprovisation in Reverb}
 Similarly to \textit{Ethereal Presence}, \textit{ImprovImpisaImptionImpprovisation in Reverb} utilizes the gyroscope and accelerometer to control the computer processing. However instead of using the sensor data to control audio synthesis, this composition's algorithm controls multiple reverb and delay effects applied to the incoming signal from an onstage microphone.
@@ -786,6 +787,7 @@ The specific control mapping for this composition are as follows:
 
 Of the four compositions discussed in this document, \textit{ImprovImpisaImptionImpprovisation in Reverb} is the only one that does not have a dedicated score. This was done to focus on the potential use of the Cyberinet as an improvisation tool. By utilizing the movement data from the Cyberinet, the patch encourages the performer to explore the performance space. However, by only applying the effects to signal coming in from a microphone, it helps to create an area of more effectiveness on the stage. These contrasting features are intended to help \textit{ImprovImpisaImptionImpprovisation in Reverb} result in a noticeable effect regardless of how comfortable the performer is with moving around the stage.
 
+\textit{ImprovImpisaImptionImpprovisation in Reverb} was premiered on 05/01 my Matthew A. Bardin in the LSU School of Music Recital Hall.
 
 \section{Performer Opinions}
 As previously stated, being a new augmented instrument, the aforementioned four works are the only compositions for the Cyberinet at the time of writing. To better inform future revisions and compositions, the two performers who premiered the above works were asked a series of questions following their usage of the Cyberinet. These questions were:
@@ -900,7 +902,7 @@ This appendix contains all of the Arduino code flashed to the Cyberinet. (Versio
 
 \section{Arduino .ino Code}
 
-Below is the .ino code that is running on the ESP-32 microcontroller. This code was developed using the Arduino IDE and coding language.
+Below is the .ino code that is running on the ESP-32 micro-controller. This code was developed using the Arduino IDE and coding language.
 
 \begin{verbatim}
 
@@ -1151,10 +1153,88 @@ The final outlet will output an error indicating that CNET received a message it
 
 To establish communications, bangs and toggles are utilized in order to simplify the interface. The user inputs a bang to the first inlet to start the script and list the available ports. When paired to the computer via Bluetooth, the Cyberinet will appear on the list of available ports. The user can then set the port by filling in the message box connected to inlet 2, and receive communications with a bang to the third inlet. Inlet 4 will stop all communications. The process will have to be repeated to initialize them again, and a bang to inlet 5 will install necessary node package manager dependencies and drivers the first time a computer is utilizing the Cyberinet.
 
+The Node script and functionality comes from a package created by the LSU Experimental Music \& Digital Media department, and the JavaScript code for this is shown below in its entirety.
+
+\begin{verbatim}
+// EMDM Serial communications in Max
+const path = require('path');
+const Max = require('max-api');
+
+const { SerialPort, ReadlineParser } = require('serialport')
+const baud = 115200;
+let devicePort = '/dev/tty-CyberinetV13'
+
+// Create a port
+let port;
+let availablePorts;
+let parser = new ReadlineParser();
+
+// This will be printed directly to the Max console
+Max.post(`Loaded the ${path.basename(__filename)} script`);
+
+// Use the 'addHandler' function to register a function for a particular message
+Max.addHandler("bang", () => {
+	Max.post("Who you think you bangin'?");
+});
+
+// Use the 'outlet' function to send messages out of node.script's outlet
+Max.addHandler("echo", (msg) => {
+	Max.outlet(msg);
+});
+
+Max.addHandler("portlist", () => {
+  SerialPort.list().then((ports)=>{
+    Max.post("Ports: ", ports);
+    console.log(ports);
+    availablePorts = ports;
+  });
+});
+
+Max.addHandler('setPort', (port) => {
+  devicePort = port;
+})
+
+Max.addHandler('open', () => {
+  port = new SerialPort({
+    path: devicePort,
+    baudRate: baud,
+  }, function (err) {
+    if (err) {
+      return console.log('Error: ', err.message)
+    }
+  })
+})
+
+Max.addHandler('enable', () => {
+  Max.post('Serial Receive Enabled');
+
+  port.pipe(parser)
+  parser.on('data', (cyberData)=>{
+    let cyber = cyberData.split(" ");
+    let sensor = cyber[0];
+    let value = parseFloat(cyber[1]);
+    Max.outlet(sensor, value);
+  })
+})
+
+Max.addHandler('send', (data) => {
+  port.write(data, function(err) {
+    if (err) {
+      return console.log('Error on write: ', err.message)
+    }
+    console.log('message written')
+  })
+})
+\end{verbatim}
+
+In short, after setting up the port communications, this code will identify the label:value pair and output them separated by a space via the outlet in the Node object. From there, a Max route object separates the values to different outlets based on the labels shown above. Values are scaled to fit a range of 0-1 where appropriate.
+
 
 \subsubsection{CNET.tuner}
 
-This object is a simple tuner based off of the one included in the RNBO max collection. It receives a signal from an external microphone and outputs the pitch and frequency of the sound. In this version of the Cyberinet, it must be located in the software as the ESP-32's ADC's are not powerful enough to run a tuner along with everything else. It is recommended for both tuning purposes, as well as pitch identification purposes. 
+This object is a simple tuner based off of the one included in the RNBO max collection. It receives a signal from an external microphone and outputs both the pitch and frequency of the sound. In this version of the Cyberinet, it must be located in the Max software as the ESP-32's ADC's are not powerful enough to run a tuner along with everything else. It is recommended for both tuning purposes, as well as pitch identification purposes. 
+
+An incoming signal is analyzed for pitch content, and the results are given through the outlets in the bottom of the object. The pitch output is recommended for tuning purposes, and the specific frequency output is recommended for use in calculations and processing. A graphic representation is also given for the pitch which can be viewed by opening CNET.tuner inside of a bpatcher object. 
 
 \subsubsection{CNET.pan}
 I was unsure about which section to place this object in. I chose its ultimate placement here as the object is not directly changing the sound, but rather it receives data to control the stereo panning of a signal.
@@ -1177,26 +1257,26 @@ One unique feature of this compressor is that it takes in a mono signal and outp
 A total of four various delays have been created for a variety of different audio effects. these include:
 
 \begin{itemize}
-    \item CNET.delay: a simple delay of an audio signal.
+    \item CNET.delay: a simple delay of an audio signal. The specific delay time can be controlled by 
     \item CNET.feedbackDelay: a delay with an adjustable feedback percentage
     \item CNET.multDelay: a delay with four individually controllable delay lines
     \item CNET.vibDelay: a delay line that also creates a vibrato effect on the delayed signal.
 \end{itemize}
 
 \subsubsection{CNET.karplusStrong}
-This patch works by taking the incoming audio signal as a sample. When triggered, a 
+This patch works by taking the incoming audio signal as a sample. When triggered, the algorithm generates a plucked-string sound utilizing this source signal. The end result is a pluck sound that will match up with the incoming sounds, and can be triggered on-demand. The filter coefficient, approximate pitch of the resulting 'pluck', and the effect's output volume are all controlled with the Cyberinet.
 
 
 % make sure most up-to-date pdf is shown here
-\chapter{Puzzle of a Park Score}
+\chapter{Puzzle of a Park Full Score}
 
 \includepdf[pages=1-17]{Scores/PPFull.pdf}
 
-\chapter{Ethereal Presence Score}
+\chapter{Ethereal Presence Full Score}
 
 \includepdf[pages=1-9]{Scores/EP.pdf}
 
-\chapter{Raindrops on a Tin Roof Score}
+\chapter{Raindrops on a Tin Roof Full Score}
 
 \includepdf[pages=1-21]{Scores/raindrops.pdf} 
 %  list page range and file location
@@ -1217,7 +1297,9 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 \backmatter
 
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{99} % double check the formatting for the EMDM citations. Include template in comments here
+
+% \bibitem{label}
 
 \bibitem{puzzleScore} Bardin, Matthew. \emph{Puzzle of a Park} Performance Score, MaBMusic, 2023.
 
@@ -1257,8 +1339,8 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 \chapter{Vita}
 
-Matthew Bardin, originally a native of Central Florida, is currently based in Baton Rouge, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. Matthew is currently working towards a Ph.D in Experimental Music \& Digital Media from Louisiana State University. He is currently affiliated with the American Society of Composer, Authors, and Publishers. His works are often performed by several student soloists and groups throughout the course of the academic year. He also has presented his music at the annual Electric LaTex festival, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design.
+Matthew Bardin, originally a native of Central Florida, is currently based in Baton Rouge, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. Matthew is currently working towards a Ph.D in Experimental Music \& Digital Media from Louisiana State University. He is currently affiliated with the American Society of Composer, Authors, and Publishers, and his works are often performed by several student soloists and groups throughout the course of the academic year. He also has presented his music at the annual Electric LaTex festival in 2020 and 2022, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design. Following this document, Matthew's upcoming projects include a concerto for the Cyberinet, as well as completing a new creative coding textbook.
 
-Matthew has studied with Drs. Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Recently, Matthew has completed the audio for Dream Logos, an experimental physical theatre production with the the LSU Theatre program in Edinburgh Scotland. Matthew is currently teaching the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program. The last of which, Matthew has written a large portion of the course textbook.
+Matthew has studied with Drs. Manuel deMurga, Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Matthew is currently teaching the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program. Matthew also trains local teachers in the PDM course material, as well as a shortened version of the course for the LSU Pre-College summer program. He has also written a large portion of the programming course's textbook
 
 \end{document}
