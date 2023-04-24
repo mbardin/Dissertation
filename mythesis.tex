@@ -324,7 +324,7 @@ Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized
 \section{Controllers \& Power Distribution}
 
 \subsection{Micro-controller}
-The ESP-32 DEVKIT was selected for a handful of reasons, including:
+The Cyberinet contains a variety of useful sensors, however without the micro-controller, they become effectively useless in this context. In order to effectively manage all of the sensors and transmit the data, the Espressif ESP-32 DEVKIT V1 was ultimately selected for use with the Cyberinet. This board was selected for a handful of reasons, including:
 
 \begin{itemize}
     \item Board's narrow size
@@ -333,11 +333,20 @@ The ESP-32 DEVKIT was selected for a handful of reasons, including:
     \item Wireless communications
 \end{itemize}
 
-The first two items on the list are closely related. While being narrower that comparable Arduino units, the ESP-32 DEVKIT has 30 unique I/O Pins. While four pins are dedicated to power distribution and another for the 'enable' functionality (EN), the remaining 20 can be utilized for sensors in a variety of ways. All of this potential functionality is compressed to just 3 centimeters wide. Because of the ultimate physical design of the Cyberinet unit, having a large amount of accessible pins in a smaller unit was considered ideal. The DEVKIT was preferred over the significantly smaller base chip to increase the simplicity of prototyping, repair, and future changes due to its 0.1 inch pin spacing, and the popularity of the board among the community.
+The first two items on the list are closely related. While being narrower that comparable Arduino units, the ESP-32 DEVKIT V1 has 30 unique I/O Pins\footnote{Other versions of the DEVKIT have 36 GPIO pins. These boards are incompatible with the PCBs used in the Cyberinet.}. While four pins are dedicated to power distribution and another for the 'enable' functionality (EN), the remaining 20 can be utilized for sensors in a variety of ways. All of this potential functionality is compressed to just under 3 centimeters wide. Because of the ultimate physical design of the Cyberinet unit, having a large amount of accessible pins in a smaller unit was considered ideal. The DEVKIT V1 was preferred over the significantly smaller base chip to increase the simplicity of prototyping, repair, and future changes due to its OEM compatibility, and the popularity of the board among the community. The specific ship dimensions can be seen in figure \ref{fig:esp-32}
 
-It should be noted that if using the ESP-32, but not the DEVKIT board, the number of available pins increases to 48, but the majority of these new pins are utilized for internal features. 
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.5]{diagrams/oem/esp-32.jpg}
+        \caption{ESP-32 DEVKIT V1 micro-controller used in the Cyberinet}
+        \label{fig:esp-32}
+    \end{figure}
+\end{center}
 
-Because of the large number of Pulse-Width-Modulation-Controlled GPIO pins, the Cyberinet has the potential for a large number of sensors and expansions, but to help contain the form factor, only a handful are being utilized at any time. We can see the included sensors attached to the pins as shown below. More details about each of the sensors are discussed in each of the following sub-chapters. The labels in the figure below utilizes the pin labels that are printed on the DEKVIT. (look at pic for GPIO number)
+ 
+
+Because of the large number of Pulse-Width-Modulation-Controlled GPIO pins, the Cyberinet has the potential for a large number of sensors and expansions, but to help contain the form factor, only a handful are being utilized at any time. We can see the included sensors attached to the pins as shown below. More details about each of the sensors are discussed in each of the following sub-chapters. The labels in the figure below utilizes the pin labels that are printed on the DEKVIT V1. The placement of the shown pins are also shown in figure \ref{fig:esp-32}.
 
 \begin{itemize}
     \item VIN: Power from Battery
@@ -361,12 +370,27 @@ The ESP-32 also has WiFi connectivity capabilities which may be involved in a fu
 While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet. 
 
 
-The TP-4056 is a standard chip utilized for the charging of lithium ion polymer batteries. This variant utilizes a USB type C connector over the micro-USB connector of the base model and allows for both the charging of the battery as well as the distribution of power from that battery. When charging, it is the USB-C port that is connected to the power supply. As seen in the hardware diagrams, no other USB-C port is directly connected to this chip.
-
 \subsection{Power Distribution}
-In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit [show picture]. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
+In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit. % show pic of charging port
 
-The Battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
+
+All power distribution for the Cyberinet is handled with a TP-4056 Type C chip, shown in figure \ref{fig:tp5046}. The version containing a USB-C connector was chosen over the Micro-USB connector for two main reasons. The first being a desire for consistent, modern connectors in the device, and the second reason being that this upgraded version allows for both battery charging and distribution. The older Micro-USB chips only allow for battery charging.
+
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.5]{diagrams/oem/4056.jpg}
+        \caption{The TP-4056 Power Distribution Chip used in the Cyberinet}
+        \label{fig:tp5046}
+    \end{figure}
+\end{center}
+
+By connecting the battery to the connections labeled B+ and B-, and connecting the Vin and GND pins of the ESP-32 to the OUT+ and OUT- on this board, the Cyberinet is able to receive all required power through the single chip. The power button is soldered into the connection between the battery and the TP-4056, and will automatically power the Cyberinet when activated\footnote{Because of the placement of the power switch, the device will have to be powered on while charging. This can be easily verified by the onboard LED's}. 
+
+When the battery is depleted, it must be connected to a power source via this USB-C port to be able to fuly charge. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
+
+The battery included is rated for 1200 mAh as an improvement over the 320 mAh battery used for initial testing and prototyping. This size battery allows the Cyberinet to have as much run time as possible while still maintaining the size characteristics of the hardware electronics. The approximate run times are as follows:
 
 \begin{itemize}
     \item Powered on, not connected: 5 hours.
@@ -377,24 +401,42 @@ The Battery included is rated for 1200 mAh as an improvement over the 320 mAh ba
 
 It should be noted that the device can also run when connected directly to the wall socket power supply. This will also charge the battery, which, while resulting in yet another wire, can result in an indefinite run time.
 
-When the battery capacity becomes critically low, the device will stop transmitting data, however the LEDs may stay on due to residual amounts of electricity present in the system. To avoid accidental drop outs during a performance, it is recommended to fully charge the device prior to any performances to avoid this. When the battery reaches 20\% charge, the red LED on the device will illuminate, and then flash as shown below:
+% below doesnt actually happen. uncomment when .ino code allows for it to happen
+% When the battery capacity becomes critically low, the device will stop transmitting data, however the LEDs may stay on due to residual amounts of electricity present in the system. To avoid accidental drop outs during a performance, it is recommended to fully charge the device prior to any performances to avoid this. When the battery reaches 20\% charge, the red LED on the device will illuminate, and then flash as shown below:
 
-\begin{itemize}
-    \item 15\%: 1 flash
-    \item 10\%: 2 flashes
-    \item 5\%: 3 flashes
-\end{itemize}
-
-%[have the device auto power off? Look into doing that at 2%]
+% \begin{itemize}
+%     \item 15\%: 1 flash
+%     \item 10\%: 2 flashes
+%     \item 5\%: 3 flashes
+% \end{itemize}
 
 \subsection{Optional Expansion Sensors}
 In addition to the built-in sensors, the Cyberinet utilizes a variety of optional expansions that can be implemented as needed to customize the array of sensors. The main expansion unit contains two momentary push buttons and is discussed in greater detail below.
 
 \subsubsection{Button Expansion}
 
-These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. [make this true] While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.1]{diagrams/builtUnits/buttonhousingEmpty.JPG}
+        \caption{3D-printed thumb rest with housing for buttons below.}
+        \label{fig:buttonThumbrest}
+    \end{figure}
+\end{center}
 
-This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. [investigate a way to change that perhaps?] The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
+These attachments are optional and not needed for the Cyberinet main unit to be functional and are intended to only be connected when needed for a particular performance. All the expansions connect utilizing a standard USB-C connector. However, these units do not utilize the USB protocol, so both the main unit and expansions cannot be connected to a computer via these ports. Because the Cyberinet does not communicate to these using USB protocol, not all USB-C cables can be used for this, however the vast majority can. While a set of USB-C cables that are functional is included with the full Cyberinet set of hardware, The main reason for utilizing this connector is for the end-user to be able to supply their own cables of various lengths depending on their needs. 
+
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.08]{diagrams/builtUnits/thumbOnInst.JPG}
+        \caption{Empty Button Expansion placed on a Clarinet thumb rest}
+        \label{fig:thumbOnCase}
+    \end{figure}
+\end{center}
+
+This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. The closeness between the buttons and thumb rest is shown in figures \ref{fig:buttonThumbrest} and \ref{fig:thumbOnCase}. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
 
 \subsubsection{Other Expansions}
 At the time of writing, only a single other expansion unit has been completed. This is the Volume Detection unit which contains an Adafuit I2S MEMS Microphone Breakout board. Like the Button Expansion, this unit is housed in a 3D printed case and connects to the Main unit with a USB-C cable. 
@@ -404,31 +446,88 @@ This unit is designed to respond to the volume of the local area, and is designe
 \section{Physical Design}
 In order to minimize the total number of parts required for the Cyberinet, the electronics are housed in a newly designed plastic unit. This Main Unit is intended to replace the barrel and mouthpiece of the original instrument when in use. In addition to the main unit, the Button Expansion as well as any future expansions have a 3D printed body in order to control the expansion's ergonomics and protect the electronics.
 
-All materials are printed using either PLA or PetG material during prototyping. These materials were chosen for their relative low cost, ease of production, and density. For the final version, LIST FINAL MATERIAL HERE was utilized because the sound quality of the material most closely resembled that of the original clarinet. All parts were printed on an Original Prusa i3 MK3S+. Because of the texting of different materials, several images in this document may be in largely varying colors. The final version was printed to be black, however future revisions could see an option for custom colors when printing. 
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.1]{diagrams/builtUnits/emptyCase.JPG}
+        \caption{Empty 3D Printed Cyberinet Housing}
+        \label{fig:cybernetCase}
+    \end{figure}
+\end{center}
+
+All materials are printed using either PLA or PetG material during prototyping. These materials were chosen for their relative low cost, ease of production, and density. For the final version, PLA was utilized because the sound quality of the material most closely resembled that of the original clarinet. All parts were printed on an Original Prusa i3 MK3S+. Because of the testing of different materials, several images in this document may be in largely varying colors. The final version was printed to be black or dark grey, however future revisions could see an option for custom colors when printing. 
 
 While it is intended to remove the Clarinet's uppermost parts and replace them with the Cyberinet when needed, it is possible to perform using the hardware while powered off for a traditionally acoustic performance. The usage of this feature is at the discretion of the performer.
 
 \section{Main Unit Assembly}
 
-The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in th image, the electronic components are housed in the box on the side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components except the button board and any other external add-on components. Because of this size restriction, a small ligature is provided along with the Cyberinet in the event that the box would interfere with the performer's normal ligature.
+The main unit of the Cyberinet is designed to replace the uppermost portions of a B-flat clarinet: The barrel and mouthpiece. As shown in figure \ref{fig:cybernetCase}, the electronic components are housed in the box on the side of the instrument. Placing the electronics here allows for the unit to be easily adjusted for tuning or be easily removed as needed. The box was made as small as possible, but it still contains all of the electronic components, excluding those in any external add-on components. 
 
 The electronics were housed in the upper portion of the clarinet for two main reasons. The more minimal of the reasons is that the differential airflow pressure is much greater in the clarinet before the air can escape through the key holes. By locating the sensor here a wider range of values are possible than if it was located lower on the clarinet's tube. However, this could be remedied with additional tubing if the location of a unit needed to be otherwise located. Speculating on this is outside of the scope of this document however.
 
-The second and more necessary reason for the placement of the Main Unit in the upper portion of the clarinet is weight. While not overly heave at GIVE THE WEIGHT OF THE FINAL UNIT HERE one may not think it would cause difficulties in performance. But when thinking of the clarinetist as a Second Class lever, insight can be gained on the specifics of this issue.
+The second and more necessary reason for the placement of the Main Unit in the upper portion of the clarinet is weight. While not overly heavy at GIVE THE WEIGHT OF THE FINAL UNIT HERE one may not think it would cause difficulties in performance. But when thinking of the clarinetist as a Second Class lever, insight can be gained on the specifics of this issue. % don't need to break down into levels nd physics for this
 
-In this simplified example, the performer's mouth is the system's fulcrum, the weight of the unit is the load, and the performer's hands are the effort against the load. Because the performer's hands are acting upward against the gravitational weight of the Cyberinet and do not move, the Cyberinet must move to maintain its minimally invasive design philosophy. Having the load closer to the fulcrum of the performer's mouth results in a lesser force being required to lift the instrument into performance position\cite{Body Levers Webpage}. As the load moves down the length of the instrument, that force increases resulting in more effort being needed to maintain the same performance position. Moving the weight of the Cyberinet past the hands would result in a Third Class lever. This level arrangement would still require a large amount of force (comparatively speaking) to move the instrument to perform acne position\cite{Body Levers Webpage}. This would also cause the Main unit to move a larger distance than the performer, potentially skewing the gyroscope value\cite{Body Levers Webpage}. It would also increase the inertia of the instrument, making it more likely to be pulled apart by its own weight during a performance. \footnote{An expansion with a second gyroscope placed at the end of the instrument has been discussed, but at the time of writing is not planned for future releases.}
+To assemble a Cyberinet main unit, first the case must be 3D printed. Because of the process of 3D printing and the necessary thickness of the material needed to preserve sound quality, the printing process takes approximately 12 hours to complete. Because of this, it is recommended to begin printing the units first, then work while the case is being completed by the printer.
+
+All components are connected utilizing a custom printed circuit board. This is done to help connect all of the various pins for data collection and power distribution in as small of a space as possible. The PCB is shown in figure \ref{fig:mainUnitPCB}.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.6]{diagrams/PCBs/cyberinetPCB.png}
+        \caption{Cyberinet Version 1.3  Main Unit PCB Diagram}
+        \label{fig:mainUnitPCB}
+    \end{figure}
+\end{center}
+
+As shown in the following breakdown, assembling the Cyberinet must be done by working with the smallest components and working up to the larger ones. This is because several components are placed over other ones and it becomes exponentially harder to assemble a Cyberinet should one have to begin working around the placement of a sensor or remove a chip to adjust or repeat a step\footnote{It is recommended to pause and check the connections after soldering each component for this reason as well}.
+
+First, the Surface-Mounted components are soldered onto the main board. These include the 2 on-board LEDs and their accompanying resistors. Following this, ribbon cables and the USB-C and JST connectors are then soldered into place on the PCB. The third step is to solder the power distribution (TP-4056), gyroscope (MPU-6050) and airflow pressure (SDP-31) chips into place. The white silkscreen rectangles show which side of the PCB each component belongs on, and the text indicates which orientation is needed for each component to help ensure a correct alignment.
+
+The airflow pressure sensor (SPD-31) is lifted away from the PCB with the use of a pin header. This is done to avoid any accidental shorts between the contacts on the two boards. While not required, this can be done to the gyroscope (MPU-6050) as well. The final soldering step is to connect the ESP-32. Because of its size, this chip is kept opposite from the sensors and is also lifted using pin headers for the same reason as the SDP-31.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.1]{diagrams/builtUnits/noCase.JPG}
+        \caption{Completed Cyberinet and Button Expansion without 3D printed housings}
+        \label{fig:CyberinetNoCase}
+    \end{figure}
+\end{center}
+
+When complete, the whole unit is slid into the 3D-printed case. Ports and tubes are aligned to the appropriate places and glued down to avoid unwanted movement. Not taking into account the space needed for the battery, tubing, and wired, the final Main PCB is approximately 5mm deep, creating a compact unit that can be easily placed in a variety of locations.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.05]{diagrams/PCBs/cyberinetThin.JPG}
+        \caption{Cyberinet Sensors Side View (No Casing or cables)}
+        \label{fig:Cyberinetside}
+    \end{figure}
+\end{center}
+
+% In this simplified example, the performer's mouth is the system's fulcrum, the weight of the unit is the load, and the performer's hands are the effort against the load. Because the performer's hands are acting upward against the gravitational weight of the Cyberinet and do not move, the Cyberinet must move to maintain its minimally invasive design philosophy. Having the load closer to the fulcrum of the performer's mouth results in a lesser force being required to lift the instrument into performance position\cite{Body Levers Webpage}. As the load moves down the length of the instrument, that force increases resulting in more effort being needed to maintain the same performance position. Moving the weight of the Cyberinet past the hands would result in a Third Class lever. This level arrangement would still require a large amount of force (comparatively speaking) to move the instrument to perform acne position\cite{Body Levers Webpage}. This would also cause the Main unit to move a larger distance than the performer, potentially skewing the gyroscope value\cite{Body Levers Webpage}. It would also increase the inertia of the instrument, making it more likely to be pulled apart by its own weight during a performance. \footnote{An expansion with a second gyroscope placed at the end of the instrument has been discussed, but at the time of writing is not planned for future releases.}
 
 Overall, placing the Main Unit's bulkiest components as close to the performer's mouth as possible results in the least amount of extra effort required to perform with the instrument. It is impossible to completely remove the added weight of the system additional, but this placement minimizes its impact on the performer.
-
-% The aforementioned ligature, electronics housing, and replacement barrel/mouthpiece are all 3D printed using a black Polylactic acid (PLA) material. Other materials were considered, but the PLA allows for both a consistent sound and affordable printing of the units.
-
 
 
 \subsection{Expansion Assembly}
 
-The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button Expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
+The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
 
 In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
+
+To assemble the unit, all components are soldered to the PCB. Like the Main Unit, SMD components are attached first, followed by cables, and finally the larger components. The completed PCB is then secured within the 3D-printed housing to complete the unit. The PCB for the Button Expansion is shown in figure \ref{fig:buttonPCB}, and the version containing all of the components soldered to it is part of figure \ref{fig:CyberinetNoCase}.
+
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.5]{diagrams/PCBs/buttons1.2.png}
+        \caption{Button Expansion PCB}
+        \label{fig:buttonPCB}
+    \end{figure}
+\end{center}
 
 
 \section{Future Hardware Directions}
@@ -454,19 +553,42 @@ This chapter discusses the code located within the Cyberinet itself, as well as 
 \end{itemize}
 
 \section{Arduino Code}
-
+Another positive feature of the ESP-32 is that it is able to be programmed utilizing a variety of languages and environments. For the Cyberinet, the micro-controller was programmed using the Arduino coding language and Arduino IDE version 1.8\footnote{Arduino IDE Versions 2.0 and 2.1 were released during the Cyberinet's development, but were not utilized to avoid any compatibility issues during development. Future software versions will be created in more up-to-date IDEs.} This section will break down and discuss the components of the Cyberinet's on-board programming. The full .ino file's text can be found in this document's appendices.
 
 \subsection{Collecting Data}
-In order to collect the data from the sensors, each sensor has been given a function within the Arduino code. These functions serve the main focus of collecting and transmitting data. However because of the differing OEM sensors, each one utilizes a slightly different method of data collection and has a different range of values that can be expected. These functions are called in every loop of the program.
+In order to collect the data from the sensors, each sensor has been given a function within the Arduino code. These functions serve the main focus of collecting and transmitting data. However because of the differing OEM sensors, each one utilizes a slightly different method of data collection and has a different range of values that can be expected. These functions are called in every loop of the program. Figure \ref{fig:getButtonsGetAir} shows the two most straightforward of these functions in their entirety.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=1.5]{diagrams/maxPatches/getbuttonsgetair.png}
+        \caption{Cyberinet getButtons() \& getAir() functions.}
+        \label{fig:getButtonsGetAir}
+    \end{figure}
+\end{center}
 
 Looking at the function getButtons(), we can see the simplest of these functions. This function looks at pins 12 and 14 on the ESP-32, which are connected to the Button Expansion's USB-C connector. By utilizing the ESP-32's built-in pull-up resistors, the Button Expansion returns a 1 when the button is not being pressed and a 0 when the button has been detected as being clicked.
 
 getAir() works in a similar function to getButtons(), but with a slightly different code because of the SDP-31's I2C connection and coding library. Because of this, the ESP-32 contacts the SDP-31 on its I2c address and requests the specific data at 2 registers. These data are labelled as 'diffPressure' and 'Temperature' respectively. 
 
+The function 'get5060()' is shown in figure \ref{fig:get6050}, and contains a few more complicated steps than the previous functions. This function begins by communicating with the MPU-6050; essentially waking it up. Next, the data points for the gyroscope and accelerometer are requested. It is at this point that the function begins to differ from the previously mentioned ones.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics{diagrams/maxPatches/get6050.png}
+        \caption[scale=1.5]{Cyberinet get6050() function.}
+        \label{fig:get6050}
+    \end{figure}
+\end{center}
+
+All six of the requested data points are then shifted over by 8 bits and then added to a second reading of the remaining data. This is done in order to fully read all 16 bits of data from the MPU-6050 on devices unable to access and process all 16 bits of data at once. 
+
+
 \subsection{Transmitting Data}
 The final portion of the data collection functions is the transmission of the data. This is done using the bluetoothSerial library, which allows for the ESP-32 to utilize serial communications over a Bluetooth connection. The .ino code's setup function is responsible for setting up these connections. The port is titled "CyberinetV13", indicating the version number with no spaces or punctuation, and utilizes a baud rate of 115200. This library contains the main Serial functionality present in Arduino, and simply is called with the instance name SerialBT to indicate the transmission is a wireless one.
 
-Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, seperated from the label with a space and ending with a carriage return. Each of the labels are as follows:
+Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are as follows:
 
 \begin{itemize}
     \item gyroX
@@ -492,11 +614,23 @@ To utilize the data being collected by the Cyberinet’s hardware, I have create
 
 \subsection{Receiving \& Routing Data}
 
-The main core of the Max library consists of two main objects. These are the .receive and omnirecieve objects respectively. Looking at the former of the two, This object is designed to receive serial data from the Cyberinet, but filters out all data except that from a given sensor. This is useful for scenarios when the full functionality of the Cyberinet is not needed. omnireceive, as the name implies, receives data from the Cyberinet as well and outputs the data from each sensor to unique outputs. This allows for the user to easily access any of the incoming data at once, and is useful for prototyping which sensor control could be useful for ran effect, or in a performance scenario when multiple sensors are required.
+Once the serial data has been transmitted from the Cyberinet, it moves into the connected computer. This connection utilizes Bluetooth, and can be easily managed in the Max software\footnote{Max version 8.5 or newer is needed when working with the Cyberinet}. A single object is utilize in order to help receive and parse the data stream from the Cyberinet. CNET.receive allows the user to easily determine which Bluetooth port to receive data from, then sends it to various object outputs for use in the Max environment.
+
+% picture of inner workings of CNET.receive
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics{}
+%         \caption{Caption}
+%         \label{fig:my_label}
+%     \end{figure}
+% \end{center}
+
+In short, this Max object runs a small Node script that helps to import the data into Max. This script specifies the desired serial port, then using the space and carriage return characters, formats the data into the label and value pairs that Max expects. These values are then routed to individual outlets based on their labels\footnote{Each outlet is given a label so that the user can identify what the numbers leaving the object are}. Prior to leaving the outlets, the data is then scaled to fit a range of 0-1. This helps to keep all of the sensors within an easily adjustable range for other objects within Max. The only exceptions to this are the buttons which only output 0 or 1 when the button state changes, and the temperature which is measured in degrees Celsius and not scaled at all. 
 
 \subsection{CNET Objects}
 
-While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. These objects were all used within the Compositions discussed in chapter 7. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality. These include:
+While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. These objects were all used within the Compositions discussed in chapter 6. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality. These include:
 
 \begin{itemize}
     \item Reverb: a Schroder style reverb based on examples from CCRMA.
@@ -551,8 +685,15 @@ Straddling the line between composer and performer brings us to the final intend
 This modularity in signal processing is similar to the practice of using guitar stomp boxes to make a unique sound. While not physically similar, both systems allow for the quick customizable alteration of the instrument sound. When designing the available software objects, effects present in effect pedals such as reverb, delay, filters, and tuners were used as an inspiration.
 
 \section{Educational Tool}
+Admittedly, at the time of writing the idea of utilizing the Cyberinet as an educational tool is the least concretely defined idea discussed in this chapter. The concept came about when discussing the Cyberinet with various performers and graduate students during the LSU 2023 College of Music \& Dramatic Arts Research Expo. While not initially conceived in this manner, I feel that implementing the Cyberinet as an educational tool can have interesting and long-reaching results for future clarinetists and electro-acoustic music performances. 
 
+In short, these discussions focused on the gyroscope (MPU-6050) and differential airflow pressure (SDP-31) embedded sensors. Looking at the gyroscope, the ability to determine the instrument's position could prove useful for new students learning the correct performance posture. This was the consensus of the small group of graduate researchers at the aforementioned event. I felt that bringing up the gyroscope in early education may have a unique side effect that was not brought up in the casual discussion, that being a potential to apply Cybernetic or Deep Listening concepts to a performer's mindset from an early age.
 
+If a performer is able to see clearly on a screen what their current position is and how to change that to improve their sound and posture, then they are learning how to observe and analyze their body and make changes to the system in real-time; creating a Cybernetic feedback loop.\cite{WeinerCybernetics2019} While beyond the scope of this document, this action brings to mind several concepts of the Alexander Technique\footnote{For more information on the principals of the Alexander Technique, visit \url{alexandertechnique.com}}. Specifically, the concept of self-awareness and adjustments to free the performer from habitual problems.\cite{gelbBodyLearning2013}
+
+It was with this context of seeing and learning to be aware of the air pressure that the conversation led into the use of the SDP-31 in an educational sense. By giving real-time numerical feedback a performer could learn what values to expect when performing at various volumes, the maximum and minimum amount of pressure difference they are able to create, as well as potentially identify any potential holes in their embouchure or leaky pads on their instrument. The same level of Cybernetic awareness and feedback apply to this sensor as well.
+
+As additional expansions are created for the Cyberinet, their potential use in a pedagogical environment will need to be evaluated. Several of the expansions discussed in Chapter 3 have potential for educational use, and more could be created following appropriate design and market research.
 
 \chapter{Music Works Written for the Cyberinet}
 
@@ -1027,6 +1168,8 @@ This object is a simple tuner based off of the one included in the RNBO max coll
 \bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
 
 \bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+
+\bibitem{gelbBodyLearning2013} Gelb, Michael. \emph{Body Learning: An Introduction to the Alexander Technique} Updated 40th Anniversary Edition. Aurum Publishing, 2013.
 
 \bibitem{gordosOliverosCybernetics} Gordon, Theodore. \emph{'Androgynous Music': Pauline Oliveros's Early Cybernetic Improvisation}, Contemporary Music Review Vol. 40 Issue 4, 2022.
 
