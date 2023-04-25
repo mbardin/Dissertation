@@ -100,9 +100,8 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was in the
 \chapter{Abstract}
 
 % The ``abstract'' is required and is limited to 350 words.
-REVISE THIS ONCE PAPER IS DONE
 
-The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal routine. The end goal if for a performer to be able to seamless switch between a traditional performance setting and an augmented one with a press of a button. Towards this goal, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data such as gyroscopic data of the performer and air flow within the instrument. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. In addition to the base unit which is embedded within a 3D printed clarinet barrel, the Cyberinet was also designed to accept various expansion units through USB-C ports on the side of the device. This allows for the unit to become customizable based on various performance needs. The final portion of this project consists of a collection of Max objects designed from the ground up to utilize the Cyberinet’s data in musical contexts. These Max objects were utilized in the performance of three new compositions for the instrument on April 18th, 2023 in the Digital Media Center on LSU’s Baton Rouge campus.
+The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal performance practice. The end goal is for a performer to be able to be able to seamlessly switch between a traditional performance setting and an augmented one with a press of a button. Towards this goal, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data gyroscopic data of the performer and air flow within the instrument. Additional sensors can be connected to the Cyberinet to further expand its capabilities, which allows for the unit to become customizable based on various performance needs. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. The final portion of this project consists of a collection of Max objects designed from the ground up to utilize the Cyberinet’s data in musical contexts. These Max objects were utilized in the performance of four new compositions for the Cyberinet in late April, 2023 at various locations on LSU's Baton Rouge campus.
 
 %% The command ``\mainmatter'' switches to regular page numbers and
 %% chapter headings that include the word ``Chapter''.
@@ -139,14 +138,26 @@ Put simply, these augmented instruments begin with an acoustic instrument that h
 % Optional buttons can also be attached via wire to allow for additional performance control if desired. The wires connecting the optional units and the main hardware are all that is required for the Cyberinet. All of the data is wirelessly sent to the paired control computer. Where it will be utilized to augment the instrument sound and other elements.
 
 \chapter{Historical Context}
+The idea of augmenting an instrument has been around for almost as long as instruments themselves. In the modern sense, an augmented instrument can be defined as any acoustic instrument that has had an increase in functionality due to additional, usually electronic, additions to the instrument. It is important to note that in order to be an augmented instrument and not something completely new, the original functionality and capabilities of the original instrument remain intact.\cite{miranda_Wanderly_instrumentControl_2006} For example, an electric guitar can still function as a guitar even when not utilizing the built in amplification.
+
+
 \section{Augmented Instruments}
 
 \subsection{Pre-20th Century Instruments}
+In many contexts, the idea of augmenting instruments is viewed as a relatively new practice. While there has been an increase in the number of augmented instruments, especially those with electronic and computer-controlled augmentations over the past century, the concept of improving the capabilities of instruments proceeds the electrical manipulations by centuries.
+
+To clarify this viewpoint, I have two main examples. The first is the development of brass mutes. By itself, a brass mute serves as an entirely mechanical and removable augmentation for the instrument it was designed for. A trombonist utilizing a mute has a greater range of timbral options when compared to a performer not utilizing a mute. While not the first instance of a mute being used in modern music, the score to Montiverdi's 1509 opera \textit{Orfeo} opens with this distinct timbre.
+
+Moving forward a few centuries sees the development of the clarinet. Beginning around 1700, the clarinet is an evolution of the chalumeau which greatly expanded the older instrument's range.\footnote{Because the Clarinet did not have a strong lower register like the chalumeau, it is considered a new instrument rather than an augmentation. It is the same logic that defines instruments like the basset horn and bass clarinet as separate instruments instead of an augmentation of the clarinet.} Originally only having two keys, in the decades following the clarinet's inception, many mechanical augmentations were developed for the instrument. These augmentations were largely the addition of and improvement to the keys and key mechanisms. The end result of centuries of development is the modern clarinet's current physical shape with 17\footnote{The exact number of keys can vary from 17-19 depending on the specific make and model of clarinet.} keys, watertight seals, and changes in instrument material from the original iteration.
 
 \subsection{20th Century Instruments}
+During the 20th century is when a large number of augmented instruments begin to be developed. This is due in no small part to the development of audio amplification and recording during the late 19th and early 20th centuries.
 
 
 \subsection{21st Century Instruments}
+The difference between 20th and 21st century augmented instruments is ambiguous at best. Electrical augmentation is still prevalent in the practice, but as the components become smaller and more affordable, an increase in the number of instruments can be seen. %site this claim
+Likewise, as computers increased in power, their usage to both locally and remotely control computer augmentation has also increased. While all of the instruments yet-to-be discussed in this document were created in the 21st century, the use of computers % how to define this group of instruments. I like 21st century less as a gouping
+
 \subsubsection{MIGSI Trumpet}
 The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, instrument position, etc. and send it wirelessly to a computer.
 
@@ -155,7 +166,7 @@ Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The 
 
 \subsubsection{Music Written for MIGSI Trumpet}
 
-DO I WANT TO DO THIS OR ANOTHER PIECE? MAKE SURE IT MATCHES THE MUSIC REFERENCED EARLIER IN THE DOC
+% DO I WANT TO DO THIS OR ANOTHER PIECE? MAKE SURE IT MATCHES THE MUSIC REFERENCED EARLIER IN THE DOC
 
 Ried, has created several improvisations utilizing the apparatus, and written several compositions such as Consider (2017).
 
@@ -165,6 +176,8 @@ Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah
 
 The SABRe is another sensor array that is designed to work with various woodwinds. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument.
 
+
+% make this section smaller. place after discussing the Cyberinet? if so, where?
 Of the discussed instruments, the SABRe is a system of sensors that is the device most closely related to the Cyberinet. Specifically comparing the two devices, we can see clear pros and cons to each.
 
 \textbf{SABRe:}
@@ -312,11 +325,30 @@ All these chips were selected for their ability to be dropped into the main boar
 
 \subsection{Gyroscope \& Accelerometer}
 
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}
+        \caption{MPU-6050 Gyroscope and Accelerometer}
+        \label{fig:6050}
+    \end{figure}
+\end{center}
+
 
 \subsection{Differential Airflow Pressure \& Thermometer}
 
 SDP-31
 Originally released in [year], this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
+
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=1.5, angle=90]{diagrams/oem/spd31.jpg}
+        \caption{Sparkfun SDP-31 Differential Airflow Pressure Qwiic Connect Breakout Board}
+        \label{fig:sdp-31}
+    \end{figure}
+\end{center}
+
 Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized over the MPU-6050. Temperature is measured in degrees Celsius.
 
 
@@ -592,22 +624,27 @@ The final portion of the data collection functions is the transmission of the da
 Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are as follows:
 
 \begin{itemize}
-    \item gyroX
-    \item gyroY
-    \item gyroZ
-    \item accelX
-    \item accelY
-    \item accelX
-    \item airP
-    \item temp
-    \item b1
-    \item b2
-    \item exp
+    \item GyroX
+    \item GyroY
+    \item GyroZ
+    \item AccelX
+    \item AccelY
+    \item AccelX
+    \item AirP
+    \item Temp
+    \item B1
+    \item B2
+    \item Exp
 \end{itemize}
 
 The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case.
 
 % screenshot of the max console with all the values
+
+The measured latency of the data transmission is measured at approximately % finish testing
+
+That value was repeatedly testing with the CNET.latency patch, which is discussed more in section 4.2.2. In order to arrive at the averages shown in figure % need to make figure with values after testing.
+the test was repeated 10 times at 3 different distances from the control computer. 2 meters, 5 meters, and 10 meters were selected to represent a close, medium, and far distance while still remaining in the normal Bluetooth range\footnote{The current version of Bluetooth has a range of approximately 10 meters}.
 
 \section{Max Programming}
 
@@ -640,7 +677,8 @@ While not necessary for the functionality of the Cyberinet, I have also created 
     \item Multi-Delay: A delay line utilizing 4 different tapout~ objects to create multiple delay lines. Each one can have its individual output level set for unique mixing capabilities.
     \item Feedback Delay: Identical to the simple delay, but with a feedback option added.
     \item Vibrato Delay: Functions similar to the Simple delay object, but includes a basic implementation of FM synthesis to adjust the pitch of the signal to be delayed. 
-    \item Tuner: This object functions like most other tuners available on the market. It will determine the pitch of an incoming signal and display its equal temperament tuning visually on the screen. This is useful for checking and maintaining tuning within the Max environment, and for having the Max patch respond to certain pitches. This object requires a microphone be used to monitor the input as the ADC capabilities of the ESP-32 DEVKIT are unable to pull off this effect
+    \item Tuner: This object functions like most other tuners available on the market. It will determine the pitch of an incoming signal and display its equal temperament tuning visually on the screen. This is useful for checking and maintaining tuning within the Max environment, and for having the Max patch respond to certain pitches. This object requires a microphone be used to monitor the input as the ADC capabilities of the ESP-32 DEVKIT are unable to pull off this effect.
+    \item Latency: Designed to test the latency of the Cyberinet within  the Max environment.
 \end{itemize}
 
 In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. 
@@ -840,7 +878,7 @@ Below are all of the 3D models utilized to 3d print the case and accessories of 
 
 
 \section{PCB Diagrams}
-Below are the PCB diagrams for the Cyberinet.
+Below are the PCB diagrams for the Cyberinet. Main unit and Button Expansion
 
 
 \begin{center}
@@ -852,7 +890,6 @@ Below are the PCB diagrams for the Cyberinet.
 \end{figure}
 \end{center}
 
-\subsection{Button Board}
 
 
 \section{OEM Components Detailed Photos}
@@ -1135,17 +1172,17 @@ These objects serve to increase the functionality of the Cyberinet and do not al
 This is the only required object in the CNET collection. This object is responsible for setting up communications with the Cyberinet, parsing the data, and outputting it to the various outlets. Each sensor on the Cyberinet has a dedicated outlet, so connecting to each outlet will always relay the same sensor. The outlet order is given below.
 
 \begin{enumerate}
-    \item gyroX
-    \item gyroY
-    \item gyroZ
-    \item accelX
-    \item accelY
-    \item accelZ
-    \item button1
-    \item button2
-    \item airP
-    \item temp
-    \item expansion
+    \item GyroX
+    \item GyroY
+    \item GyroZ
+    \item AccelX
+    \item AccelY
+    \item AccelZ
+    \item B1
+    \item B2
+    \item AirP
+    \item Temp
+    \item Exp
     \item errorMsg
 \end{enumerate}
 
@@ -1229,6 +1266,19 @@ Max.addHandler('send', (data) => {
 
 In short, after setting up the port communications, this code will identify the label:value pair and output them separated by a space via the outlet in the Node object. From there, a Max route object separates the values to different outlets based on the labels shown above. Values are scaled to fit a range of 0-1 where appropriate.
 
+\subsubsection{CNET.rangeSet}
+Used for adjusting the value scaling within CNET.receive. This object is used to fine tune the ranges expected for a performer with their Cyberinet unit. Maximum and minimum sensor values can be determined by looking at the Max terminal when the raw outputs are being displayed. Ranges are set to a specific sensor utilizing the same labels as those used in CNET.receive. Setting the sensor label with a message or sending a bang to the first outlet will trigger a list to be output from this object.
+
+Within CNET.receive, an additional route and a handful of unpack objects are used to properly apply the data. All values leaving CNET.receive are still mapped to a range of 0-1 after this new scaling occurs.
+
+\subsubsection{CNET.latency}
+Used to calculate the latency between the Cyberinet detecting a sensor value change on the hardware, and that change being reflected in the Max environment. To achieve this, a microphone is needed. 
+
+To test the latency, first you must connect the Cyberinet using CNET.receive, and ensure that the Button expansion is connected. 
+
+Using the patch, a sound file is recorded. One channel of the stereo file records the sound of a button clicking on the Cyberinet. This button press is used to generate a pulse of white noise on the second channel.
+
+The recordings are then compared to determine the time between the real-world action and the software response which is represented in milliseconds for the user. Large objects located between the computer and the Cyberinet may negatively affect the latency.
 
 \subsubsection{CNET.tuner}
 
@@ -1276,12 +1326,14 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 \includepdf[pages=1-9]{Scores/EP.pdf}
 
-\chapter{Raindrops on a Tin Roof Full Score}
+\chapter{Raindrops on a Tin Roof}
+
+\section{Full Score}
 
 \includepdf[pages=1-21]{Scores/raindrops.pdf} 
 %  list page range and file location
 
-\chapter{Raindrops on a Tin Roof Short Story}
+\section{Short Story Text}
 
 \includepdf[pages=1-4]{Scores/Raindrops Text.pdf}
 
@@ -1316,6 +1368,8 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 \bibitem{HolmesElectronicMusic2020} Holmes, Thom. \emph{Electronic and Experimental Music: Technology, Music and Culture, 6th Edition}. Routledge/Taylor \& Francis Group, 2020. 
 
 \bibitem{cyberneticsScoreSite} Lucarelli, Fosco. \emph{Roland Kayn and the Development of Cybernetic Music}, Socks Studio, \url{https://socks-studio.com/2014/11/03/roland-kayn-and-the-development-of-cybernetic-music/}. 11/03/2013. Accessed 04/10/2023.
+
+\bibitem{miranda_Wanderly_instrumentControl_2006} Miranda, Eduardo and Wanderly, Marcelo. \emph{New Digital Musical Instruments: Control and Interaction Beyond the Keyboard} Computer Music and Digital Audio Series, A-R Editions, Inc., 2006.
 
 \bibitem{reid2016} Reid, Sarah and Gaston, Ryan and Honigman, Colin and Kapur, Ajay. \emph{Minimally Invasive Gesture Sensing Interface (MIGSI) for Trumpet}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2016.
 
