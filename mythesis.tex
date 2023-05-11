@@ -17,6 +17,7 @@
 %\usepackage{amsthm}
 \usepackage{pdfpages}
 \usepackage{url}
+\DeclareUnicodeCharacter{2212}{-}
 \usepackage{lsutitle}
 \title{CYBERINET: INTEGRATED SEMI-MODULAR SENSORS FOR THE COMPUTER-AUGMENTED CLARINET}
 \thesistype{Dissertation}
@@ -46,17 +47,9 @@
 \copyright\ 2023\\
 Matthew Asher Bardin
 \end{centeredpage}  
+% Be sure to do this when sending to the library.
 
 
-%% The following ``Dedication'' page is optional.
-% \begin{centeredpage}
-% The dedication goes here. remove these lines if I don't have one
-% \end{centeredpage}
-
-
-%% The following ``Epigraph'' page is optional.
-% \begin{centeredpage}
-% \epigraph{All these months I’ve been trying to find find a pattern. Trying not so much to draw hands as gestures. Not so much faces as the expressions of people.}{--Vincent Van Gogh}
 
 % \end{centeredpage}
 
@@ -88,7 +81,11 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was in the
 
 % The ``abstract'' is required and is limited to 350 words.
 
-The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal performance practice. The end goal is for a performer to be able to be able to seamlessly switch between a traditional performance setting and an augmented one with a press of a button. Towards this goal, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data gyroscopic data of the performer and air flow within the instrument. Additional sensors can be connected to the Cyberinet to further expand its capabilities, which allows for the unit to become customizable based on various performance needs. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. The final portion of this project consists of a collection of Max objects designed from the ground up to utilize the Cyberinet’s data in musical contexts. These Max objects were utilized in the performance of four new compositions for the Cyberinet in late April, 2023 at various locations on LSU's Baton Rouge campus.
+Augmented instruments have been around in some form for almost as long as instruments, but have had a relatively recent explosion in presence and capabilities due to the progression of technology through the 20th and 21st centuries. One potential use of augmented instruments is to control audio processing on a computer utilizing Max or other software environments. By being able to control the music natural expressive means, the performer and composer are able to experiment with a verity of ways to make sound. A performer is able to hear their sounds and adjust their playing in order to change them in real time, or the sounds are able to react to a performer's movements automatically. This act brings up the idea of cybernetic music, wherein the music being created can influence the creation of future music. One new instrument that works to combine these two ideas is the Cyberinet.
+
+The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal performance practice. A performer utilizing the Cyberinet is to be able to be able to seamlessly switch between a traditional performance setting and an augmented one. Towards this, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data gyroscopic data of the performer and air flow within the instrument. Additional sensors can be connected to the Cyberinet to further expand its capabilities, which allows for the unit to become customizable based on various performance needs. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. 
+
+In order to explore these new relationships, in addition to the instrument itself, a collection of Max objects designed from the ground up to utilize the Cyberinet’s data in musical contexts has been developed. These Max objects were utilized in the performance of four new compositions for the Cyberinet in the spring of 2023.
 
 %% The command ``\mainmatter'' switches to regular page numbers and
 %% chapter headings that include the word ``Chapter''.
@@ -98,18 +95,11 @@ The goal of this project is to provide a method of computer-enhanced performance
 % \chapter{Introduction}
 % \label{chap:intro}
 
-% % what and why
-
-% The practice of creating augmented musical instruments has been a method of creating new and unique timbres in musical performance for centuries. Some of the earliest instrument augmentations still in use today can be traced back to the early brass mutes of the 16th century. In the mid 20th century, John Cage developed a method for augmenting the possible timbres of the piano to vastly increase its sound-color-palette in compositions such as Sonatas and Interludes. 
-
-% The topic of this document, the Cyberinet, serves to create a new augmented instrument similar to Miranda and Wanderly's discussion of the concept in relation to gesture-based controllers. % E. Miranda and M. Wanderly. 2006. New Digital Musical Instruments: Control and Interaction Beyond the Keyboard. A-R Editions, Inc. 
-% Put simply, these augmented instruments begin with an acoustic instrument that has been enhanced in some way through the use of one or more sensors. The Cyberinet, and these other Augmented Instruments work to collect various data from a performance as well as expand the performer's control of the performance environment. Many times these two goals are combined into a single action by the instrument and/or software.
-% %  L. Jenkins, W. Page, S. Trail, G. Tzanetakis, and P. Driessen. 2013. An Easily Removable, wireless Optical Sensing System (EROSS) for the trumpet. In Proceedings of the International Conference New Interfaces for Musical Expression (NIME), 352–357
 
 
 
 \chapter{Defining the Cyberinet}
-The idea of augmenting an instrument has been around for almost as long as instruments themselves. In the modern sense, an augmented instrument can be defined as any acoustic instrument that has had an increase in functionality due to additional, usually electronic, additions to the instrument. It is important to note that in order to be an augmented instrument and not something completely new, the original functionality and capabilities of the original instrument remain intact.\cite{miranda_Wanderly_instrumentControl_2006} For example, an electric guitar can still function as a guitar even when not utilizing the built in amplification.
+The idea of augmenting an instrument has been around for almost as long as instruments themselves. In the modern sense, an augmented instrument can be defined as any acoustic instrument that has had an increase in functionality due to additional, usually electronic, additions to the instrument. It is important to note that in order to be an augmented instrument and not something completely new, the original functionality and capabilities of the original instrument remain intact\cite{miranda_Wanderley_instrumentControl_2006}. For example, an electric guitar can still function as a guitar even when not utilizing the built in amplification.
 
 This chapter will discuss various concepts and examples in creating augmented instruments, going back several hundred years until the early 21st century. The second section will discuss concepts of Cybernetic music and composers who have utilized those concepts in their own work. All of this will lead into the design and Cybernetic intentions of the Cyberinet, a new Augmentation for the B-flat clarinet.
 
@@ -119,16 +109,76 @@ This chapter will discuss various concepts and examples in creating augmented in
 \subsection{Pre-20th Century Augmented Instruments}
 In many contexts, the idea of augmenting instruments is viewed as a relatively new practice. While there has been an increase in the number of augmented instruments, especially those with electronic and computer-controlled augmentations over the past century, the concept of improving the capabilities of instruments proceeds the electrical manipulations by centuries.
 
-To clarify this viewpoint, I have two main examples. The first is the development of brass mutes. By itself, a brass mute serves as an entirely mechanical and removable augmentation for the instrument it was designed for. A trombonist utilizing a mute has a greater range of timbral options when compared to a performer not utilizing a mute. While not the first instance of a mute being used in modern music, the score to Montiverdi's 1509 opera \textit{Orfeo} opens with this distinct timbre.
+To clarify this viewpoint, I have three main examples. The first is the development of brass mutes. By itself, a brass mute serves as an entirely mechanical and removable augmentation for the instrument it was designed for. A trombonist utilizing a mute has a greater range of timbral options when compared to a performer not utilizing a mute. While not the first instance of a mute being used in modern music, the score to Montiverdi's 1509 opera \textit{Orfeo} opens with this distinct timbre.
 
-Moving forward a few centuries sees the development of the clarinet. Beginning around 1700, the clarinet is an evolution of the chalumeau which greatly expanded the older instrument's range.\footnote{Because the Clarinet did not have a strong lower register like the chalumeau, it is considered a new instrument rather than an augmentation. It is the same logic that defines instruments like the basset horn and bass clarinet as separate instruments instead of an augmentation of the clarinet.} Originally only having two keys, in the decades following the clarinet's inception, many mechanical augmentations were developed for the instrument. These augmentations were largely the addition of and improvement to the keys and key mechanisms. The end result of centuries of development is the modern clarinet's current physical shape with 17\footnote{The exact number of keys can vary from 17-19 depending on the specific make and model of clarinet.} keys, watertight seals, and changes in instrument material from the original iteration.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{diagrams/TrumpetMutes.jpg}
+    \caption{A variety of trumpet mutes}
+    \label{fig:tptmutes}
+\end{figure}
+
+Modern versions of brass mutes have been made for every common-place brass instrument, and many variety of mutes have been created to allow for a greater variety of timbre possibilities in both performance and orchestration settings. While different mutes will vary slightly based on the instrument and type, they all generally work by achieving one goal. All brass mutes serve to absorb a portion of the instrument's produced sound waves, filtering the sound, and changing the timbre. Some mutes such as cup and bucket mutes serve to block the sound waves in the air. Harmon mutes create a resonating chamber to change the harmonic make up of the sound. Practice mutes serve to minimize the vibration of the bell before the energy can be converted into sound waves. The physicality of the mutes will also block a portion of the air moving through the instrument which both alters how the performer must play their instrument, as well as further altering the sound.
+
+Moving forward a few centuries sees the development of the clarinet. Beginning around 1700, the clarinet is an evolution of the chalumeau which greatly expanded the older instrument's range.\footnote{Because the Clarinet did not have a strong lower register like the chalumeau, it is considered a new instrument rather than an augmentation. It is the same logic that defines instruments like the basset horn and bass clarinet as separate instruments instead of an augmentation of the clarinet.} Originally only having two keys, in the decades following the clarinet's inception, many mechanical augmentations were developed for the instrument. These augmentations were largely the addition of and improvement to the keys and key mechanisms. A small slice of that development is shown in figure \ref{fig:clKeys}. The end result of centuries of development is the modern clarinet's current physical shape with 17 keys\footnote{The exact number of keys on a modern clarinet can vary from 17-19 depending on the specific make and model of clarinet.}, watertight seals, and changes in instrument material from the original iteration.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.07]{diagrams/M-A-O-clarinets.jpg}
+    \caption{A selection of clarinets showing differing levels of key development}
+    \label{fig:clKeys}
+\end{figure}
+
+The third and final augmentation discussed in this section came into development right at the end of the 19th century: the player piano. The player piano is a wonderful example of the idea of taking an acoustic instrument and enhancing its natural capabilities through additional mechanical or electronic components. This idea of augmented instruments began to grow as the components and technology capabilities increased in power while decreasing in price. The majority of the remaining instruments discussed in this chapter follow this same concept as shown in the player piano.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{diagrams/PlayerPianoRoll.jpg}
+    \caption{A player piano roll}
+    \label{fig:pianoroll}
+\end{figure}
+
+The player piano functions primarily as a traditional piano. There are no alterations made to the timbre or the action of playing the instrument. However, additional features have been added to the player piano compared to a completely acoustic one. Player pianos started out being able to be controlled through the use of a large spool of paper, called a roll. Holes punched into this paper would be used to manually trigger levers to actuate the piano's hammer mechanisms and generate sound. Early versions of these instruments were operated with a manual pneumatic pump, operated with the feet. Throughout the 20th century, improvements were made to this mechanism including its electrification and eventual digitization. However despite the various technological improvements, a large portion of the market of player pianos is for historic and restored instruments.
 
 \subsection{20th Century Augmented Instruments}
-During the 20th century is when a large number of augmented instruments begin to be developed. This is due in no small part to the development of audio amplification and recording during the late 19th and early 20th centuries. One example of an augmented instrument from the early 20th century was the Electric Guitar, which was developed in the 1930's by adding electronic pickups to acoustic guitars.\cite{electric_guit_history}
+During the 20th century is when a large number of augmented instruments begin to be developed. This is due in no small part to the development of audio amplification and recording during the late 19th and early 20th centuries. One example of an augmented instrument from the early 20th century was the Electric Guitar, which was developed in the 1930's by adding electronic pickups to acoustic guitars\cite{electric_guit_history}.
 
-Following a similar logic as the brass mutes mentioned previously, a prepared piano can be viewed as a kind of augmentation for a traditional piano. The creation of the prepared piano is attributed to John Cage in his 1938-40 composition \textit{Bacchanale}. While more complex and involved than a brass mute, the same concepts apply to the prepared piano. A performer is able to augment the timbral capabilities of the original instrument, the augmentation can be reversed, and the instrument still retains its identity as a piano while prepared. Because of how long it takes to properly augment a piano however, it is less flexible in a performance setting than other augmented instruments.
+Following a similar logic as the brass mutes mentioned previously, a prepared piano can be viewed as a kind of augmentation for a traditional piano. The creation of the prepared piano is attributed to John Cage in his 1938-40 composition \textit{Bacchanale}. While more complex and involved than a brass mute, the same concepts apply to the prepared piano. A performer is able to augment the timbral capabilities of the original instrument, the augmentation can be reversed, and the instrument still retains its identity as a piano while prepared. Because of how long it takes to properly augment a piano however, it is less flexible in a performance setting than other augmented instruments. 
 
-Following the development of computers during the mid-late 20th century, an increase in augmented instruments began to appear during the 1970's on-wards. One example of the instruments developed in this time is the digital sampler. These instruments function similarly to pianos and synthesizers, utilizing the same performance mechanisms. However, when compared to those instruments, the sampler is able to have a much larger range of potential sounds. A sampler records a sample of audio, which can be anything, and re-pitches it along its (usually) keyboard range. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/IMG_9734_1.jpg}
+    \caption{An example of a prepared piano}
+    \label{fig:pp}
+\end{figure}
+
+The process of preparing a piano is a relatively simple one, if not time consuming. The most common of preparations involve placing small objects on in wedged in between the strings for certain notes. Many composers will\footnote{and should!} include a legend indication how to properly prepare the piano for the performance. These instructions usually include the specific strings, the item/material to utilize, and where/how to place it along the length of the string. Figure \ref{fig:siPrep} shows a page of preparation instructions made by John Cage for his work \textit{sonatas ans Interludes} (1946-48).
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{Scores/image_2023-05-08_184813894.png}
+    \caption{A page of piano preperations from Cage's \textit{Sonatas and Interludes}}
+    \label{fig:siPrep}
+\end{figure}
+
+Following the development of computers during the mid-late 20th century, an increase in augmented instruments began to appear during the 1970's on-wards. One example of the instruments developed in this time is the digital sampler. These instruments function similarly to pianos and synthesizers, utilizing the same performance mechanisms. However, when compared to those instruments, the sampler is able to have a much larger range of potential sounds. A sampler records a sample of audio, which can be anything, and re-pitches it along a keyboard range. Many samplers would also include the ability to edit samples and create sequences with them.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/Korg_microSAMPLER.jpg}
+    \caption{a new Korg microSAMPLER with a keyboard interface.}
+    \label{fig:microSampler}
+\end{figure}
+
+The Akai MPC was a digital sampler that took a slightly different route than a keyboard interface sampler. Many samplers have a drum pad interface like shown in figure \ref{fig:mpc}. With instruments like these, most of the edits and re-pitching of samples is done prior to a performance or recording. The performer is able to store a large variety of samples and trigger them using the drum pads, which naturally led to its usage in music utilizing strong beats and percussive elements. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{diagrams/YSH000914_MIDI-Production-Center-3000-Limited-Edition-used-by-J-Dilla.jpg}
+    \caption{A (fairly dusty) Akai MPC}
+    \label{fig:mpc}
+\end{figure}
 
 \subsection{21st Century Augmented Instruments}
 The difference between 20th and 21st century augmented instruments is ambiguous at best. Electrical augmentation is still prevalent in the practice, but as the components become smaller and more affordable, a further increase in the number of instruments can be seen. %site this claim
@@ -138,7 +188,7 @@ Likewise, as computers increased in power, their usage to both locally and remot
 
 The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, hand tension, instrument position, etc. and send it wirelessly to a computer.
 
-All of the instruments discussed here function in a similar way, collecting data and transmitting to a computer to be utilized in some process. In the case of MIGSI, Reid has developed a platform in the Max programming environment which takes the data and parses it out for use within the program.\cite{reid_2019} Reid, has created several improvisations utilizing MIGSI, and written several compositions such as \textit{Consider (2017}) and \textit{Pocket Fig (2015)}.
+All of the instruments discussed here function in a similar way, collecting data and transmitting to a computer to be utilized in some process. In the case of MIGSI, Reid has developed a platform in the Max programming environment which takes the data and parses it out for use within the program\cite{reid_2019}. Reid, has created several improvisations utilizing MIGSI, and written several compositions such as \textit{Consider (2017}) and \textit{Pocket Fig (2015)}.
 
 \begin{figure}
     \centering
@@ -163,9 +213,10 @@ This flurry of effects are heard in performances as soon as the performer begins
 
 The SABRe is another sensor array that is designed to work with various woodwinds, opposed to the trumpet MIGSI is compatible with. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. In the majority of cases this is not problematic, as like the MIGSI, the choice in sensors matches with the common performance gestures of the instruments using it.\footnote{We will see modularity in physical design come into play with the Cyberinet.}
 
-Similar to MIGSI, SABRe is intended to also be minimally invasive to the performer. It is intended for use mainly with clarinets, being originally prototyped on a bass clarinet, but can be easily applied to many single-reed instruments.\cite{Schiesser2012} The goal of the SABRe is to provide augmentation features to performers, regardless of their technical abilities\cite{Schiesser2012}.
+Similar to MIGSI, SABRe is intended to also be minimally invasive to the performer. It is intended for use mainly with clarinets, being originally prototyped on a bass clarinet, but can be easily applied to many single-reed instruments\cite{Schiesser2012}. The goal of the SABRe is to provide augmentation features to performers, regardless of their technical abilities\cite{Schiesser2012}.
 
-SABRe utilizes four main sensors as well as an additional set of buttons that can wirelessly communicate with the main unit. All of these sensor, listed in figure \ref{fig:SABRe_Cyberinet_common} are included within the Cyberinet as well. This is discussed more in the conclusion of this chapter.
+SABRe utilizes four main sensors as well as an additional set of buttons that can wirelessly communicate with the main unit. These include gyroscopic and accelerometer data, airflow sensors, and buttons.\footnote{There are a few more sensors in the SABRe, but the ones mentioned are the main ones advertised.}
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.2]{diagrams/sabre-right-hand.jpg}
@@ -204,13 +255,13 @@ There are many more augmented instruments that have been developed in the 21st c
 Developed in 2003 by flutist/improviser/composer Cléo Palacio-Quintin, the Hyper-Flute is a Powell 2100 model flute with a handful of sensors embedded into various locations along the instrument. \cite{hyper-flute2003}. Palacio-Quintin's stated goals in developing the instrument are: 
 
 \begin{quote}
-    ...[preserve] the intimate relationship between my body, my instrument and the sound it produces. I wanted to keep intact the acoustic richness of the flute, and my way of playing it. The computer had to become a virtual extension of the acoustic instrument. \cite{hyper-flute2003}
+    ...[preserve] the intimate relationship between my body, my instrument and the sound it produces. I wanted to keep intact the acoustic richness of the flute, and my way of playing it. The computer had to become a virtual extension of the acoustic instrument \cite{hyper-flute2003}.
 \end{quote}
 
 Towards this goal, Palacio-Quintin ultimately decided on six unique sensors that can control the computer processing of the flute. While there are some overlaps between the Hyper-Flute and the other instruments discussed in this chapter, the design implements a variety of unique ideas not present in the other wind instrument augmentations discussed. Firstly is that the Hyper-Flute is not a removable augmentation like SABRe or MIGSI. These sensors, listed in figure \ref{fig:hyper-flute-sensors} are permanently installed onto the flute. 
 
 
-Voltages from each of these analog sensors are then analyzed and converted to a MIDI value which can be sent to a computer or MIDI compliant instrument. All of the data is sent as  continuous control MIDI messages. What I find particularly interesting about the Hyper-Flute is that while Palacio-Quintin has developed various software patches using Max, similarly to the other instruments discussed in this chapter, because the data being generated is MIDI compliant, the Hyper-Flute can easily interface and control a large variety of instruments via the MIDI port, which can open an entirely different world of performance practice and possibilities when compared to other instruments.\cite{hyper-flute2003}
+Voltages from each of these analog sensors are then analyzed and converted to a MIDI value which can be sent to a computer or MIDI compliant instrument. All of the data is sent as  continuous control MIDI messages. What I find particularly interesting about the Hyper-Flute is that while Palacio-Quintin has developed various software patches using Max, similarly to the other instruments discussed in this chapter, because the data being generated is MIDI compliant, the Hyper-Flute can easily interface and control a large variety of instruments via the MIDI port, which can open an entirely different world of performance practice and possibilities when compared to other instruments\cite{hyper-flute2003}.
 
 \begin{figure}
     \centering
@@ -233,19 +284,22 @@ In musical performance, the use of sensors can be seen in Souffles Électriques,
 In addition to being an augmented instrument, the Cyberinet utilizes cybernetic principles in its design and intended uses. To better understand this connection, let us look into the concepts of Cybernetics and Cybernetic music.
 
 \subsection{General Cybernetic Concepts}
-The concept of modern cybernetics was defined by Norbert Wiener in his 1948 book \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}, which has been republished by MIT press in recent years.\cite{WeinerCybernetics2019} The republished versions contain additional supplementary chapters not included in the original 1948 publication.
+The concept of modern cybernetics was defined by Norbert Wiener in his 1948 book \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}, which has been republished by MIT press in recent years\cite{WeinerCybernetics2019}. The republished versions contain additional supplementary chapters not included in the original 1948 publication.
 
 %finish book and verify that this is indeed the correct first definition.
-In its original context, Cybernetics is defined as \textit{The science of communications and automatic control systems in both machines and living things}. I feel that Weiner's analogy for cybernetics shown below does an excellent job of clarifying what is meant by "automatic control systems".
+In its original context, Cybernetics is defined as \textit{The science of communications and automatic control systems in both machines and living things}. While the concepts of cybernetics were present before Wiener, it was in his writings that the term Cybernetic were formally created. Wiener credits J.C. Maxwell in his 1868 paper as one of the first formal studies into what would ultimately evolve into Cybernetics. In that paper, Maxwell discusses the concept of a Governor and moderator within a variety of mechanical system\cite{maxwellOnGoverners}. Wiener posits that perhaps one of the earliest examples of the work as described by Maxwell is that of the steering mechanism of a boat\cite{WeinerCybernetics2019}. Heavily summarized, this is the idea that a sailor can see and respond to the conditions they are sailing in by turning the wheel, which, through mechanical means described by Maxwell, causes the boat to turn, thus altering its condition.
 
-\begin{quote}
-  
-    As a captain steers a boat, they see rocks in their path, and turn the wheel to avoid them. Then the captain turns the wheel again to remain on-course. They are not directly adjusting the rudder, and have not planned an automatic course, but rather are acting as a sensor responding to the environment and affecting that system (the boat's movement) based on that system's performance.
-\end{quote}
 
 As time progressed, the definition of cybernetics has evolved. Scientifically, the definition is relatively unchanged, still focusing on feedback systems and automated responses, but now also refers to the combination of mechanical an organic components to help achieve this. %citation needed
 
 For example, take the Omnipod 5 system used for diabetics to manage their insulin delivery. This device has the capability to be paired with a constant glucose monitor embedded within the user's abdomen. This sensor will read the glucose levels of the user and automatically adjust the Omnipod 5's insulin delivery rate to compensate for any changes to the blood glucose levels. This system is cybernetic in every sense of the word. It both combines organic and inorganic components, as well as the internal feedback loops to control the blood glucose level of a diabetic in a manner similar to a person without diabetes.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{diagrams/Omnipod-5_CGM_Pod_BT_1040x277.jpg}
+    \caption{Diagram made by Omnipod showing the communication of the Omnipod 5.}
+    \label{fig:my_label}
+\end{figure}
 
 The focus on combining organic and inorganic components comes in no small part from popular culture. Cyborgs were first introduced in science fiction during the middle o the 19th century and have become a major part of the entertainment industry since then. the word cyborg is a portmanteau of cybernetic and organism, and serves to show the melding of organic and inorganic components to form a new being.
 
@@ -265,31 +319,43 @@ In relation to Cybernetics, Brün was influential in the development of Second-O
 
 
 \subsubsection{Roland Kayn \textit{(1933-2011)}}
-A German born composer who was heavily inspired by information sciences when creating his unique style of mainly electronic and electroacoustic music.\cite{rolandKaynBio} His earliest works to utilize the cybernetic concepts was \textit{Galaxis} (1962) for a variable acoustic instrumental ensemble and \textit{Cybernetic} (1969) for electronics. Kayn would write several more over the following years. These works incorporated cybernetic principals in what Kayn referred to as being "self-governing"\cite{rolandKaynBio} and "able to think for itself.\cite{Kayn_Elektroakustische_Projekte} In the context of Kayn's electronic music, this was present in algorithmic processes which incorporated semi-random calculations. These unpredictable results were then fed back into the system which resulted in unpredictable, autonomous results.\cite{rolandKaynBio}
+A German born composer who was heavily inspired by information sciences when creating his unique style of mainly electronic and electroacoustic music\cite{rolandKaynBio}. His earliest works to utilize the cybernetic concepts was \textit{Galaxis} (1962) for a variable acoustic instrumental ensemble and \textit{Cybernetic} (1969) for electronics. Kayn would write several more over the following years. These works incorporated cybernetic principals in what Kayn referred to as being "self-governing"\cite{rolandKaynBio} and "able to think for itself\cite{Kayn_Elektroakustische_Projekte}. In the context of Kayn's electronic music, this was present in algorithmic processes which incorporated semi-random calculations. These unpredictable results were then fed back into the system which resulted in unpredictable, autonomous results\cite{rolandKaynBio}.
 
-\vspace{10mm}
-\begin{center}
-\includegraphics[scale=0.3]{diagrams/kayn_cybernetics.jpeg}
-\label{cyberneticsScore}\\
-\caption{\textit{Cybernetics} (1969) score}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{diagrams/kayn_cybernetics.jpeg}
+    \caption{\textit{Cybernetics I} (1969) score}
+    \label{cyberneticsScore}
+\end{figure}
+
 
 % show randomsness in the score to make point.
 Figure \ref{cyberneticsScore} shows one of Kayn's works, \textit{Cybernetics I} from 1969, and shows the various electronic components used to generate the sound in the top portion, and how those components interact in the bottom portion, similar to the matrices used in synthesizers of the era. Looking at the score, we can see how the output of certain processes are fed back into the system, causing the feedback loops common to Cybernetic music.
 
 
 \subsubsection{Pauline Oliveros \textit{1932-2016}}
-An American composer, performer, and educator. Oliveros was a founder of the San Francisco Tape Music Center and pioneer of Deep Listening.\cite{HolmesElectronicMusic2020} Deep Listening is a school of thought at method of listening described by Oliveros as:
+An American composer, performer, and educator. Oliveros was a founder of the San Francisco Tape Music Center and pioneer of Deep Listening\cite{HolmesElectronicMusic2020}. Deep Listening is a school of thought at method of listening described by Oliveros as:
 
 \begin{quote}
     ... For me [Oliveros], Deep Listening is a lifelong practice. The more I listen the more I learn to listen. Deep Listening involves going below the surface of what is heard, expanding the whole field of sound while finding focus. This is the way to Connect with the acoustic environment, all that inhabits it , and all there it.
 
     For others, Deep Listening is a practice consisting of listening and sounding exercises and pieces I and others have composed since 1970. The results are proceeded by a group of discussions in workshops and retreats. 
 
-    Deep Listening is for musicians as well as participants from other disciplines and interests. Previous musical training is not required.\cite{cultureandHumanity2002}
+    Deep Listening is for musicians as well as participants from other disciplines and interests. Previous musical training is not required\cite{cultureandHumanity2002}.
 \end{quote}
 
-In short, the idea of Deep Listening itself is a cybernetic practice.\cite{gordosOliverosCybernetics} This is because of Deep Listening's core principle of listening to how you listen. The act of a system responding to itself in a feedback loop is a core concept in cybernetics. In relation to Olivero's music, the concepts of deep listening and cybernetics can be clearly seen in her tape improvisations of the 1950's and 60's. In these works Oliveros along with a variety of collaborators would record themselves improvising, then listen to the recording and discuss what they heard. Following this the group would repeat the process until they were pleased with the results.\cite{gordosOliverosCybernetics} 
+In short, the idea of Deep Listening itself is a cybernetic practice\cite{gordosOliverosCybernetics}. This is because of Deep Listening's core principle of listening to how you listen. The act of a system responding to itself in a feedback loop is a core concept in cybernetics. In relation to Olivero's music, the concepts of deep listening and cybernetics can be clearly seen in her tape improvisations of the 1950's and 60's. In these works Oliveros along with a variety of collaborators would record themselves improvising, then listen to the recording and discuss what they heard. Following this the group would repeat the process until they were pleased with the results\cite{gordosOliverosCybernetics}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{diagrams/oliveros.jpg}
+    \caption{Pauline Oliveros}
+    \label{fig:oliverosHS}
+\end{figure}
+
+Another series of works with cybernetic principles is Olivero's \textit{Sonic Meditation}s (1974). \textit{Sonic Meditations} is a collection of 25 different actions intended to cause the performer to intensely focus on their action, the sounds around them, and the sounds of their actions\cite{OliverosMeditations}. The instructions are all given as text have been performed in a traditional setting or individually, but in the score Oliveros intends to remove nay connotation of traditional performance and focus on the sound through \textit{Deep Listening.} 
+
+These prompts range in complexity and specificity ranging from talking a walk with as quiet of steps as possible to singing pitches in groups until a single pitch is established. There are also more complex activities focused on breathing and the acts of making, listening to, imagining, and remembering sounds\cite{OliverosMeditations}. By actively guiding the performer through the \textit{Deep Listening} activities, all of the cybernetic principles of \textit{Deep Listening} become present in the music performance as well. All 25 pieces have in some way the performer listening to a sound occurrence and responding by altering their actions to change the sound environment.
 
 \section{Defining the Cyberinet}
 
@@ -298,7 +364,7 @@ Taking the last several pages into account, let us begin to define exactly what 
 
 In relation to MIGSI, The Cyberinet is designed to be minimally invasive. While a performer can interact with the instrument in novel ways to create interesting effects through the sensors, utilizing MIGSI and the Cyberinet by itself should not impede the traditional performance practice of the performer. % negatives of the MIGSI here
 
-The Hyper-Flute is able to interact with a variety of devices using a MIDI port. While not identical, the Cyberinet software is intended to be able to interact with a variety of hardware and software using Max as the main platform. However, the large number of wires hanging from the Hyper-Flute are both distracting in a performance setting, and can potentially obstruct the performer's movement\footnote{A portion of this drawback is due to the development of more powerful and smaller digital sensors in the 20 years between the development of the Hyper-Flute and the Cyberinet, }. The Cyberinet wirelessly communicates with the computer with only external wires needed to connect to optional expansion sensors or to charge the Cyberinet.
+The Hyper-Flute is able to interact with a variety of devices using a MIDI port. While not identical, the Cyberinet software is intended to be able to interact with a variety of hardware and software using Max as the main platform. However, the large number of wires hanging from the Hyper-Flute are both distracting in a performance setting, and can potentially obstruct the performer's movement\footnote{A portion of this drawback is due to the development of more powerful and smaller digital sensors in the 20 years between the development of the Hyper-Flute and the Cyberinet}. The Cyberinet wirelessly communicates with the computer with only external wires needed to connect to optional expansion sensors or to charge the Cyberinet.
 
 
 Of the discussed instruments, the SABRe is a system of sensors that is the device most closely related to the Cyberinet. This is in no small part due to the fact that they are designed to augment the same instrument. Specifically comparing the two devices, we can see clear pros and cons to both SABRe and the Cyberinet, shown in figure \ref{fig:proCon_SABRe_Cyberinet}.
@@ -322,13 +388,20 @@ Of the discussed instruments, the SABRe is a system of sensors that is the devic
     \label{fig:proCon_SABRe_Cyberinet}
 \end{figure}
 
-When utilizing the SABRe, I felt that while extremely simple to set up and utilize, the lack of additional sensors could hamper potential uses. The chosen sensors, listed in figure \ref{fig:SABRe_Cyberinet_common}, are all useful in collecting clarinet performance data, but it cannot be customized outside of adding two buttons to the system. To help avoid this potential limitation in the Cyberinet, the Cyberinet is designed to be able to attach an expansion unit with an additional sensor\footnote{This was also done in order to help differentiate the Cyberinet from the SABRe in terms of design and functionality.}. These sensors are discussed more in Chapter 2, but are all compatible with OEM components and utilize the same voltage ranges. This allows them to be hot-stoppable in a performance setting.
+When utilizing the SABRe, I felt that while extremely simple to set up and utilize, the lack of additional sensors could hamper potential uses. The chosen sensors, listed in the following chapter are all useful in collecting clarinet performance data, but it cannot be customized outside of adding two buttons to the system. To help avoid this potential limitation in the Cyberinet, the Cyberinet is designed to be able to attach an expansion unit with an additional sensor\footnote{This was also done in order to help differentiate the Cyberinet from the SABRe in terms of design and functionality.}. These sensors are discussed more in Chapter 2, but are all compatible with OEM components and utilize the same voltage ranges. This allows them to be hot-stoppable in a performance setting.
 
 The final aspect of the SABRe that the Cyberinet intentionally differs from, other than physical design, is the cost. The initial version of the Cyberinet is designed to be completely open-source, utilizing OEM components. While this does increase the overall size of the Cyberinet, it results in a final unit that is significantly cheaper to manufacture than the SABRe.\footnote{The initial version of the SABRe retailed for approximately €500.} Even with a 100\% markup, the final cost of the Cyberinet, mentioned in Chapter 2, is less than half that of the SABRe. By having a cheaper development cost, it is my goal that more people will be able to utilize the Cyberinet due to a lower cost-of-entry wall. In fact, is a person already has a 3D printer, then they can completely create and program a Cyberinet from scratch for only the cost of the materials.
 
 
+Van Nort describes Digital Musical Instruments as being either implicit or explicit in regards to their use of the control data. Where explicit designs are analytically described and implicit interactions are applied through some sort of training\cite{vanNortMapping2007}. In his paper, Van Nort goes on to describe a handful of other interactions between the data being collected and the sound being produced. Using the terms defined there, the Cyberinet can be described as using an implicit, dynamic, and continuous use of the performance gestures. Controls are based on clarinet performance practice and not a new set of skills, the sensor types can change through its designed modularity, and the sensor data is continuously being collected while in use. There is also a multiple layers of mapping between the raw data and what is utilized to produce sound. This is to help further draw correlations for gesture recognition as well as ease of use when programming.
+
+Looking back at the instruments discussed previously in this chapter, we can see many of the instruments share similarities with the Cyberinet in this design choice. While none of the aforementioned instruments would be considered dynamic for the same reason as the Cyberinet, they all collect continuous data using implicit means. The Hyper-Flute specifically maps the data to MIDI for use in other devices, while MIGSI and SABRe can have the data further mapped within the Max software. Due to the ability for the mapping to change within the software environment for all four of these instruments, each one is capable of adapting and changing the mappings in real time, an act which Van Nort describes as the mapping becoming playable itself\cite{vanNortMapping2007} in a fashion similar to the idea of Second-Order cybernetics.
 
 
+
+Ultimately, the Cyberinet can be defined as a new augmented instrument, which can be implemented with a standard B-flat clarinet. This augmented instrument collects data from various embedded sensors and transmits the data to a nearby computer while the performer plays the instrument traditionally. The sensors can be adjusted in a semi-modular fashion; by adding or removing expansions to the two main ports on the main unit. The Cyberinet is intended to be affordable to produce, using OEM components with open-source resources. This is to allow for more accessibility to a wider range of performers and composers wishing to work in electroacoustic music. Lastly, because of the Cyberinet being able to control audio processing through the act of performing on the clarinet, it brings a level of cybernetic awareness to the performer as well. A performer will be able to perform and hear how their actions are influencing the music and either positively or negatively reinforce that control by adjusting their playing. 
+
+But how exactly will the performer be able to influence their playing? A performer composer or performer could create specific movements at specific times to trigger an effect, this could be pre-planned or improvised. A student could monitor the data while learning the instrument to check their positions and breath control. This is just a short list that will be explored more in Chapter 4. As we will see, the potential for sound and control options are astronomically high, but there are a handful of useful methods and interactions envisioned by the author, which can help guide newcomers to the Cyberinet.
 
 
 
@@ -354,14 +427,14 @@ When developing the functionality of the Cyberinet, the steps defined by Miranda
     \item Determine how to capture the gestures for use within the system.
     \item Define the specific sound creation processes that will be controlled by the sensors.
     \item Map the gesture control data to the desired sound-creation parameters.
-    \item: Decide on the feedback mechanisms for the performer to be able to respond to.
+    \item Decide on the feedback mechanisms for the performer to be able to respond to.
 \end{enumerate}
-    \caption{Digital Instrument Design steps as defined by Miranda \& Wanderley.\cite{miranda_Wanderley_instrumentControl_2006}}
+    \caption{Digital Instrument Design steps as defined by Miranda \& Wanderley\cite{miranda_Wanderley_instrumentControl_2006}}.
     \label{fig:DMIProcess}
 \end{figure}
 
 \subsection{Control Gestures \& Gesture Sensing}
-The main control parameter for the Cyberinet is traditional clarinet performance. This process was ultimately chosen in order to help highlight the intended use cases for the Cyberinet\footnote{See Chapter 4 for more information on intended uses of the Cyberinet.}. All of these seek to enhance the clarinetist's sound capabilities without transforming the Cyberinet into a completely new instrument. At its core, an augmented instrument must still retain its identity as the original instrument.\cite{miranda_Wanderley_instrumentControl_2006} Towards this goal, a breakdown of a clarinet performance is needed in order to see which gestures are naturally occurring. Other gestures can be added with the additional expansion units, discussed later, but for now we will focus on the main Cyberinet unit.
+The main control parameter for the Cyberinet is traditional clarinet performance. This process was ultimately chosen in order to help highlight the intended use cases for the Cyberinet\footnote{See Chapter 4 for more information on intended uses of the Cyberinet.}. All of these seek to enhance the clarinetist's sound capabilities without transforming the Cyberinet into a completely new instrument. At its core, an augmented instrument must still retain its identity as the original instrument\cite{miranda_Wanderley_instrumentControl_2006}. Towards this goal, a breakdown of a clarinet performance is needed in order to see which gestures are naturally occurring. Other gestures can be added with the additional expansion units, discussed later, but for now we will focus on the main Cyberinet unit.
 
 In a clarinet performance, there are a handful of easily measurable actions that occur. The main ones chosen for the Cyberinet are performer movement, which can often be tied to expressiveness, and performer volume, which can be tied to the volume of air flowing through the instrument. Other parameters exist as well such as determining which keys are being pressed, how hard the keys are being pressed, and which pitch is being produced by the clarinet. While potentially interesting, measuring these data points in real time becomes more problematic due to the necessary placement of sensors and microphones which would potentially impede the performance or alter the instrument into something similar, but distinct from the original clarinet. Because of this, the movement gestures  are the primary focus of the Cyberinet's main unit, followed closely by measuring the air flowing through the horn.
 
@@ -411,7 +484,11 @@ While testing the various sensors and their capabilities in a performance settin
 \end{figure}
 
 
-\subsection{Gyroscope \& Accelerometer}
+\subsection{I2C Snesors}
+
+define and describe i2c and the sensors
+
+\subsubsection{Gyroscope \& Accelerometer}
 
 \begin{center}
     \begin{figure}
@@ -423,7 +500,7 @@ While testing the various sensors and their capabilities in a performance settin
 \end{center}
 
 
-\subsection{Differential Airflow Pressure \& Thermometer}
+\subsubsection{Differential Airflow Pressure \& Thermometer}
 
 SDP-31
 Originally released in 2017, this is the newest hardware component in the Bill of Materials. This unit detects differential airflow pressure between two points as well as temperature. Due to the SDP-3X line’s small form factor, the Sparkfun Qwiic connector break out board was selected for simple installation. Two small tubes are attached to the ports and used to measure the air pressure difference between the inside of the clarinet mouthpiece and the outside of the instrument.
@@ -441,9 +518,9 @@ Because of it’s higher accuracy, the SDP-31’s temperature sensor is utilized
 
 
 
-\section{Controllers \& Power Distribution}
+\section{Micro-Controller \& Power Distribution}
 
-\subsection{Micro-controller}
+\subsection{ESP-32}
 The Cyberinet contains a variety of useful sensors, however without the micro-controller, they become effectively useless in this context. In order to effectively manage all of the sensors and transmit the data, the Espressif ESP-32 DEVKIT V1 was ultimately selected for use with the Cyberinet. This board was selected for a handful of reasons, including:
 
 \begin{itemize}
@@ -539,7 +616,7 @@ In addition to the built-in sensors, the Cyberinet utilizes a variety of optiona
     \begin{figure}
         \centering
         \includegraphics[scale=0.1]{diagrams/builtUnits/buttonhousingEmpty.JPG}
-        \caption{3D-printed thumb rest with housing for buttons below.}
+        \caption{Empty 3D-printed thumb rest with housing for buttons below.}
         \label{fig:buttonThumbrest}
     \end{figure}
 \end{center}
@@ -556,12 +633,46 @@ These attachments are optional and not needed for the Cyberinet main unit to be 
     \end{figure}
 \end{center}
 
-This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. The closeness between the buttons and thumb rest is shown in figures \ref{fig:buttonThumbrest} and \ref{fig:thumbOnCase}. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
+This board, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. The closeness between the buttons and thumb rest is shown in figures \ref{fig:buttonThumbrest} and \ref{fig:thumbOnCase}\footnote{The case has been revised since the initial picture was taken. The small rectangular hole for the connection cable has been moved to the left side to avoid potential collisions with the performer's hand.}. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using a program such as Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
 
 \subsubsection{Other Expansions}
-At the time of writing, only a single other expansion unit has been completed. This is the Volume Detection unit which contains an Adafuit I2S MEMS Microphone Breakout board. Like the Button Expansion, this unit is housed in a 3D printed case and connects to the Main unit with a USB-C cable. 
+At the time of writing, only the button expansion has been developed and tested completely. However, in-progress plans for a continuing range of expansions exist. These include the sensors described here.
 
-This unit is designed to respond to the volume of the local area, and is designed to be placed in a variety of different areas. By placing the sensor at different distances from the performer or speakers, the sensor can more or less sensitively respond to the volume. The user is only limited by the length of USB-C cable they can utilize. The Cyberinet detects when the volume at the sensor exceeds 0 dB, and transmits the data as a Boolean value to the computer in a similar manner to the Button Expansion.
+The joystick expansion is relatively simple. It is designed to receive data from the single button and two potentiometers of a standard joystick. The PCB diagram shown in figure \ref{fig:jsPCB} shows the simplicity of this setup.Power and ground are received and fed to both the joystick as well as the power indicator LED. The values from the horizontal position, vertical position, and button are all returned to the ESP-32 on pins 33, 32, and 35 respectively. When transmitting to the computer, the data receives the labels exp1, exp2, and exp3.\footnote{All expansion units receive the same label with a different number because they are hot-swapable. This removes the need for a the unit to have to identify the expansion and apply the appropriate label.}
+
+\begin{figure}
+    \centering
+    \includegraphics{diagrams/PCBs/thumbPCBv1.png}
+    \caption{Joystick Expansion PCB diagram}
+    \label{fig:jsPCB}
+\end{figure}
+
+As shown in the middle of the board, there is space for a daughter board to be attached. This is the Sparkfun BOB-09110 breakout board, which serves as the interface between the COM-16273 Joystick Deluxe the board shown in figure \ref{fig:jsPCB}. When all soldered, the voltages are passed through to the 5 pins at the bottom, which are wired with a ribbon cable to the USB-C port similar to the button expansion. The deluxe joystick was selected because of its higher-quality construction compared to other joysticks on the market, and the ability to easily swap tops to allow for a variety of interface options and feelings for the performer.
+
+\begin{figure}
+    \centering
+    \includegraphics{diagrams/oem/16273-Thumb_Joystick_-_Deluxe-03.jpg}
+    \caption{Joystick on BOB-09110 Breakout Board}
+    \label{fig:js2}
+\end{figure}
+
+The element of the unit remaining to be designed at this moment is the 3D printed housing. This is intended to attach to the clarinet in place of the button expansion, allowing for thumb control on the thumb rest.
+
+
+The Volume Detection unit contains uxcell Microphone Sound Sensor Voice Detection Module. Like the Button Expansion, this unit is housed in a 3D printed case and connects to the Main unit with a USB-C cable. The PCB diagram shown in figure \ref{fig:micExPCB} is perhaps the least complex of all of the boards created so far. It essentially acts as an interface for the breakout module and the USB-C connector. Like the joystick and main PCBs, there is a place to include the power indication LED. The module will sit on the majority of empty space on the board, and should be pointed towards the desired pickup area. If loose, a little glue is used to help hold the module down to the PCB here. 
+
+\begin{figure}
+    \centering
+    \includegraphics[angle=90]{diagrams/PCBs/micBasic_pcb.png}
+    \caption{Microphone Expansion base PCB}
+    \label{fig:micExPCB}
+\end{figure}
+
+This unit is designed to respond to the volume of the local area, and is designed to be placed in a variety of different areas. By placing the sensor at different distances from the performer or speakers, the sensor can more or less sensitively respond to the volume. The sensitivity can be adjusted with an on-board potentiometer and screwdriver. The user is only limited by the length of USB-C cable they can utilize. The Cyberinet detects when the volume at the sensor exceeds the given threshold from the on-board potentiometer, and transmits the data as a Boolean value to the computer in a similar manner to the Button Expansion. Future revisions will explore the uxcell Microphone Sound Sensor Voice Detection Module's analog outputs, but for now version 1 will only be utilizing the digital output. Ground and power connect to the middle two pins, and the data is returned on the pin marked D in figure \ref{fig:micExPCB}. This data is transmitted using the label exp1. 
+
+Like the joystick, the 3D case is the final element keeping this unit from being further developed at the time of writing. The case is intended to entirely cover the microphone with the exception of holes for sound pickup, threshold adjustment, and viewing the LED. The unit is also intended to have a clip that can be used to attack it to various objects such as a music stand.
+
+A few other planned expansion units are described at the end of this chapter.
 
 \section{Physical Design}
 In order to minimize the total number of parts required for the Cyberinet, the electronics are housed in a newly designed plastic unit. This Main Unit is intended to replace the barrel and mouthpiece of the original instrument when in use. In addition to the main unit, the Button Expansion as well as any future expansions have a 3D printed body in order to control the expansion's ergonomics and protect the electronics.
@@ -652,7 +763,7 @@ At the time of writing, the Cyberinet is only available for B-flat soprano clari
 
 First, adapting the unit for the A Clarinet and Bass Clarinets. At this time there are no plans to expand to an E-flat Clarinet due to the limited space to attach electronic components. Following the Clarinet expansions, ideas for compatibility with Saxophones and Flutes are being discussed, but require more planning in order to make functional units.
 
-Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, improvements to the cable stress relief, and an increase in modular expansions is also planned. Initially only additional buttons and a volume-sensing microphone are available, but plans for the following sensors to be released in the future have been made:
+Outside of the aforementioned hardware needed to make the Cyberinet framework compatible with more instruments, improvements to the cable stress relief, and an increase in modular expansions is also planned. Initially only additional buttons available, but the aforementioned joystick and microphone expansions will be released over the summer of 2012. Additional plans for the following sensors to be released following those have also been made.
 
 \begin{itemize}
     \item Pressure Sensor: responds to varying pressure on the instrument's keys. Needs special mounting of Force-Sensitive-Resistors, as well as doughnut-shaped FSRs.
@@ -660,7 +771,7 @@ Outside of the aforementioned hardware needed to make the Cyberinet framework co
 \end{itemize}
 
 
-\chapter{Programming the Cyberinet}
+\chapter{Programming \& Using the Cyberinet}
 This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools. Discussion of the software portion of each of the included music compositions will be discussed in that chapter. In short, the Arduino code and the Max objects work together in order to achieve the four main steps in the functionality loop of the Cyberinet:
 
 \begin{itemize}
@@ -706,9 +817,11 @@ All six of the requested data points are then shifted over by 8 bits and then ad
 \subsection{Transmitting Data}
 The final portion of the data collection functions is the transmission of the data. This is done using the bluetoothSerial library, which allows for the ESP-32 to utilize serial communications over a Bluetooth connection. The .ino code's setup function is responsible for setting up these connections. The port is titled "CyberinetV13", indicating the version number with no spaces or punctuation, and utilizes a baud rate of 115200. This library contains the main Serial functionality present in Arduino, and simply is called with the instance name SerialBT to indicate the transmission is a wireless one.
 
-Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are as follows:
+Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are listed in figure \ref{fig:sensorLAbels}. As briefly mentioned in Chapter 2, each sensor receives its own unique label. However, this is technically only true for the sensors present in the main unit. Because they share the same port and have a varying number of pins for returning data, the expansions all utilize the label 'exp' followed by the number. As mentioned previously, the expansion port contains six pins: power, ground, and four data return pins. Be keeping the data return format consistent between all expansions, it eliminates the need to identify the sensor in the moment. The main downside is that the user will have to remember what the sensor was in the programming environment, but this can be easily rectified with comments and notes.
 
-\begin{itemize}
+\begin{figure}
+    \centering
+    \begin{itemize}
     \item gyroX
     \item gyroY
     \item gyroZ
@@ -719,8 +832,14 @@ Once all of the data is collected it is transmitted using the SerialBT.print() a
     \item temp
     \item b1
     \item b2
-    \item exp
+    \item exp1
+    \item exp2
+    \item exp3
+    \item exp4
 \end{itemize}
+    \caption{Sensor labels used when transmitting data withe the Cyberinet}
+    \label{fig:sensorLAbels}
+\end{figure}
 
 The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case.
 
@@ -780,7 +899,7 @@ The final software element of the Cyberinet is the implementation of Max help pa
 These help patches describe what each effect does, and breaks down what each inlet for the CNET objects controls, the data ranges, and default values. Each help patch also includes three or more presets that show off a variety of different 
 
 
-\section{Future Software Directions}
+\subsection{}section{Future Software Directions}
 Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
 \begin{itemize}
     \item Adapt messages to OSC formatting for a greater range of software compatibility.
@@ -789,6 +908,53 @@ Lastly, Plans for the expansion and revision of the software environment are alr
     \item Max Library: Once expanded and revised, Plans to reach out to Cycling74 to have this collection of Max objects listed in the program as an available-for-download library will be made. This will make it simpler for people to access various tools for their Cyberinet unit.
     \item Standalone Software: The final planned software expansion for version one is to take the Max environment and export it as a standalone software. This will allow for the user to access the tools and capabilities of the Cyberinet without needing Max, which can be a financial hindrance to some people.
 \end{itemize}
+
+\section{Mapping Gestures to Max} %if super long, may need to make into a seperate chapter.
+
+The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the clarinet as well as experimental gestures that can be used to explore various effects. We will then explore the data related to these gestures, and in the following chapter, how that gesture data can be applied in various settings.
+
+\subsection{Commonplace Gestures}
+All of the gestures discussed here are ones found commonly in clarinet performances. It is by no means an exhaustive list, but serves to act a s a general outline to the more common movements I have either done as a clarinetist, or seen done in many performances. If heavily exaggerated, each of these movements could easily be defined as more experimental
+
+\subsubsection{Fast upward, then hold}
+
+
+\subsubsection{Circular motion}
+
+
+
+\subsubsection{Swaying}
+
+
+
+\subsubsection{Close to body, minimal movement}
+
+
+
+\subsubsection{High angle}
+
+
+
+
+\subsection{Experimental Gestures}
+
+
+
+\subsubsection{Movement, no playing}
+
+
+
+\subsubsection{Spinning}
+
+
+
+\subsubsection{Inhaling through instrument}
+
+
+
+
+
+
 
 \chapter{Intended Uses}
 Now that we have looked into aspects of augmented instruments and cybernetic music, let us take a moment to see how they apply to the Cyberinet and the device's intended uses before we dive into the creation of and working with the Cyberinet.
@@ -802,12 +968,24 @@ The cybernetic capabilities of the Cyberinet also allow for experimentation with
 
 Discussed in more detail in Chapter 5, each composition features a different utilization of the sensors. \textit{Puzzle of a Park} utilizes the button expansion to control a Max patch. The end result is similar to a loop pedal. \textit{Ethereal Presence} utilizes accelerometer data to control harmonization and backing noise. \textit{Raindrops on a Tin Roof} utilizes all of the available sensors in version 1.3 to trigger sound file play back, processing of live and recorded sounds, and live lighting changes.
 
+When mapping the gesture data, a composer is able to define specific movements to occur at specific moments within a performance. However, as explained by Kvifte and Jensenius, it is important to consider the perspective of the listener\cite{KvifteJenseniusDescription}. From this perspective, the listener will identify a gesture and the resultant musical sound. This will happen regardless of if the identifies gestures are actually creating the sound. in a 2005 study, Wanderley et. al have found that:
+
+\begin{quote}
+    ... clarinetists' ancillary gestures are not randomly produced or just a visual effect, but rather they are an integral part of the performance process\cite{wanderleyClarinetGesture2005}.
+\end{quote}
+
+The Cyberinet functions by taking these generally ancillary gestures, and translate them into the realm of audibility. In order to translate this clearly, the parameters must be clearly described to the performer with a much greater level of specificity than would be needed than if describing it to a listener\cite{KvifteJenseniusDescription}. Using Kvifte and Jensenius' paper as a methodology for describing these gestures again, The Cyberinet exists squarely within the ratio level of measurement. This level of data is measured, with the distance of values determined, and an absolute zero value for each data exists, allowing for there to be 0 movement or airflow in the system. Being composed of specific values between 0 and 1, the data collected from the Cyberinet serves as a discrete input to the Max objects. Because of the modularity in the output, the sound production can be either continuous or discrete.
+
+In practice, this results in a need for specificity in gesture notation to fully take advantage of the Cyberinet. A score needs to explain what, how, and when to perform certain gestures like those indicated within the previous chapter, as well as what the intended effect is\footnote{Chapter 5 will discuss how this was done or intentionally avoided, and how effective this was in practice.}. Mappings can be static, where a gesture will remain fixed to a specific parameter. Variable mappings can be changed by the performer either as instructed or in a improvisation manner. Another option discussed by Kvifte and Jensenius is the system being able to learn and modify itself based on the gestures of the performer\cite{KvifteJenseniusDescription}. While highly cybernetic in concept, the works discussed in Chapter 5 do not utilize this method of mapping.
+
+As a final note on specifying the gesture mapping, It is recommended to avoid mapping multiple gestures and sensors to a single effect at one time. This can easily obscure what the listener is perceiving as the gesture, leading to an ambiguous relationship. However, having multiple effects controlled by a single gesture is less problematic as it can create a more complex musical result to an initial gesture.
+
 
 \section{New Instrument}
 
 As mentioned, the Cyberinet is intended as a new tool for the composer, but what about the performer? The Cyberinet straddles a line between new and old. It works to bring new sounds and functionality to a traditional instrument with its own performance practice. While the initial performances of the Cyberinet are intended to straddle this line, that is not all it can be. My ultimate goal is to treat the Cyberinet as its own unique instrument. Speaking purely practically, this brings about a certain mindset in the composer and performer when creating new music. I want the users to create music with the electronic features in mind, rather than working for an acoustic clarinet with additional aspects added. In writing the original compositions, the allowed for a more intentional integration of the motion and breath sensors, which resulted in clearer, more dramatic effects in performance.
 
-As mentioned by Reid in regards to the MIGSI trumpet, creating a new computer-augmented instrument brings various elements to the forefront of the creation procession that would not normally be of concern. Specifically latency.\cite{reid_2019} When designing the Cyberinet, it was necessary to separate the instant audio response of the clarinet base from the electronic sound alterations and productions, which have a comparatively large amount of latency. The specific patch and process used to calculate latency is discussed in Chapter 3, and the measured average latency of the Cyberinet is PUT TIME IN HERE.
+As mentioned by Reid in regards to the MIGSI trumpet, creating a new computer-augmented instrument brings various elements to the forefront of the creation procession that would not normally be of concern. Specifically latency\cite{reid_2019}. When designing the Cyberinet, it was necessary to separate the instant audio response of the clarinet base from the electronic sound alterations and productions, which have a comparatively large amount of latency. The specific patch and process used to calculate latency is discussed in Chapter 3, and the measured average latency of the Cyberinet is PUT TIME IN HERE.
 
 \section{Improvisation Tool}
 % a la stomp boxes
@@ -820,7 +998,7 @@ Admittedly, at the time of writing the idea of utilizing the Cyberinet as an edu
 
 In short, these discussions focused on the gyroscope (MPU-6050) and differential airflow pressure (SDP-31) embedded sensors. Looking at the gyroscope, the ability to determine the instrument's position could prove useful for new students learning the correct performance posture. This was the consensus of the small group of graduate researchers at the aforementioned event. I felt that bringing up the gyroscope in early education may have a unique side effect that was not brought up in the casual discussion, that being a potential to apply Cybernetic or Deep Listening concepts to a performer's mindset from an early age.
 
-If a performer is able to see clearly on a screen what their current position is and how to change that to improve their sound and posture, then they are learning how to observe and analyze their body and make changes to the system in real-time; creating a Cybernetic feedback loop.\cite{WeinerCybernetics2019} While beyond the scope of this document, this action brings to mind several concepts of the Alexander Technique\footnote{For more information on the principals of the Alexander Technique, visit \url{alexandertechnique.com}}. Specifically, the concept of self-awareness and adjustments to free the performer from habitual problems.\cite{gelbBodyLearning2013}
+If a performer is able to see clearly on a screen what their current position is and how to change that to improve their sound and posture, then they are learning how to observe and analyze their body and make changes to the system in real-time; creating a Cybernetic feedback loop\cite{WeinerCybernetics2019}. While beyond the scope of this document, this action brings to mind several concepts of the Alexander Technique\footnote{For more information on the principals of the Alexander Technique, visit \url{alexandertechnique.com}}. Specifically, the concept of self-awareness and adjustments to free the performer from habitual problems\cite{gelbBodyLearning2013}.
 
 It was with this context of seeing and learning to be aware of the air pressure that the conversation led into the use of the SDP-31 in an educational sense. By giving real-time numerical feedback a performer could learn what values to expect when performing at various volumes, the maximum and minimum amount of pressure difference they are able to create, as well as potentially identify any potential holes in their embouchure or leaky pads on their instrument. The same level of Cybernetic awareness and feedback apply to this sensor as well.
 
@@ -969,9 +1147,11 @@ The specific control mapping for this composition are as follows:
 
 Of the four compositions discussed in this chapter, \textit{ImprovImpisaImptionImpprovisation in Reverb} is the only one that does not have a dedicated score. This was done to focus on the potential use of the Cyberinet as an improvisation tool. By utilizing the movement data from the Cyberinet, the patch encourages the performer to explore the performance space. In terms of the physical movements required to trigger the effects, they are closest to those used in \textit{Ethereal Presence}. 
 
-The max patch for this composition contains three main processes controlled by the Cyberinet. The first is a reverb effect that is constantly applied to the sound. The amount of reverb present changed based on the horizontal movement of the performer. Following that, the patch automatically swaps between two different states. The first is a feedback delay where the delay time is controlled again by horizontal movement. Specifically, the audio signal for this process is only fed into the delay line when the instrument has been shaken or is otherwise actively moving. The final state of the patch takes the signal and using CNET.tuner~ and CNET.pitchshift~, creates triangle waves that harmonize above and below the performer based on their Y-axis movement (upstage vs downstage). These states alter randomly for the duration of the performance, and are fed into additoinal, non-automated reverb effects as well as a patch which generates low-level background noise based on what is happening in the pitch-space of patch.
+The max patch for this composition contains three main processes controlled by the Cyberinet. The first is a reverb effect that is constantly applied to the sound. The amount of reverb present changed based on the horizontal movement of the performer. Following that, the patch automatically swaps between two different states. The first is a feedback delay where the delay time is controlled again by horizontal movement. Specifically, the audio signal for this process is only fed into the delay line when the instrument has been shaken or is otherwise actively moving horizontally. The final state of the patch takes the signal and using CNET.tuner~ and CNET.pitchshift~, creates triangle waves that harmonize above and below the performer based on their Y-axis movement (upstage vs downstage). These states alter randomly for the duration of the performance, and are fed into additional, non-automated reverb effects as well as a patch which generates low-level background noise based on what is happening in the pitch-space of patch. If desired, the performer can utilize one of the buttons from the button expansion in order to both mute the soudn in an emergerncy, as well as manually swap between the mapping states.
 
 This max patch utilizes a slightly different version of CNET.receive. This one is called CNET.receiveCaps. It is completely identical to CNET.receive in every way except that the labels used to route the sensor data all begin with capital letters. Because of the similarity with CNET.receive, this object is not discusses separately. It exists because the Cyberinet hardware used in the premiere of this work utilized an older version of the Arduino code that used capital letters instead of the camel-case that is conventional to modern coding. All versions of the Cyberinet following 1.2 use the preferred camel-case.
+
+While not complex, this work emphasizes Van Nort's idea of a second-order level of gesture mapping\cite{vanNortMapping2007}. By being able to automatically or manually swap between the mapping states, the performer is able to further control and develop the relationship between sound and action. In a performance, the max patch will always default to the first state: the feedback delay. By having to move the instrument horizontally to activate the effect, the intention is that the listener will see the clear relationship between the two actions. Then, while not as drastic of an effect, the horizontal movement is utilized in the harmonization effect. The main control for the harmonizer is leaning back. Combined with a reverb effect that is always being affected by horizontal movement to act as an acoustic and gestural glue, the performer is able to create a clear relationship between the sounds and develop subtle variations between that relationship in a performance setting. I look forward to seeing future expansion on the idea of Second-Order gesture control with the Cyberinet in future compositions.
 
 \textit{ImprovImpisaImptionImpprovisation in Reverb} was premiered on 05/01/2023 my Matthew A. Bardin in the LSU School of Music Recital Hall.
 
@@ -1063,44 +1243,44 @@ Below are the PCB diagrams for the Cyberinet. Main unit and Button Expansion
 
 
 
-\section{OEM Components Detailed Photos}
+% \section{OEM Components Detailed Photos}
 
-\begin{center}
-    \begin{figure}
-        \centering
-        \includegraphics[scale=0.3]{diagrams/oem/esp-32.jpg}
-        \caption{ESP-32 DEVKIT V1 Micro-controller}
-        \label{fig:ESP-32}
-    \end{figure}
-\end{center}
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.3]{diagrams/oem/esp-32.jpg}
+%         \caption{ESP-32 DEVKIT V1 Micro-controller}
+%         \label{fig:ESP-32.2}
+%     \end{figure}
+% \end{center}
 
-\begin{center}
-    \begin{figure}
-        \centering
-        \includegraphics{diagrams/oem/spd31.jpg}
-        \caption{Sparkfun SDP-31 Differential Airflow Pressure Qwiic Connect Breakout Board}
-        \label{fig:sdp-31}
-    \end{figure}
-\end{center}
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics{diagrams/oem/spd31.jpg}
+%         \caption{Sparkfun SDP-31 Differential Airflow Pressure Qwiic Connect Breakout Board}
+%         \label{fig:sdp-3.2}
+%     \end{figure}
+% \end{center}
 
 
-\begin{center}
-    \begin{figure}
-        \centering
-        \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}
-        \caption{MPU-6050 Gyroscope and Accelerometer}
-        \label{fig:6050}
-    \end{figure}
-\end{center}
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}
+%         \caption{MPU-6050 Gyroscope and Accelerometer}
+%         \label{fig:6050.2}
+%     \end{figure}
+% \end{center}
 
-\begin{center}
-    \begin{figure}
-        \centering
-        \includegraphics[scale=0.3]{diagrams/oem/4056.jpg}
-        \caption{TP-4056 Type C LiPo Battery Charger}
-        \label{fig4055}
-    \end{figure}
-\end{center}
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.3]{diagrams/oem/4056.jpg}
+%         \caption{TP-4056 Type C LiPo Battery Charger}
+%         \label{fig4055.2}
+%     \end{figure}
+% \end{center}
 
 
 
@@ -1118,12 +1298,12 @@ Below is the .ino code that is running on the ESP-32 micro-controller. This code
     Micro Controller Code for the Cyberinet Version 1.3
    Code designed for the ESP-32 WROOM DEVKIT V1 in the Arduino IDE.
    All Serial Communications are over Bluetooth.
-   Code may be used or reworked with Attribution. 
+   Code may be used or reworked with Attribution.
    Altering code present on Cyberinet unit is not recommended.
-   Code and Other Matierials for the Cyberinet can be found at 
-   https://github.com/mbardin/Cyberinet
-   Code and Other Marerials made by 
-   Matthew A. Bardin [2023] (https://matthewbardin.com)
+   Code and Other Matierials for the Cyberinet can 
+   be found at https://github.com/mbardin/Cyberinet
+   Code and Other Marerials made 
+   by Matthew A. Bardin [2023] (https://matthewbardin.com)
 */
 
 //libraries to include
@@ -1136,7 +1316,8 @@ Below is the .ino code that is running on the ESP-32 micro-controller. This code
 // create instances of the libraries above
 BluetoothSerial SerialBT;
 MPU6050 mpu;
-SDP3X airFlow; // constant sensing is on I2C address 0x21
+// constant sensing is on I2C address 0x21
+SDP3X airFlow;
 
 
 // Global Variables
@@ -1147,15 +1328,16 @@ const int button1 = 12;
 const int button2 = 14;
 const int b1LED = 26;
 const int b2LED = 27;
+const int expPin1 = 33;
+const int expPin2 = 32;
+const int expPin3 = 35;
+const int expPin4 = 18;
 
 // MPU 6050 values
-// I2C address of the MPU-6050
-const int MPU_ADDR = 0x68; 
-// values for 6050
-int16_t AcX, AcY, AcZ, GyX, GyY, GyZ; 
+const int MPU_ADDR = 0x68; // I2C address of the MPU-6050
+int16_t AcX, AcY, AcZ, GyX, GyY, GyZ; // values for 6050
 // store mapped values for transmitting
-float rotX, rotY, rotZ, gForceX, gForceY, gForceZ;
-
+float rotX, rotY, rotZ, gForceX, gForceY, gForceZ; 
 
 // stores current button state
 int button1State = 1;
@@ -1164,6 +1346,12 @@ int button2State = 1;
 // store SDP31 values for transmitting
 //float diffPressure = 0.0;
 //float temperature = 0.0;
+
+// store exp values for transmitting
+int exp1State = 0;
+int exp2State = 0;
+int exp3State = 0;
+int exp4State = 0;
 
 void setup() {
   // Pin mode assignment
@@ -1174,23 +1362,24 @@ void setup() {
   pinMode(button2, INPUT_PULLUP);
 
   Serial.begin(115200);
-  // Device name. no spaces or punctuation
+  / Device name. no spaces or punctuation
   SerialBT.begin("CyberinetV13"); 
   delay(1000); // pause before checking
-  
   // various startup and checks
   gyroStartup();
   airflowStartup();
-  // device must be restarted if optional expansions are added
-  // if everything clears
   startLights();
 }
+
+
 
 void loop() { // check the sensors and transmit each loop.
   get6050();
   getButtons();
+  getExp();
   getAir(); // put 6050 and sdp31 on ends of sensor checks
 }
+
 
 void get6050() {
 
@@ -1199,19 +1388,16 @@ void get6050() {
   Wire.write(0x3B);  // wake up device
   Wire.endTransmission(true);
 
-  Wire.requestFrom(MPU_ADDR, 6); //Request Accel Registers (3B - 40)
+  Wire.requestFrom(MPU_ADDR, 6); 
   while (Wire.available() < 6);
-  // operator first bitshifts the sensor value by 8 bits,
-  // then does a bitwise OR to compare to raw data.
-  // end result is a combined original and bitshift.
   AcX = Wire.read() << 8 | Wire.read(); 
   AcY = Wire.read() << 8 | Wire.read(); 
   AcZ = Wire.read() << 8 | Wire.read(); 
 
   Wire.beginTransmission(MPU_ADDR); //I2C address of the MPU
-  Wire.write(0x43); //Starting register for Gyro Readings
+  Wire.write(0x43); 
   Wire.endTransmission();
-  Wire.requestFrom(MPU_ADDR, 6); //Request Gyro/Accel Registers (43 - 48)
+  Wire.requestFrom(MPU_ADDR, 6); /)
   while (Wire.available() < 6);
   GyX = Wire.read() << 8 | Wire.read();
   GyY = Wire.read() << 8 | Wire.read();
@@ -1219,7 +1405,6 @@ void get6050() {
 
 
   ////////////Format Data
-  // gravity and rotation offsets
   rotX = GyX *  0.007633587786; 
   rotY = GyY *  0.007633587786;
   rotZ = GyZ *  0.007633587786;
@@ -1230,27 +1415,25 @@ void get6050() {
 
 
   ////////////Transmit Data
-  // turn on LED when when transmitting
   digitalWrite(msgLED, HIGH); 
-  SerialBT.print("GyroX "); // label
+  SerialBT.print("gyroX "); // label
   SerialBT.println(rotX); // value
 
-  SerialBT.print("GyroY "); // label
+  SerialBT.print("gyroY "); // label
   SerialBT.println(rotY); // value
 
-  SerialBT.print("GyroZ "); // etc.
+  SerialBT.print("gyroZ "); // etc.
   SerialBT.println(rotZ);
 
-  SerialBT.print("AccelX ");
+  SerialBT.print("accelX ");
   SerialBT.println(gForceX);
 
-  SerialBT.print("AccelY ");
+  SerialBT.print("accelY ");
   SerialBT.println(gForceY);
 
-  SerialBT.print("AccelZ ");
+  SerialBT.print("accelZ ");
   SerialBT.println(gForceZ);
   digitalWrite(msgLED, LOW);
-  // turn off led when done transmitting
 }
 
 void getButtons() {
@@ -1259,35 +1442,55 @@ void getButtons() {
   button2State = digitalRead(button2);
 
   ////////////Transmit Data 
-  // turn LED on when tranmitting data
-  digitalWrite(msgLED, HIGH); 
-  SerialBT.print("B1 "); // label
+  digitalWrite(msgLED, HIGH); // turn LED on when tranmitting data
+  SerialBT.print("b1 "); // label
   SerialBT.println(button1State); // value
   // on-board led state matches button state
   digitalWrite(b1LED, button1State); 
   // repeat for other button
-  SerialBT.print("B2 ");
+  SerialBT.print("b2 ");
   SerialBT.println(button2State);
   digitalWrite(b1LED, button2State);
-  digitalWrite(msgLED, LOW); 
-  // turn off led when done transmitting
+  digitalWrite(msgLED, LOW); // turn off led when done transmitting
+}
+
+
+void getExp() {
+  // Look at each return pin
+  exp1State = digitalRead(expPin1);
+  exp2State = digitalRead(expPin2);
+  exp3State = digitalRead(expPin3);
+  exp4State = digitalRead(expPin4);
+
+  // transmitData
+  digitalWrite(msgLED, HIGH);
+  SerialBT.print("exp1 ");
+  SerialBT.println(exp1State);
+  SerialBT.print("exp2 ");
+  SerialBT.println(exp2State);
+  SerialBT.print("exp3 ");
+  SerialBT.println(exp3State);
+  SerialBT.print("exp4 ");
+  SerialBT.println(exp4State);
+  digitalWrite(msgLED, LOW);
 }
 
 void getAir() {
   ////////////Collect Data
-
+  // Storage for the differential pressure
   float diffPressure; 
+  // Storage for the temperature
   float temperature; 
   airFlow.readMeasurement(&diffPressure, &temperature);
 
   ////////////Transmit Data
-  digitalWrite(msgLED, HIGH); 
-  SerialBT.print(F("AirP ")); // lebel
+  digitalWrite(msgLED, HIGH); // turn on LED when tranmitting
+  SerialBT.print(F("airP ")); // lebel
   SerialBT.println(diffPressure, 2); // value
 
-  SerialBT.print(F("Temp "));
+  SerialBT.print(F("temp "));
   SerialBT.println(temperature, 2);
-  digitalWrite(msgLED, LOW); 
+  digitalWrite(msgLED, LOW); // turn of LED when done transmitting
 }
 
 
@@ -1307,16 +1510,15 @@ void airflowStartup() {
 
   if (airFlow.begin() == false)
   {
-    SerialBT.println(F("SDP31 not detected. Check connections. Freezing..."));
+    SerialBT.println(F("SDP31 not detected.));
     while (1);
   }
-// set to continuous measurement mode
-  airFlow.startContinuousMeasurement(true, true);
+  // set to continuous measurement mode
+  airFlow.startContinuousMeasurement(true, true); 
   SerialBT.println("SDP31 Setup Complete");
 }
 
-void startLights() { /
-  // process takes 3.5 seconds
+void startLights() { // flashes startup LED in apecific pattern
   digitalWrite(pwrLED, HIGH);
   digitalWrite(msgLED, HIGH);
   delay(500);
@@ -1589,7 +1791,7 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 % make sure most up-to-date pdf is shown here
 \chapter{Puzzle of a Park Full Score}
 
-\includepdf[pages=1-17]{Scores/PPFull.pdf}
+\includepdf[pages=1-13]{Scores/PPFull.pdf}
 
 \chapter{Ethereal Presence Full Score}
 
@@ -1598,6 +1800,7 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 \chapter{Raindrops on a Tin Roof}
 
 \section{Full Score}
+Pages are scaled down from the Tabloid (11in by 17in) size of the original score to match the rest of this document. 
 
 \includepdf[pages=1-19]{Scores/raindrops.pdf} 
 %  list page range and file location
@@ -1608,13 +1811,25 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 
 
-% \chapter{Permissions}
+\chapter{Permissions}
 
 % The ``permissions'' area reproduces requests and permissions for previously published material or material belonging to others. If included, then it should be the last appendix.
-
+I'm assuming this is where I will put the various permissions from the images?
 
 
 \backmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jesse if you read this before our mext meeting, chould I use the NIME formatting as a template?
+% I've read so many different kinds of stuff for this the formatting hasn't been consistent and I'm not sure which one to use.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{thebibliography}{99} % double check the formatting for the EMDM citations. Include template in comments here
@@ -1627,7 +1842,7 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 \bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
 
-\bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+\bibitem{Raindrops Story} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
 
 \bibitem{gelbBodyLearning2013} Gelb, Michael. \emph{Body Learning: An Introduction to the Alexander Technique} Updated 40th Anniversary Edition. Aurum Publishing, 2013.
 
@@ -1637,11 +1852,17 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 \bibitem{Kayn_Elektroakustische_Projekte} Kayn, Roland. \emph{Elektroakustische Projekte}. Colosseum Records. 1977.
 
+\bibitem{KvifteJenseniusDescription} Kvifte, Telled and Jensenius, Alexander. \emph{Towards a Coherent Terminology and Model of Isntrument Description and Design}. Proceedings of the International Conference on New Interfaces for Musical Expression, 2006.
+
 \bibitem{cyberneticsScoreSite} Lucarelli, Fosco. \emph{Roland Kayn and the Development of Cybernetic Music}. Socks Studio, \url{https://socks-studio.com/2014/11/03/roland-kayn-and-the-development-of-cybernetic-music/}. 11/03/2013. Accessed 04/10/2023.
 
-\bibitem{electric_guit_history} Martin, Roland. \emph{electric guitar}. Encyclopedia Britannica Online. 2023. \url{https://www.britannica.com/art/electric-guitar}. Accessed 05/02/2023
+\bibitem{electric_guit_history} Martin, Roland. \emph{electric guitar}. Encyclopedia Britannica Online. 2023. \url{https://www.britannica.com/art/electric-guitar}. Accessed 05/02/2023.
+
+\bibitem{maxwellOnGoverners} Maxwell, Clerk J. \emph{On Governors}. Proceedings of the Royal Society of London, Vol. 16 (1867 - 1868), pp. 270-283. 1868.
 
 \bibitem{miranda_Wanderley_instrumentControl_2006} Miranda, Eduardo and Wanderly, Marcelo. \emph{New Digital Musical Instruments: Control and Interaction Beyond the Keyboard} Computer Music and Digital Audio Series, A-R Editions, Inc., 2006.
+
+\bibitem{OliverosMeditations} Oliveros, Pauline. \emph{Sonic Meditations}, Smith Publications. 1974.
 
 \bibitem{hyper-flute2003} Palacio-Quintin, Cléo. \emph{The Hyper-Flute}, Proceedings of the International Conference on New Interfaces for Musical Expression, 2003.
 
@@ -1659,7 +1880,11 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 \bibitem{cultureandHumanity2002} Oliveros, Pauline. Edited by Tong, Kwok Siu and Sin-wai, Chan. \emph{Culture and Humanity in the New Millennium: The Future of Human Values} Chinese University Press 2002
 
-\bibitem{WeinerCybernetics2019} Weiner, Norbert. \emph{Cybernetics or Control and Communication in the Animal and the Machine}, MIT Press, 2019
+\bibitem{vanNortMapping2007} Van Nort, Doug and Castagné, Nicolas. \emph{Mapping, in digital musical instruments}. Enaction and enactive interfaces: a handbook of terms, Enactive Systems Books, pp 191.192, 2007.
+
+\bibitem{wanderleyClarinetGesture2005} Wanderly, Marcelo and Vines, Bradley and Middleton, Neil and McKay, Corey and Hatch, Wes. \emph{The musical Significance of clarinetists' acnillary gestures: An exploration of the field}. Journal of New Music Research, issue 34. 2005.
+
+\bibitem{WeinerCybernetics2019} Wiener, Norbert. \emph{Cybernetics or Control and Communication in the Animal and the Machine}, Reprint of the 1961 second edition. MIT Press, 2019
 
 % look at a way to make this better. I HATE how the template is handling references.
 
@@ -1672,9 +1897,63 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 
 
 \chapter{Vita}
+% I'm working on this as if I have already completed and graduated
 
-Matthew Bardin, originally a native of Central Florida, is currently based in Baton Rouge, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. Matthew is currently working towards a Ph.D in Experimental Music \& Digital Media from Louisiana State University. He is currently affiliated with the American Society of Composer, Authors, and Publishers, and his works are often performed by several student soloists and groups throughout the course of the academic year. He also has presented his music at the annual Electric LaTex festival in 2020 and 2022, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design. Following this document, Matthew's upcoming projects include a concerto for the Cyberinet, as well as completing a new creative coding textbook.
+Dr. Matthew Bardin, originally a native of Central Florida, is currently based in Fort Wayne, ID, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Ph.D in Experimental Music \& Digital Media from Louisiana State University, a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. He is currently affiliated with the American Society of Composer, Authors, and Publishers, and his works are often performed by several student soloists and groups throughout the course of the academic year. He also has presented his music at the annual Electric LaTex festival in 2020 and 2022, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design. Following this document, Matthew's upcoming projects include a concerto for the Cyberinet, as well as completing a new creative coding textbook.
 
-Matthew has studied with Drs. Manuel deMurga, Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Matthew is currently teaching the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program. Matthew also trains local teachers in the PDM course material, as well as a shortened version of the course for the LSU Pre-College summer program. He has also written a large portion of the programming course's textbook
+Matthew has studied with Drs. Manuel deMurga, Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Matthew is currently teaching the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program. Matthew also trains local teachers in the PDM and Sound Design course material, as well as a shortened version of the course for the LSU Pre-College summer program. He has also written a large portion of the programming course's textbook, and is currently working on his own creative coding book: \textit{Creative JavaScript}.
+
+Outside of writing and education, Matthew works at Sweetwater Music. %say wha tI will be doing once I can make it sound pretty.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{Matt Bardin_web_head_4370.jpg}
+    \caption{Matthew A. Bardin (photo credit Ken Rivard, 2019)}
+    \label{fig:headshot}
+\end{figure}
 
 \end{document}
+
+
+
+
+\section{OEM Components Detailed Photos}
+
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.3]{diagrams/oem/esp-32.jpg}
+%         \caption{ESP-32 DEVKIT V1 Micro-controller}
+%         \label{fig:ESP-32.2}
+%     \end{figure}
+% \end{center}
+
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics{diagrams/oem/spd31.jpg}
+%         \caption{Sparkfun SDP-31 Differential Airflow Pressure Qwiic Connect Breakout Board}
+%         \label{fig:sdp-3.2}
+%     \end{figure}
+% \end{center}
+
+
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}
+%         \caption{MPU-6050 Gyroscope and Accelerometer}
+%         \label{fig:6050.2}
+%     \end{figure}
+% \end{center}
+
+% \begin{center}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[scale=0.3]{diagrams/oem/4056.jpg}
+%         \caption{TP-4056 Type C LiPo Battery Charger}
+%         \label{fig4055.2}
+%     \end{figure}
+% \end{center}
+
+
