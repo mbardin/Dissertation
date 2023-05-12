@@ -91,7 +91,7 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was in the
 
 % The ``abstract'' is required and is limited to 350 words.
 
-Augmented instruments have been around in some form for almost as long as instruments, but have had a relatively recent explosion in presence and capabilities due to the progression of technology through the 20th and 21st centuries. One potential use of augmented instruments is to control audio processing on a computer utilizing Max or other software environments. By being able to control the music natural expressive means, the performer and composer are able to experiment with a verity of ways to make sound. A performer is able to hear their sounds and adjust their playing in order to change them in real time, or the sounds are able to react to a performer's movements automatically. This act brings up the idea of cybernetic music, wherein the music being created can influence the creation of future music. One new instrument that works to combine these two ideas is the Cyberinet.
+Augmented instruments have been around in some form for almost as long as instruments, but have had a relatively recent explosion in presence and capabilities due to the progression of technology through the 20th and 21st centuries. One potential use of augmented instruments is to control audio processing on a computer utilizing Max or other software environments. By being able to control the music natural expressive means, the performer and composer are able to experiment with a variety of ways to make sound. A performer is able to hear their sounds and adjust their playing in order to change them in real time, or the sounds are able to react to a performer's movements automatically. This act brings up the idea of cybernetic music, wherein the music being created can influence the creation of future music. One new instrument that works to combine these two ideas is the Cyberinet.
 
 The goal of this project is to provide a method of computer-enhanced performance to the solo clarinetist with minimal interference to their normal performance practice. A performer utilizing the Cyberinet is to be able to be able to seamlessly switch between a traditional performance setting and an augmented one. Towards this, the Cyberinet is a hardware replacement for a portion of a clarinet containing a variety of sensors embedded within the unit. These sensors collect various real time data gyroscopic data of the performer and air flow within the instrument. Additional sensors can be connected to the Cyberinet to further expand its capabilities, which allows for the unit to become customizable based on various performance needs. This data is then transferred to a computer via Bluetooth connectivity in order to use the data in any number of potential electroacoustic performance settings. 
 
@@ -109,37 +109,49 @@ In order to explore these new relationships, in addition to the instrument itsel
 
 
 \chapter{Defining the Cyberinet}
-The idea of augmenting an instrument has been around for almost as long as instruments themselves. In the modern sense, an augmented instrument can be defined as any acoustic instrument that has had an increase in functionality due to additional, usually electronic, additions to the instrument. It is important to note that in order to be an augmented instrument and not something completely new, the original functionality and capabilities of the original instrument remain intact\cite{miranda_Wanderley_instrumentControl_2006}. For example, an electric guitar can still function as a guitar even when not utilizing the built in amplification.
-
-This chapter will discuss various concepts and examples in creating augmented instruments, going back several hundred years until the early 21st century. The second section will discuss concepts of Cybernetic music and composers who have utilized those concepts in their own work. All of this will lead into the design and Cybernetic intentions of the Cyberinet, a new Augmentation for the B-flat clarinet.
-
 
 \section{Augmented Instruments \& Music}
 
+First and foremost the Cyberinet is an augmented instrument. This chapter serves to provide an overview of a variety of augmented instruments in order to provide context for the Cyberinet. Going back several hundred years until the early 21st century, completely mechanical, electronic, and computer-controlled augmentations have all been utilized in musical performance. The second section will discuss concepts of Cybernetic music and composers who have utilized those concepts in their own work. All of this will lead into the design and Cybernetic intentions of the Cyberinet, a new Augmentation for the B-flat clarinet.
+
+The idea of augmenting an instrument has been around for almost as long as instruments themselves. In the modern sense, an augmented instrument can be defined as any acoustic instrument that has had an increase in functionality due to additional, usually electronic, additions to the instrument. To be an augmented instrument and not simply a new instrument, the original functionality and capabilities of the original instrument remain intact\cite{miranda_Wanderley_instrumentControl_2006}. For example, an electric guitar can still function as a guitar even when not utilizing the built in amplification, or that a trombone still functions as a trombone when a mute is inserted to the bell.
+
+
+
 \subsection{Pre-20th Century Augmented Instruments}
+
+\subsubsection{Brass Mutes}
 In many contexts, the idea of augmenting instruments is viewed as a relatively new practice. While there has been an increase in the number of augmented instruments, especially those with electronic and computer-controlled augmentations over the past century, the concept of improving the capabilities of instruments proceeds the electrical manipulations by centuries.
 
-To clarify this viewpoint, I have three main examples. The first is the development of brass mutes. By itself, a brass mute serves as an entirely mechanical and removable augmentation for the instrument it was designed for. A trombonist utilizing a mute has a greater range of timbral options when compared to a performer not utilizing a mute. While not the first instance of a mute being used in modern music, the score to Montiverdi's 1509 opera \textit{Orfeo} opens with this distinct timbre.
+To clarify this viewpoint, I have three main examples. The first is the development of brass mutes. By itself, a brass mute serves as an entirely mechanical and removable augmentation for the instrument it was designed for. A trombonist utilizing a mute has a greater range of timbral options when compared to a performer not utilizing a mute. While not the first known instance of a mute being used in modern music, the score to Montiverdi's 1509 opera \textit{Orfeo} opens with this distinct timbre, and is well known in Western music history.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{diagrams/TrumpetMutes.jpg}
-    \caption{A variety of trumpet mutes}
+    \caption{A variety of trumpet mutes} %wikimedia commons
     \label{fig:tptmutes}
 \end{figure}
 
-Modern versions of brass mutes have been made for every common-place brass instrument, and many variety of mutes have been created to allow for a greater variety of timbre possibilities in both performance and orchestration settings. While different mutes will vary slightly based on the instrument and type, they all generally work by achieving one goal. All brass mutes serve to absorb a portion of the instrument's produced sound waves, filtering the sound, and changing the timbre. Some mutes such as cup and bucket mutes serve to block the sound waves in the air. Harmon mutes create a resonating chamber to change the harmonic make up of the sound. Practice mutes serve to minimize the vibration of the bell before the energy can be converted into sound waves. The physicality of the mutes will also block a portion of the air moving through the instrument which both alters how the performer must play their instrument, as well as further altering the sound.
+Modern versions of brass mutes have been made for every common-place brass instrument, and many varieties of mutes have been created to allow for a greater variety of timbre possibilities in both performance and orchestration settings. While different mutes will vary slightly based on the instrument and type, they all generally work by achieving one goal. All brass mutes serve to absorb/shift a portion of the instrument's produced sound waves, filtering the sound, and changing the timbre. Some mutes such as cup and bucket mutes serve to block the sound waves in the air. Harmon mutes create a resonating cone to change the harmonic make up of the sound. Practice mutes serve to minimize the vibration of the bell before the energy can be converted into sound waves. The physicality of the mutes will also block a portion of the air moving through the instrument which both alters how the performer must play their instrument, as well as further altering the sound\cite{brassMutes1982}.
 
-Moving forward a few centuries sees the development of the clarinet. Beginning around 1700, the clarinet is an evolution of the chalumeau which greatly expanded the older instrument's range.\footnote{Because the Clarinet did not have a strong lower register like the chalumeau, it is considered a new instrument rather than an augmentation. It is the same logic that defines instruments like the basset horn and bass clarinet as separate instruments instead of an augmentation of the clarinet.} Originally only having two keys, in the decades following the clarinet's inception, many mechanical augmentations were developed for the instrument. These augmentations were largely the addition of and improvement to the keys and key mechanisms. A small slice of that development is shown in figure \ref{fig:clKeys}. The end result of centuries of development is the modern clarinet's current physical shape with 17 keys\footnote{The exact number of keys on a modern clarinet can vary from 17-19 depending on the specific make and model of clarinet.}, watertight seals, and changes in instrument material from the original iteration.
+The specific acoustic properties of each brass mute are outside the scope of this paper. However, the ability for a user to easily implement changes to their sound by altering the instrument in some way is the core concept that makes a brass mute fit into the realm of augmented instruments.
+
+\subsubsection{Instrument Keys}
+
+Moving forward a few centuries sees the development of the clarinet. Beginning around 1700, the clarinet is an evolution of the chalumeau which greatly expanded the older instrument's range.\footnote{Because the Clarinet did not have a strong lower register like the chalumeau, it is considered a new instrument rather than an augmentation. It is the same logic that defines instruments like the basset horn and bass clarinet as separate instruments instead of an augmentation of the clarinet.} Originally only having two keys, in the decades following the clarinet's inception, many mechanical augmentations were developed for the instrument. These augmentations were largely the addition of and improvement to the keys and key mechanisms. A small slice of that development is shown in figure \ref{fig:clKeys}. 
+
+The end result of centuries of development is the modern clarinet's current physical shape with 17 keys\footnote{The exact number of keys on a modern clarinet can vary from 17-19 depending on the specific make and model of clarinet.}, watertight seals, and changes in instrument material from the original iteration. Unlike brass mutes and the majority of instruments discussed in this chapter, the addition of keys to augment the instrument is a permanent augmentation. 
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.07]{diagrams/M-A-O-clarinets.jpg}
     \caption{A selection of clarinets showing differing levels of key development}
-    \label{fig:clKeys}
+    \label{fig:clKeys} % wikimedia commons
 \end{figure}
 
-The third and final augmentation discussed in this section came into development right at the end of the 19th century: the player piano. The player piano is a wonderful example of the idea of taking an acoustic instrument and enhancing its natural capabilities through additional mechanical or electronic components. This idea of augmented instruments began to grow as the components and technology capabilities increased in power while decreasing in price. The majority of the remaining instruments discussed in this chapter follow this same concept as shown in the player piano.
+\subsubsection{Player Piano}
+
+The third and final augmentation discussed in this section came into development right at the end of the 19th century: the player piano. The player piano is a wonderful example of the idea of taking an acoustic instrument and enhancing its natural capabilities through additional mechanical or electronic components. This idea of augmented instruments began to grow as the components and technology capabilities increased in power while decreasing in price, and this technological trend starts, like so many others, shortly after the commercial harnessing of electricity.
 
 \begin{figure}
     \centering
@@ -150,15 +162,21 @@ The third and final augmentation discussed in this section came into development
 
 The player piano functions primarily as a traditional piano. There are no alterations made to the timbre or the action of playing the instrument. However, additional features have been added to the player piano compared to a completely acoustic one. Player pianos started out being able to be controlled through the use of a large spool of paper, called a roll. Holes punched into this paper would be used to manually trigger levers to actuate the piano's hammer mechanisms and generate sound. Early versions of these instruments were operated with a manual pneumatic pump, operated with the feet. Throughout the 20th century, improvements were made to this mechanism including its electrification and eventual digitization. However despite the various technological improvements, a large portion of the market of player pianos is for historic and restored instruments.
 
+The augmentation comes into play when compared to non-player pianos. A completely acoustic piano will not make any sound unless acted upon, and then each note must be played in real time to create music. Player pianos are able to perform previously notated music. As the music of Conlon Nancarrow (1912-1997) shows, this playback can be significantly more complex than what is possible through human means. By being able to play back music, it allowed for a greater spread of music when audio recording was still in its infancy\footnote{I personally like to view the player piano as analogous to MIDI or similar to MP3 playback of the 1890s}. 
+
 \subsection{20th Century Augmented Instruments}
-During the 20th century is when a large number of augmented instruments begin to be developed. This is due in no small part to the development of audio amplification and recording during the late 19th and early 20th centuries. One example of an augmented instrument from the early 20th century was the Electric Guitar, which was developed in the 1930's by adding electronic pickups to acoustic guitars\cite{electric_guit_history}.
+
+\subsubsection{Electric Guitars and Pickups}
+During the 20th century is when a large number of augmented instruments begin to be developed. This is due in no small part to the development of audio amplification and recording during the late 19th and early 20th centuries, as well as improvements to those technologies throughout the century. One example of an augmented instrument from the early 20th century was the Electric Guitar, which was developed in the 1930's by adding electronic pickups to acoustic guitars\cite{electric_guit_history}. The addition of a pickup is one of the more simple-yet-effective augmentations that can be done to an instrument. The analog signal can be recorded, amplified, or altered with circuitry for a variety of uses both in recording and performing live music. In fact, this is the basic for guitar effect pedals. In short, why a pickup is so effective is that it is a simple sensor that can be applied to a large variety of processes; a feature shared with the Cyberinet and many mroe instruments yet to be discussed.
+
+\subsubsection{Prepared Piano}
 
 Following a similar logic as the brass mutes mentioned previously, a prepared piano can be viewed as a kind of augmentation for a traditional piano. The creation of the prepared piano is attributed to John Cage in his 1938-40 composition \textit{Bacchanale}. While more complex and involved than a brass mute, the same concepts apply to the prepared piano. A performer is able to augment the timbral capabilities of the original instrument, the augmentation can be reversed, and the instrument still retains its identity as a piano while prepared. Because of how long it takes to properly augment a piano however, it is less flexible in a performance setting than other augmented instruments. 
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.2]{diagrams/IMG_9734_1.jpg}
-    \caption{An example of a prepared piano}
+    \caption{An example of a prepared piano} % this one wasn't wikimedia commons. but was google with CC lisense filter
     \label{fig:pp}
 \end{figure}
 
@@ -168,11 +186,13 @@ The process of preparing a piano is a relatively simple one, if not time consumi
 \begin{figure}
     \centering
     \includegraphics[scale=0.6]{Scores/image_2023-05-08_184813894.png}
-    \caption{A page of piano preperations from Cage's \textit{Sonatas and Interludes}}
-    \label{fig:siPrep}
+    \caption{A page of piano preparations from Cage's \textit{Sonatas and Interludes}}
+    \label{fig:siPrep} % score screenshot. ask for permission or make a chart representation yourself.
 \end{figure}
 
-Following the development of computers during the mid-late 20th century, an increase in augmented instruments began to appear during the 1970's on-wards. One example of the instruments developed in this time is the digital sampler. These instruments function similarly to pianos and synthesizers, utilizing the same performance mechanisms. However, when compared to those instruments, the sampler is able to have a much larger range of potential sounds. A sampler records a sample of audio, which can be anything, and re-pitches it along a keyboard range. Many samplers would also include the ability to edit samples and create sequences with them.
+\subsubsection{Digital Synthesizers and Samplers}
+
+Following the development of computers during the mid-late 20th century, an increase in augmented instruments began to appear during the 1970's on-wards. One example of the instruments developed in this time is the digital sampler. These instruments function similarly to pianos and synthesizers, utilizing the same performance mechanisms. However, when compared to those instruments, the sampler is able to have a much larger range of potential sounds. A sampler records a sample of audio, which can be anything, and re-pitches it along a keyboard range. Many samplers would also include the ability to edit samples and create sequences with them. These features make a sampler an augmentation over both a standard synthesizer or recording device.
 
 \begin{figure}
     \centering
@@ -190,21 +210,24 @@ The Akai MPC was a digital sampler that took a slightly different route than a k
     \label{fig:mpc}
 \end{figure}
 
+Returning to physical synthesizers, they live in an interesting place in this realm of augmented instruments. When given a keyboard or drum interface, they can act as an augmented version of the original instrument they are mimicking due to the larger amount of possible timbres between the two. But synthesizers do not need a keyboard interface to be a synthesizer. Synthesizers can be extremely modular, like with the Eurorack system, and the routing of signals to unique places to create unique effects. Both of these are features of the augmented instruments discussed in the remaining section of this chapter, but the synthesizer is more of its own unique instrument without the lens of a control interface designed to mimic another instrument. % revise this idea. basically they are instruements with common features to a lot of augmented instruments.
+
 \subsection{21st Century Augmented Instruments}
-The difference between 20th and 21st century augmented instruments is ambiguous at best. Electrical augmentation is still prevalent in the practice, but as the components become smaller and more affordable, a further increase in the number of instruments can be seen. %site this claim
-Likewise, as computers increased in power, their usage to both locally and remotely control computer augmentation has also increased. This section will look at three specific augmented instruments created in the 21st century with similar design concepts to the Cyberinet.
+The difference between 20th and 21st century augmented instruments is ambiguous at best. Electrical augmentation is still prevalent in the practice, but as the components become smaller and more affordable, a further increase in the number of instruments can be seen\footnote{Simply scrolling through the archived NIME and ICMC conference  proceedings will this growth in the number of papers related to augmented instruments}. 
+
+Likewise, as computers increased in power, their usage to both locally and remotely to control augmentation has also increased. This section will look at three specific augmented instruments created in the 21st century with similar design concepts to the Cyberinet\footnote{All three of these instruments as well as the Cyberinet are all computer-augmented in order to showcase characteristics of those instruments when compared to the augmentations of previous centuries.}. 
 
 \subsubsection{MIGSI}
 
-The Minimally Invasive Gesture Sensing Interface, or MIGSI Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, hand tension, instrument position, etc. and send it wirelessly to a computer.
+The Minimally Invasive Gesture Sensing Interface, or MIGSI, Trumpet is an augmented instrument designed to work with the ergonomics and performance practice of the traditional trumpet\cite{reid2016}. Towards this goal, creator Sarah Belle Reid developed a collection of sensors that fit seamlessly into the form factor of the trumpet. These sensors work to capture control data such as valve placement, hand tension, instrument position, etc. and send it wirelessly to a computer.
 
-All of the instruments discussed here function in a similar way, collecting data and transmitting to a computer to be utilized in some process. In the case of MIGSI, Reid has developed a platform in the Max programming environment which takes the data and parses it out for use within the program\cite{reid_2019}. Reid, has created several improvisations utilizing MIGSI, and written several compositions such as \textit{Consider (2017}) and \textit{Pocket Fig (2015)}.
+All of the instruments discussed here function in a similar way, collecting data and transmitting to a computer to be utilized in some process. In the case of MIGSI, Reid has developed a platform in the Max programming environment which receives the data and parses it out for use within the program\cite{reid_2019}. Reid, has created several improvisations and compositions utilizing MIGSI, such as \textit{Consider} (2017) and \textit{Pocket Fig} (2015).
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.25]{diagrams/MIGSI.jpg}
     \caption{Photo of the MIGSI trumpet from sarahbellereid.com/migsi}
-    \label{fig:MIGSI}
+    \label{fig:MIGSI} % from MIGSI website
 \end{figure}
 
 
@@ -216,14 +239,12 @@ Here we will discuss \textit{Pocket Fig} for the MIGSI Trumpet, written by Sarah
 
 This flurry of effects are heard in performances as soon as the performer begins either significant movement, or begins to press the trumpet valves. In this particular composition, the performer is recorder with a microphone and also able to utilize their positioning around it to change the resulting sounds.
 
-% Where the MIGSI is similar to the Cyberinet is in its goals of form factor. The entirety of the MIGSI augmentations are located to match the form of a standard B-flat or C trumpet, and is placed at the instrument's center of gravity to minimize fatigue from the extra weight. While not as streamlined as the MIGSI trumpet, the Cyberinet's sensors are located in a similar location in relation to the design of the Clarinet.
-
 
 \subsubsection{SABRe}
 
-The SABRe is another sensor array that is designed to work with various woodwinds, opposed to the trumpet MIGSI is compatible with. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. In the majority of cases this is not problematic, as like the MIGSI, the choice in sensors matches with the common performance gestures of the instruments using it.\footnote{We will see modularity in physical design come into play with the Cyberinet.}
+The SABRe is another sensor array that is designed to work with various single-reed woodwinds, opposed to the trumpet. The unit straps onto the instrument and can be used to collect airflow and position data to be wirelessly sent to a control computer. While effective and easily removable, this particular device offers a relatively limited amount of usable parameters which can be utilized in an augmented instrument. In the majority of cases this is not problematic, as like the MIGSI, the choice in sensors matches with the common performance gestures of the instruments using it\footnote{We will see modularity in physical design come into play with the Cyberinet.}. 
 
-Similar to MIGSI, SABRe is intended to also be minimally invasive to the performer. It is intended for use mainly with clarinets, being originally prototyped on a bass clarinet, but can be easily applied to many single-reed instruments\cite{Schiesser2012}. The goal of the SABRe is to provide augmentation features to performers, regardless of their technical abilities\cite{Schiesser2012}.
+Similar to MIGSI, SABRe is intended to also be minimally invasive to the performer. It is intended for use mainly with clarinets, being originally prototyped on a bass clarinet, but can be easily applied to almost any single-reed instruments\cite{Schiesser2012}. The goal of the SABRe is to provide augmentation features to performers, regardless of their technical abilities\cite{Schiesser2012}. To help with this, SABRe comes with a variety of bands to attach the main unit to different sized instruments. 
 
 SABRe utilizes four main sensors as well as an additional set of buttons that can wirelessly communicate with the main unit. These include gyroscopic and accelerometer data, airflow sensors, and buttons.\footnote{There are a few more sensors in the SABRe, but the ones mentioned are the main ones advertised.}
 
@@ -231,25 +252,26 @@ SABRe utilizes four main sensors as well as an additional set of buttons that ca
     \centering
     \includegraphics[scale=0.2]{diagrams/sabre-right-hand.jpg}
     \caption{SABRe on a clarinet}
-    \label{fig:SABRe}
+    \label{fig:SABRe} % from a blog found from CC filtered searching
 \end{figure}
 
-Prior to 2023, SABRe had been on a hiatus in terms of development and is currently in the process of designing a relaunch of the system. It is perhaps for this reason that there is a limited number of works for the system, but discussing the reasons behind the hiatus is beyond the scope of this paper. Unfortunately however, the majority of resources provided by SABRe online have been taken down pending their eventual relaunch of the system. Differences may occur between the original version and the second iteration. The original one utilized a software program developed by SABRe to control the receiving and control of the data for audio processing. 
 
-% As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the SABRe sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
+As we will see, SABRe contains a similar base to the Cyberinet in terms of sensors. The main sensors included in the SABRe are a gyroscope and accelerometer which can monitor the performer's movement in real time. There is also an airflow sensor which can detect the air leaving the performer's mouth as it passes the mouthpiece. This is done with a special order mouthpiece pad containing a notch for the sensor tube to rest in\footnote{While ingenious in terms of placement, I am not a fan of this because if the pad wears out and the performer is unable to receive a new one from SABRe, then that sensor becomes useless until the pad is replaced.}. There are additional sensors as well such as a thermometer, but these are not utilized as much in performance as the aforementioned sensors. Both SABRe and the Cyberinet also have a removable set of buttons that can be triggered as needed by the performer.
 
 
-One piece that will be discussed is  \textit{Sailing}\footnote{The performance of \textit{Sailing} can be found at \url{https://www.youtube.com/watch?v=Eiuacb5nJc8}} by the SABRe's creator: Matthias Mueller.  
+Prior to 2023, SABRe had been on a hiatus in terms of development and is currently in the process of designing a relaunch of the system. It is perhaps for this reason that there is a limited number of works for the system, but discussing the reasons behind the hiatus is beyond the scope of this paper. Unfortunately however, the majority of resources provided by SABRe online have been taken down pending their eventual relaunch of the system. Differences may occur between the original version and the second iteration. The original design utilized a software program developed by SABRe to control the receiving and control of the data for audio processing. 
+
+
+One piece that will be discussed is \textit{Sailing}\footnote{The performance of \textit{Sailing} can be found at \url{https://www.youtube.com/watch?v=Eiuacb5nJc8}} by the SABRe's creator: Matthias Mueller.  
 
 In this work, Mueller takes the gyroscopic information from the SABRe to control audio effects in real time. The first one heard is the control of the amount reverb and delay time as the performer moves from right to left. This is followed by triggering a tremolo effect that combines with the clarinet timbre. Due to a lack of a score, it is my best guess from the video that this effect is being toggled on with the buttons located on the back of the instrument. By combing these effects with micro-tonal notes, Mueller is able to create a unique sound world easily and effectively.
 
-Mueller also utilizes a pitch shifting effect, but it is unclear if it is created as a unique harmonizing effect, or is created as a byproduct of adjusting delay times. The final effect is a little distortion present when the performer reaches the extreme ends of the gyroscopic data.
+Mueller also utilizes a pitch shifting effect, but it is unclear to me if it is created as a unique harmonizing effect, or is created as a byproduct of adjusting delay times. The final effect is a little distortion present when the performer reaches the extreme ends of the gyroscopic data.
 
-In the future, should a performance score become available, it would warrant more in depth analysis of the performance practice and specific utilization of the SABRe's sensors. However, there is still much that can be learned with Mueller's performance video. It can be seen that Mueller clearly focusing on only one or two sensors present within the SABRe: Gyroscope and Buttons. By focusing on a smaller subset of the sensors, it allows Mueller to allow the capabilities to the system to stand out. It becomes very clear what the correlation between the clarinetist's physical position and the timbres being created are.
+In the future, should a performance score or the software patch become available, it would warrant more in depth analysis of the performance practice and specific utilization of the SABRe's sensors. However, there is still much that can be learned with Mueller's performance video. It can be seen that Mueller clearly focusing on only one or two sensors present within the SABRe: Gyroscope and Buttons. By focusing on a smaller subset of the sensors, it allows Mueller to allow the capabilities to the system to stand out. It becomes very clear what the correlation between the clarinetist's physical position and the timbres being created are.
 
-Mueller's utilization of the button is worth bringing up individually. in \textit{Sailing}, Mueller is using this button to trigger a tremolo-like effect to be applied to the clarinet's signal. Unfortunately without the software patch or score the fine details of this are left to speculation, but I want to focus on the idea of manually triggering an effect with a button. Unlike a foot pedal, these buttons follow the performer, allowing them to take full advantage of the buttons along with the movement sensors. A performer can access the buttons regardless of their on-stage location.
+Mueller's utilization of the button is worth bringing up individually. in \textit{Sailing}, Mueller is using this button to trigger a tremolo-like effect to be applied to the clarinet's signal. Unfortunately without the software patch or score the fine details of this are left to speculation, but I want to focus on the idea of manually triggering an effect with a button. Unlike a foot pedal, these buttons follow the performer, allowing them to take full advantage of the buttons along with the movement sensors. A performer can access the buttons regardless of their on-stage location. The buttons can also be placed in various locations around the stage if needed, limited only by the length of a cable or the distance of the Bluetooth connection. Having a mixture of continuous and momentary sensors\footnote{The buttons are momentarily on when pressed, while the other sensors are continuously monitoring data values} allows for the performer to create instant (or near instant) changes in the software state like shown with Mueller's triggering of the tremolo effect. Both the Hyper-Flute (discussed next) and the Cyberinet utilize this mixture of momentary buttons with continuous sensors. The continuous sensors can be either digital or analog, that does not effect the relationship between them and the buttons.
 
-% As well as containing a similar base, the units also allow for an optional use of 2 buttons that can be programmed using the computer. However, it is at this point that the sensors begin to differ. It is the view of the author that the SABRe sensor is generally lacking in two main elements. The first is its lack of additional sensor options. While the included sensors are indeed quite useful for collecting performance data.
 
 \subsubsection{Hyper-Flute}
 
@@ -265,13 +287,13 @@ There are many more augmented instruments that have been developed in the 21st c
 Developed in 2003 by flutist/improviser/composer Cléo Palacio-Quintin, the Hyper-Flute is a Powell 2100 model flute with a handful of sensors embedded into various locations along the instrument. \cite{hyper-flute2003}. Palacio-Quintin's stated goals in developing the instrument are: 
 
 \begin{quote}
-    ...[preserve] the intimate relationship between my body, my instrument and the sound it produces. I wanted to keep intact the acoustic richness of the flute, and my way of playing it. The computer had to become a virtual extension of the acoustic instrument \cite{hyper-flute2003}.
+    ...[to preserve] the intimate relationship between my body, my instrument and the sound it produces. I wanted to keep intact the acoustic richness of the flute, and my way of playing it. The computer had to become a virtual extension of the acoustic instrument \cite{hyper-flute2003}.
 \end{quote}
 
 Towards this goal, Palacio-Quintin ultimately decided on six unique sensors that can control the computer processing of the flute. While there are some overlaps between the Hyper-Flute and the other instruments discussed in this chapter, the design implements a variety of unique ideas not present in the other wind instrument augmentations discussed. Firstly is that the Hyper-Flute is not a removable augmentation like SABRe or MIGSI. These sensors, listed in figure \ref{fig:hyper-flute-sensors} are permanently installed onto the flute. 
 
 
-Voltages from each of these analog sensors are then analyzed and converted to a MIDI value which can be sent to a computer or MIDI compliant instrument. All of the data is sent as  continuous control MIDI messages. What I find particularly interesting about the Hyper-Flute is that while Palacio-Quintin has developed various software patches using Max, similarly to the other instruments discussed in this chapter, because the data being generated is MIDI compliant, the Hyper-Flute can easily interface and control a large variety of instruments via the MIDI port, which can open an entirely different world of performance practice and possibilities when compared to other instruments\cite{hyper-flute2003}.
+Voltages from each of these analog sensors are then analyzed and converted to a MIDI value which can be sent to a computer or MIDI compliant instrument. All of the data is sent as continuous control MIDI messages. What I find particularly interesting about the Hyper-Flute is that while Palacio-Quintin has developed various software patches using Max, similarly to the other instruments discussed in this chapter, because the data being generated is MIDI compliant, the Hyper-Flute can easily interface and control a large variety of instruments via the MIDI port, which can open an entirely different world of performance practice and possibilities when compared to other instruments\cite{hyper-flute2003}. Unique to the other instruments discussed throughout this chapter, the Hyper-Flute requires a separate interface in order to convert the voltages into MIDI data. Palacio-Quintin utilizes a Microlab interface for this purpose. This is a custom device created by A.J.van den Broek\cite{hyper-flute2003}. 
 
 \begin{figure}
     \centering
@@ -1046,6 +1068,10 @@ Once I had completed the short musical section, it was simply a matter of repeat
 
 When ordering the voices, I began with one of the middle voices as the opening to the solo part. When comparing the voices in the score, these helped to provide a large amount of the background and a steady, albeit syncopated, pulse to the music. Something that helps to give the following bass voice more context during the measures where it is simply holding a pedal tone during the second section. Looking at the large-scale musical form of the solo, I would describe it as \emph{ABA'C} since the third and first voice are often coordinated, providing harmonic content. I viewed them like a horn part in a Sousa march in this regard. When combined, the first three voices provide a complete backing track to the main melodic line. Like fitting together, the pieces of a puzzle, it is this final line that helps to give context to all the phrases we have heard so far. Down beats become upbeats, harmonic implications shift with the addition of new chord tones, and the texture is filled out to include the full range of the instrument.
 
+When it came to gesture mapping, this piece utilizes the least of the works discussed in this chapter. In testing, it became a concern that the playback could potentially overpower the performer, so to mitigate that, the data from the air flow sensor was inversely mapped and applied to the make up gain parameter of CNET.compressor~, which all recorded sound files are sent through. This resulted in the make up gain level decreasing as the performer played more loudly. In general, this kept all four parts in relative balance, but would occasionally dip too much when the line was naturally louder.
+
+Because of the thematic idea of a person walking through a park and noticing different things to put context around what was previously observed, this occasional dipping of the level was not seen as problematic. Instead it was embraced as the effect when combined with the CNET.reverb~ effect resulted in the ducked sound still being present enough to be heard, although they were not the focus as something new was happening. This is the most apparent during the final repetition.
+
 \textit{Puzzle of a Park} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre
 
 \section{Ethereal Presence}
@@ -1083,6 +1109,14 @@ Accompanied by this is a more textural synthesizer designed to help support and 
     \label{fig:etherealRaw}
 \end{figure}
 
+When mapping gestures, this work intends the performer to move around more than they might normally do otherwise. However, the specific movements are not specified within the score. While this does remove the desired compositional specificity as discussed in the previous chapter, it was done as an experiment to see how much movement would be naturally done by the performer, and if more specific notations would be needed in future compositions. Aesthetically, omitting the gesture mapping instructions creates a level of uniqueness to the patch. No two performances will harmonize in the exact same way each time, thus increasing the "etherealness" of the effect.
+
+Because the specific instructions and bar lines were omitted from the score does not mean that the performer was completely left to work out movements and sound control however. In the front matter for the score, instructions to perform with "exaggerated expressive movements" are given in the performance notes along with a breakdown of what each sensor controls, and which direction increases the effect parameters. This information allows the performer to intentionally lean into or out of the effects, creating a cybernetic feedback loop.
+
+In practice, I found that I would have preferred to have specific motions indicated in the score, even if they are kept optional or otherwise indeterminate. While the performers I have shown this to have indeed all performed with exaggerated expressive movements, everyone\footnote{I showed the score to a total of three different performers outside of preparations for the premiere.} was only moving at about 50-80\% of the maximum effect range, and had to be encouraged to further exaggerate their movement to hear the full effect. I feel that by indicating with more specificity as laid out in the previous chapter would help performers to more easily understand to what degree of motion they need to move to work with the Cyberinet. 
+
+Because every performer is different and may be unable to achieve the full range of gestures, a max object, CNET.rangeSet, was created to help mitigate that problem. CNET.rangeSet can adjust the scaling parameters within CNET.receive in order to make the results more or less sensitive. A smaller movement can result in a larger change in effects. It is recommended that this be utilized for calibration if an effect is not coming through as desired.
+
 
 \textit{Ethereal Presence} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre
 
@@ -1111,7 +1145,7 @@ Unlike the other compositions discussed here, \textit{Raindrops} utilizes notate
 
 The narrator files are a processed recording of the composer reading the story. the processing adds a distorted, low-fi sound to the voice to make it appear more ethereal in nature than the clean recordings. 
 
-The final two non-musical elements of this performance are a smoke machine and 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and airflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
+The final two non-musical elements of this performance are a smoke machine and at least 2 DMX-controlled lights. The smoke machine is not controlled by the performer, but the DMX lights are. The RGB lights are controlled by a mix of gyroscope and airflow values. The end result is the lights changing as he performer moves around the stage, and becomes more red as the performer breathes harder.
 
 \begin{figure}
     \centering
@@ -1126,6 +1160,18 @@ The final two non-musical elements of this performance are a smoke machine and 2
     \caption{Raindrops on a Tin Roof Full View}
     \label{fig:raindropsRaw}
 \end{figure}
+
+When mapping gestures, the score for \textit{Raindrops on a Tin Roof} contains the most specific level of gesture notation. In general, three gestures are utilized outside of the natural gestures of a performance. These are: 
+
+\begin{itemize}
+    \item Exaggerated movement
+    \item Exaggerated breathing
+    \item Movement between stands on stage
+\end{itemize}
+
+When notating this work, one concern was clutter on the page. to help minimize this, the score was printed on tabloid (11inx17in) sized paper\footnote{The score has been scaled down to fit within this document.} in order have more physical space on the page. Because of the large amount of narrator text in this work, the text indication was given as boxed text, indicating the first and last line of the clip, as well as the clip's duration. Two symbols were used to indicate the exaggerated movement and breathing. The first, being a looping line, was intended to indicate exaggerated movement of the Cyberinet. This proved effective as the shape led the performer to naturally move in a looping motion and trigger the effect. The zig-zag shape was included to represent exaggerated breathing in a section. This came through less clearly, but was easily adjusted with CNET.rangeSet.
+
+The final gesture indicator was to move to a different location on the stage. This was indicated with text at the appropriate place on the score. No physical transitions occurred before the end of a page, and this proved effective is sending a large number of values to all of the sensors at once, resulting in a more drastic effect to mirror th physical movement. An exploration into the gesture mapping notation is intended for further refinement.
 
 \textit{Raindrops on a Tin Roof} was premiered by Adam Cope on 04/18/23 at the LSU Digital Media Center Theatre, but did not include the optional smoke machine.
 
@@ -1155,7 +1201,7 @@ The specific control mapping for this composition are as follows:
     \item AccelY: high harmonizer pitch
 \end{itemize}
 
-Of the four compositions discussed in this chapter, \textit{ImprovImpisaImptionImpprovisation in Reverb} is the only one that does not have a dedicated score. This was done to focus on the potential use of the Cyberinet as an improvisation tool. By utilizing the movement data from the Cyberinet, the patch encourages the performer to explore the performance space. In terms of the physical movements required to trigger the effects, they are closest to those used in \textit{Ethereal Presence}. 
+Of the four compositions discussed in this chapter, \textit{ImprovImpisaImptionImpprovisation in Reverb} is the only one that does not have a dedicated score. This was done to focus on the potential use of the Cyberinet as an improvisation tool. By utilizing the movement data from the Cyberinet, the patch encourages the performer to explore the performance space. In terms of the physical movements required to trigger the effects, they are closest to those used in \textit{Ethereal Presence}. All of the mapping comments discussed in the section regarding \textit{Ethereal Presence} apply to this work as well, however are less potentially problematic due to the implicit experimentation and response nature of improvisation. Sensor value mappings are given in the max patch, but without a score, it proves difficult to notate specific gestures.
 
 The max patch for this composition contains three main processes controlled by the Cyberinet. The first is a reverb effect that is constantly applied to the sound. The amount of reverb present changed based on the horizontal movement of the performer. Following that, the patch automatically swaps between two different states. The first is a feedback delay where the delay time is controlled again by horizontal movement. Specifically, the audio signal for this process is only fed into the delay line when the instrument has been shaken or is otherwise actively moving horizontally. The final state of the patch takes the signal and using CNET.tuner~ and CNET.pitchshift~, creates triangle waves that harmonize above and below the performer based on their Y-axis movement (upstage vs downstage). These states alter randomly for the duration of the performance, and are fed into additional, non-automated reverb effects as well as a patch which generates low-level background noise based on what is happening in the pitch-space of patch. If desired, the performer can utilize one of the buttons from the button expansion in order to both mute the soudn in an emergerncy, as well as manually swap between the mapping states.
 
@@ -1165,7 +1211,10 @@ While not complex, this work emphasizes Van Nort's idea of a second-order level 
 
 \textit{ImprovImpisaImptionImpprovisation in Reverb} was premiered on 05/01/2023 my Matthew A. Bardin in the LSU School of Music Recital Hall.
 
-\section{Performer Opinions}
+\section{Performer \& Composer Opinions}
+
+\subsection{Performer Opinions}
+
 As previously stated, being a new augmented instrument, the aforementioned four works are the only compositions for the Cyberinet at the time of writing. To better inform future revisions and compositions, the two performers who premiered the above works were asked a series of questions following their usage of the Cyberinet. These questions were:
 
 \begin{itemize}
@@ -1206,6 +1255,7 @@ The below responses belong to performer 2. % Me
     \item A5: Other than the things I've already mentioned, I suppose I'd say relocating the port on the Button Expansion to a better location and potentially reducing the size of the main unit a little. It isn't too large, but a think a little smaller would be easier to work with.
 \end{itemize}
 
+\subsection{Composer Opinions}
 
 %% The command ``\appendix'' switches into appendix-mode, meaning that subsequent ``\chapter'' commands will instead produce appendices.
 \appendix
@@ -1853,6 +1903,9 @@ I'm assuming this is where I will put the various permissions from the images?
 \bibitem{Raindrops Score} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Performance Score, MaBMusic, 2023.
 
 \bibitem{Raindrops Story} Bardin, Matthew. \emph{Raindrops on a Tin Roof} Short Story, Kindle Direct Publishing, 2022.
+
+\bibitem{brassMutes1982} Causse, Rene and Sluchin, Benny. \emph{Mutes of brass instruments—Experiments and calculations}. Journal of the Acoustical Society of America. 1 April 1982; 71 (S1): S91–S92. https://doi.org/10.1121/1.2019634
+
 
 \bibitem{gelbBodyLearning2013} Gelb, Michael. \emph{Body Learning: An Introduction to the Alexander Technique} Updated 40th Anniversary Edition. Aurum Publishing, 2013.
 
