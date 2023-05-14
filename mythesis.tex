@@ -531,9 +531,9 @@ The choice to utilize OEM sensors for version 1 of the Cyberinet arose both from
     \label{fig:protoBoard2}
 \end{figure}
 
-\section{Micro-Controller \& Power Distribution}
+\subsection{Micro-Controller \& Power Distribution}
 
-\subsection{ESP-32}
+\subsection{}subsection{ESP-32}
 The Cyberinet contains a variety of useful sensors, however without the micro-controller, they become effectively useless in this context. In order to effectively manage all of the sensors and transmit the data, the Espressif ESP-32 DEVKIT V1 was ultimately selected for use with the Cyberinet. This board was selected for a handful of reasons, including:
 
 \begin{itemize}
@@ -543,7 +543,7 @@ The Cyberinet contains a variety of useful sensors, however without the micro-co
     \item Wireless communications
 \end{itemize}
 
-The first two items on the list are closely related. While being narrower that comparable Arduino units, the ESP-32 DEVKIT V1 has 30 unique I/O Pins\footnote{Other versions of the DEVKIT have 36 GPIO pins. These boards are incompatible with the PCBs used in the Cyberinet.}. While four pins are dedicated to power distribution and another for the 'enable' functionality (EN), the remaining 20 can be utilized for sensors in a variety of ways. All of this potential functionality is compressed to just under 3 centimeters wide. Because of the ultimate physical design of the Cyberinet unit, having a large amount of accessible pins in a smaller unit was considered ideal. The DEVKIT V1 was preferred over the significantly smaller base chip to increase the simplicity of prototyping, repair, and future changes due to its OEM compatibility, and the popularity of the board among the community. The specific ship dimensions can be seen in figure \ref{fig:esp-32}
+The first two items on the list are closely related. While being narrower that comparable Arduino units, the ESP-32 DEVKIT V1 has 30 unique I/O Pins\footnote{Other versions of the DEVKIT have 36 GPIO pins. \\These boards are incompatible with the PCBs used in the Cyberinet.}. While four pins are dedicated to power distribution and another for the 'enable' functionality (EN), the remaining 20 can be utilized for sensors in a variety of ways. All of this potential functionality is compressed to just under 3 centimeters wide. Because of the ultimate physical design of the Cyberinet unit, having a large amount of accessible pins in a smaller unit was considered ideal. The DEVKIT V1 was preferred over the significantly smaller base chip to increase the simplicity of prototyping, repair, and future changes due to its OEM compatibility, and the popularity of the board among the community. The specific ship dimensions can be seen in figure \ref{fig:esp-32}
 
 \begin{center}
     \begin{figure}
@@ -580,7 +580,7 @@ The ESP-32 also has WiFi connectivity capabilities which may be involved in a fu
 While not as powerful as the most up-to-date Bluetooth hardware, the DEVKIT's version 4.2 allows the Cyberinet to connect to a computer from up to 200 feet away with a max data transfer speed of 1 Mbps. While these values do fluctuate depending on the performance venue layout, and have a minor impedance from the case of the Cyberinet itself, the performance statistics are still high enough for a large majority or performance areas. This will be discussed more in the chapter discussion the music compositions and performance with the Cyberinet. 
 
 
-\subsection{Power Distribution}
+\subsubsection{Power Distribution}
 In order to power the entire system, a lithium ion polymer battery is included inside the hardware. In order to charge the unit, users can utilize the provided USB-C cable and power adapter to the port located on the bottom of the unit. % show pic of charging port
 
 
@@ -596,7 +596,7 @@ All power distribution for the Cyberinet is handled with a TP-4056 Type C chip, 
     \end{figure}
 \end{center}
 
-By connecting the battery to the connections labeled B+ and B-, and connecting the Vin and GND pins of the ESP-32 to the OUT+ and OUT- on this board, the Cyberinet is able to receive all required power through the single chip. The power button is soldered into the connection between the battery and the TP-4056, and will automatically power the Cyberinet when activated\footnote{Because of the placement of the power switch, the device will have to be powered on while charging. This can be easily verified by the onboard LED's}. 
+By connecting the battery to the connections labeled B+ and B-, and connecting the Vin and GND pins of the ESP-32 to the OUT+ and OUT- on this board, the Cyberinet is able to receive all required power through the single chip. The power button is soldered into the connection between the battery and the TP-4056, and will automatically power the Cyberinet when activated. Because of the placement of the power switch, the device will have to be powered on while charging. This can be easily verified by the onboard LED's. 
 
 When the battery is depleted, it must be connected to a power source via this USB-C port to be able to fuly charge. From an empty charge, the unit can take between one and three hours to fully charge. The exact times can vary depending on the power adapter and whether any additional accessories are connected. 
 
@@ -910,57 +910,117 @@ CNET.latency can be utilized by anyone who needs to test the latency of their ha
 
 \section{Max Programming}
 
-To utilize the data being collected by the Cyberinet’s hardware, I have created a small library of Max objects to help with the collection and usage of said data. While detailed below, it is important to mention that Max is a paid software. The software and hardware components are all open source, however in order to create your own patches, the end-user will need to download the software. If saving patches is desired, then they must purchase a software license. Potential freeware options are being considered and will be explored upon more in a later chapter, but at the time of writing, are not in active development.
+To utilize the data being collected by the Cyberinet’s hardware, I have created a small library of Max objects to help with the collection and usage of said data. While detailed below, it is important to mention that Max is a paid software. The software and hardware components are all open source, however in order to create your own patches, the end-user will need to download the software. If saving patches is desired, then they must purchase a software license. Potential freeware software options such as Pure Data are being considered, but at the time of writing, are not in active development.
 
-When designing the effects, each one has multiple inputs for those who want to utilize them to control the most noticeable changes to the sounds made by the effect. These inputs are located immediately to the right of the main signal input for the effect, and include items such as delay times, reverb room sizes, desired harmonizers, and more. Each effect also has a detailed breakdown of its full control parameters, presets, and default values to show off the capabilities of the software both with and without a connected Cyberinet.
+When designing the objects, they fall into two main categories: effects and control. Effect objects are commonplace audio effects, with the exception of CNET.dmx. All of these objects are intended to take in data from the Cyberinet and utilize it to alter the performance environment. This is done through the processing of an audio signal. CNET.dmx achieves this goal by outputting values to control DMX lighting, and does not operate at the signal rate. Because of the wide variety of potential sound options with the Cyberinet, a handful of commonplace effects were chosen in order to help the user be able to easily create interesting effects that anyone with general musical knowledge would be able to easily implement. With the exception of one object discussed in Chapter 3.2.2, all of the CNET objects are optional when creating Max patches.
 
-\subsection{Receiving \& Routing Data}
+Control objects are used to specifically control or monitor the Max environment and other CNET objects. They do not alter signals in any way, but instead work to achieve tasks such as receiving data from the Cyberinet hardware, visualize data, calculate latency, record and playback data in real time, etc. While the Effect objects are optional when using the Cyberinet, the Control objects are more applicable in a large variety of settings and are highly recommended when developing a new composition.
 
-Once the serial data has been transmitted from the Cyberinet, it moves into the connected computer. This connection utilizes Bluetooth, and can be easily managed in the Max software\footnote{Max version 8.5 or newer is needed when working with the Cyberinet}. A single object is utilize in order to help receive and parse the data stream from the Cyberinet. CNET.receive allows the user to easily determine which Bluetooth port to receive data from, then sends it to various object outputs for use in the Max environment.
+Regardless of category, each CNET object has multiple inputs for those who want to utilize them to control the varied parameters for each object. These inputs are located immediately to the right of the main signal inlet, and are ordered to be a logical progression of controls from left to right. In the following section, each category of objects is listed with a short description. Each CNET object also has a detailed breakdown of its full control parameters, presets, and default values to show off the capabilities of the software both with and without a connected Cyberinet.
 
-% picture of inner workings of CNET.receive
-% \begin{center}
-%     \begin{figure}
-%         \centering
-%         \includegraphics{}
-%         \caption{Caption}
-%         \label{fig:my_label}
-%     \end{figure}
-% \end{center}
-
-In short, this Max object runs a small Node script that helps to import the data into Max. This script specifies the desired serial port, then using the space and carriage return characters, formats the data into the label and value pairs that Max expects. These values are then routed to individual outlets based on their labels\footnote{Each outlet is given a label so that the user can identify what the numbers leaving the object are}. Prior to leaving the outlets, the data is then scaled to fit a range of 0-1. This helps to keep all of the sensors within an easily adjustable range for other objects within Max. The only exceptions to this are the buttons which only output 0 or 1 when the button state changes, and the temperature which is measured in degrees Celsius and not scaled at all. 
-
-In order to utilize this object, you must first connect the Cyberinet to the computer via Bluetooth. after the connection has been established, sending a bang into the first inlet will open communications on the default port. If the desired port is not the default, then sending the message "setPort" followed by the port name will change this. From there data will begin automatically flowing through the patch to the desired outputs. If you wish to see the raw, un-scaled data in the Max console, toggle the second inlet on. A bang to inlet three will stop communications, and a bang to inlet four will install appropriate NODE drivers and dependencies to allow Max to utilize the javascript code. This is only required one time on each computer.
 
 \subsection{CNET Objects}
 
-While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. These objects were all used within the Compositions discussed in chapter 5. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality. These include:
+\subsubsection{Effect Objects}
+
+While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. These objects were all used within the Compositions discussed in Chapter 5. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality.Every object discussed as part of this collection has the prefix CNET, which is an abbreviation of the word Cyberinet. The effect objects that can be used to alter the performance environment include:
 
 \begin{itemize}
-    \item reverb~: a Schroder style reverb based on examples from CCRMA.
+    \item reverb~: A Schroder style reverb based on examples from CCRMA and John Chowning. this has a stereo output, and is similar to effects like JCReverb.
+    \item monoReverb~: The same reverb above, but with a mono output instead of a stereo one.
     \item compressor~: Based on the compressor objects created by Cycling74.
-    \item delay~: A single delay line using the tapin~ and tapout~ objects. 
-    \item MultiDel~: A delay line utilizing 4 different tapout~ objects to create multiple delay lines. Each one can have its individual output level set for unique mixing capabilities.
-    \item feedbackDelay!: Identical to the simple delay, but with a feedback option added.
-    \item vibDelay!: Functions similar to the Simple delay object, but includes a basic implementation of FM synthesis to adjust the pitch of the signal to be delayed. 
-    \item tuner: This object functions like most other tuners available on the market. It will determine the pitch of an incoming signal and output the value as a signal. This is useful for checking and maintaining tuning within the Max environment, and for having the Max patch respond to certain pitches. This object requires a microphone be used to monitor the input as the ADC capabilities of the ESP-32 DEVKIT are unable to pull off this effect.
-    \item pitchShift~: changes the pitch of an incoming signal. This can be controlled by MIDI  numbers or the 0-1 floating point range of the Cyberinet. The values input here are the desired pitch of the signal, not the amount by which it is shifted. both his and CNET.tuner also have a dry digital pass-through and latency monitor,
-    \item latency: Designed to test the latency of the Cyberinet within  the Max environment.
+    \item delay~: A single delay line using the tapin~ and tapout~ objects. The original signal is passed through, followed by the delay set by the user.
+    \item multDel~: A delay line utilizing 4 different tapout~ objects to create multiple delay lines. Each one can have its individual output level set for unique mixing capabilities.
+    \item feedbackDelay~: Identical to CNET.delay~, but with a feedback option added.
+    \item vibDelay~: Functions similar to CNET.delay~, but includes a basic implementation of FM synthesis to adjust the pitch of the signal to be delayed. 
+    \item: karplusStrong~: Generates a plucked string effect using an incoming signal as the source material, and the Cyberinet to control the sound parameters. As the name implies, this uses Karplus-Strong synthesis.
+    \item pitchShift~: Changes the pitch of an incoming signal. This can be controlled by MIDI  numbers or the 0-1 floating point range of the Cyberinet. Both the effected signal and the unaltered signal are output from this object.
+    \item dmx: Converts data from the Cyberinet into control data for DMX lighting. This object is currently only compatible with the Chauvet DMX-AN 2 controller.
 \end{itemize}
 
-% break down each of the sensors. screenshots are all in appendix B2.
+% discuss the patches in more detail here.
 
-In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. 
+\subsubsection{Control Objects}
+
+In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. These objects include:
+
+
+\begin{itemize}
+    \item receive: This is the core of the Cyberinet's software functionality. This object communicates with the hardware unit, parses, scales, and smooths all of the values before outputting each sensor's readings to a dedicated outlet. Values output from here are the change between data points, which helps to remove noise from the data and focus on the gestures.
+    \item rangeSet: CNET.rangeSet can be used in conjunction with CNET.receive to adjust the internal value scaling from the Cyberinet hardware. If a performer's gesture data values are too small or large to be effective, this sets a new range for those expected values.
+    \item record~: This object is used to record both the audio of the Cyberinet's performance, as well as the data points being output from CNET.receive. This object then saves the recordings as separate audio file and text data file. The data file also contains timings for playback.
+    \item dataPlayback~: This object is used in conjunction with CNET.record~. The audio and text files created in that object are loaded into CNET.dataPlayback~ and started simultaneously. The timing values are used to schedule when the internal coll object reads each data point, allowing them to sync with the audio recording, thus replicating a physical performance.
+    \item latency: Designed to test the latency of the Cyberinet within the Max environment. A sound is made on the Cyberinet's buttons, which trigger a noise gate. The resulting noise pulse is also played back and recorded. The resulting time between the press and the recorded pulse can then be analyzed to determine the full system Latency.
+    \item  tuner~: This object functions like most other tuners available on the market. It will determine the pitch of an incoming signal and output the value as a signal. This is useful for checking and maintaining tuning within the Max environment, and for having the Max patch respond to certain pitches. This object requires a microphone be used to monitor the input as the ADC capabilities of the ESP-32 DEVKIT are unable to accurately execute this effect.
+    \item gestureVisualizer: This object is the only CNET object with a dedicated GUI, and must be loaded into a bpatcher to be used as intended. This object receives incoming data from one of the Cyberinet's sensors and visually graphs the data points using Max's multislider object. Values are passed through the object regardless of the visualization state\footnote{This object was used for analyzing and categorizing the various gestures in Chapter 3.3.}.
+    \item switch: CNET.switch acts similarly to the gate object within Max. It receives data from a Cyberinet sensor, and outputs a toggle when the changes exceed a sensitivity threshold. The object also has a cool-down timer to avoid undesired rapid switching. Both of these parameters are adjustable.
+    \item test: This max patch is designed to test the functionality of the Cyberinet and CNET objects. It functions similarly to a help patch for the whole collection by receiving data and touting it to different effects utilizing a matrix interface. This is useful for debugging and prototyping
+\end{itemize}
+
+% discuss the patches in more detail here.
+
 The main downside to the tuner object is that it requires the use of a microphone input to the computer. This is due to the limited ADC capabilities on the Cyberinet's main ESP-32 Board. However, an unexpected upside to the object is it's pitch detection capabilities. The tuner object is able to detect both the musical pitch of the incoming signal, but also fine tuning in cents. Because this information is expressed in MIDI, it can be used to trigger a variety of other events in the max environment. While the list of possibilities is extensive, the idea of having the max patch harmonize with the Clarinet is one of particular interest to the author.
 
 \subsubsection{Help \& Tutorial Patches}
-The final software element of the Cyberinet is the implementation of Max help patches. These patches provide relevant documentation for each of the objects mentioned both in this chapter and Appendix B. They also provide a short tutorial for how to utilize the object both with and without the Cyberinet hardware. 
 
-These help patches describe what each effect does, and breaks down what each inlet for the CNET objects controls, the data ranges, and default values. Each help patch also includes three or more presets that show off a variety of different 
+Lastly, before discussing how the objects are utilized, it should be mentioned that each CNET object also has a unique help patch associated with it\footnote{To access these help patches, insert the desired CNET object into a Max sketch, \\ then right click and select "Open XXX Help".}. The help patches are intended to help familiarize new users with the intended functionality of the objects, troubleshoot errors, and give various examples of their usage\footnote{Screenshots of all help patches are given in Appendix B.}.
+
+Each help patch is slightly unique, but all follow the same design template. Help patches give the title of the object, its version number and last edited date, and a description of what the object does. Below this, an interactive example is given that is unique to each object. Effect object help patches are used to alter the signal of a sound file, and Control object help patches are used to show off their specific functionality. Figures \ref{fig:compHelp1} and \ref{fig:switchHelp1} show an example of a help patch for both of these categories\footnote{All help patches have a mint-green color do differentiate them as help patches.}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{diagrams/maxPatches/compressorHelp.png}
+    \caption{Help Patch for CNET.compressor~}
+    \label{fig:compHelp1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{diagrams/maxPatches/switchHelp.png}
+    \caption{Help Patch for CNET.switch}
+    \label{fig:switchHelp1}
+\end{figure}
+
+In addition to walking the user through how to setup and utilize the CNET object, each help patch contains between four and eight different presets. These are intended to show a variety of different parameter combinations, which reflect the capabilities of the object when used with the Cyberinet. Unless CNET.receive is required for the control object, it is not necessary to connect a Cyberinet to the computer in order to experiment with the help patches and their presets. Help objects where a physical Cyberinet connection is required are: CNET.receive, CNET.record~, CNET.rangeSet, CNET.test, and CNET.latency.
+
+\subsection{Receiving \& Routing Data}
+
+Now that we have gone through all of the context, design, and programming of the Cyberinet, it is time for the sections of this document that is likely what most readers are looking for: How to utilize the Cyberinet for a performance. This subsection will discuss how the Cyberinet data is received by the computer, and the inner working of CNET.receive, the only required CNET object when utilizing the Cyberinet. Following this, Chapter 3.3 will discuss specific gestures and recommendations for how to connect the various Cyberinet sensors when creating Max patches.
+
+Once the sensor data has been transmitted from the Cyberinet utilizing the SerialBT.println() command in the Arduino code, it moves into the connected computer. This connection utilizes Bluetooth, and can be easily managed in the Max software\footnote{Max version 8.5.x or newer is needed when working with the Cyberinet}. A single object is utilize in order to help receive and parse the data stream from the Cyberinet. CNET.receive allows the user to easily determine which Bluetooth port to receive data from, then sends it to various object outputs for use in the Max environment. The internal workings of CNET.receive are shown in figure \ref{fig:cnet.receive}. Due to the patch's large size, figure \ref{fig:cnet.receive} has been rotated to better utilize the page and make the routing slightly less cramped. There are three main subsections to CNET.receive that allow it to function.
 
 
-\subsection{}section{Future Software Directions}
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.48, angle=270]{diagrams/maxPatches/CNET.receive.png}
+        \caption{Inner workings of CNET.receive}
+        \label{fig:cnet.receive}
+    \end{figure}
+\end{center}
+
+The top section of figure \ref{fig:cnet.receive} shows the setup for beginning communications with the Cyberinet. A bang into the first inlet will begin running a node JavaScript file. This file helps max to communicate with the given port, respond to the data, and give feedback to the status of these communications in the Max console. The Node js debug tool can be helpful when monitoring the status of CNET.receive as well. Inlet two will toggle the printing of the raw data within the Max console in real time. This is useful, but can quickly take up computer memory due to the large number of data points being transferred. Inlet three stops communications, and inlet four will install the various node dependencies when banged\footnote{This is only necessary if a computer does not already have these files installed. Once this has been done once, it is not needed unless moving to a new computer or node was removed.}. When setting up communications, the initializing bang is actually achieving multiple steps. These were condensed in order to simplify and streamline the process. A single bang will begin the node script, set the port, open the port, and begin communications. A short delay is given between each of these steps. This is needed to give the computer enough time to respond to the messages. It is recommended to not change this, but if needed the time can be adjusted with the control message "setupSpeed X" where X is the total delayed duration in milliseconds. that value is divided by four and equally applied to each internal delay object. All other control messages are used with CNET.rangeSet.
+
+The middle section of the patch contains the node script\footnote{the full code of the node script is given in Appendix B} and a route object. The base for the node script came from a collection of objects created by LSU's Experimental Music \& Digital Media department. All this script does is receive the raw data and output it. The route object then parses the data based on the accompanying label from the Arduino code.
+
+The final section of CNET.receive contains a large number of objects, but the process is repeated for the majority of the sensors. The sub-patch called "scalr" simply parses the lists from CNET.rangeSet if that object is used and applies it to the scale object. These objects take the raw values from the Cyberinet hardware and proportionally adjust it to fir a range of 0-1. If a performer is generating a range of raw values that are too large or small for the desired effect, the internal scaling can be adjusted without altering the output range. The sub-patch "CNET.smoothr" is used for the final manipulation of the data, and is shown in figure \ref{fig:smoothr}. This object may potentially move into a more defined control object in the future, and is why it has a CNET name, despite not being a unique patch.
+
+CNET.smoother takes incoming values and gradually slides between them instead of directly setting the values. This helps to make the effects sound continuous and minimize noise and popping. This defaults to being averaged over 20 data points. This value can be adjusted if needed, but experimentation is not recommended with this object. The second portion of this sub-patch compares the current smoothed data point with the previous one and calculates the difference between them. This value is then output back to the main patch, and clipped to the range of 0-1 to remove any outliers and avoid problems in the CNET effect objects. The result of this means that only when a sensor is actively picking up a gesture will it's data be utilized within Max. Using the gyroscope as an example, data will be output from CNET.receive while the instrument is actively rotating. When the performer is not performing a gesture, the values are almost zero.
+
+The values cannot be completely zero due to the continual nature of the sensors and subtle changes to the performer's position and movement, the the values are small enough to be unnoticeable in the majority of situations. Three sensors to not undergo this smoothing process due to their design. Both buttons only output values of 0 or 1. Smoothing those data points would remove the immediacy of a momentary switch. Instead, these values are output only when the button changes state. The third sensors is the temperature sensor. While these values could be smoothed, the difference calculations prove to be problematic in this situation. Generally speaking, any temperature fluctuations large enough to be interpreted as a gesture would be extremely uncomfortable for everyone in the performance space, assuming they are possible to achieve in the first place. If made more sensitive to respond to smaller fluctuations, then the changes cannot be detected as a gesture. To avoid all of these problems, the temperature data is output completely raw in degrees Celsius. This is the only value to not be scaled, as I feel that having the accurate temperature would be more useful than a 0-1 value in most situations when that sensor would be used.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=1.3]{diagrams/maxPatches/smoothr.png}
+    \caption{Processing of smoothing and comparing the data stream within CNET.receive}
+    \label{fig:smoothr}
+\end{figure}
+
+\subsection{Future CNET Software Directions}
+
 Lastly, Plans for the expansion and revision of the software environment are already underway. Future goals include:
+
 \begin{itemize}
     \item Adapt messages to OSC formatting for a greater range of software compatibility.
     \item OS compatibility: Version one of  the Cyberinet currently only works on MacOS devices. Future plans involve compatibility with Windows devices as well.
@@ -971,7 +1031,7 @@ Lastly, Plans for the expansion and revision of the software environment are alr
 
 \section{Mapping Gestures to Max} %if super long, may need to make into a seperate chapter.
 
-The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the clarinet as well as experimental gestures that can be used to explore various effects. We will then explore the data related to these gestures, and in the following chapter, how that gesture data can be applied in various settings.
+The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the Clarinet as well as experimental gestures that can be used to explore various effects. We will then explore the data related to these gestures, and in the following chapter, how that gesture data can be applied in various settings.
 
 \subsection{Commonplace Gestures}
 All of the gestures discussed here are ones found commonly in clarinet performances. It is by no means an exhaustive list, but serves to act a s a general outline to the more common movements I have either done as a clarinetist, or seen done in many performances. If heavily exaggerated, each of these movements could easily be defined as more experimental. Table \ref{tab:generalGestures2} is a reproduction of table \ref{tab:generalGestures}. Each of the gestures listed here have been analyzed and given a general data profile for easier application to sensors.
@@ -998,11 +1058,12 @@ To create this data, the CNET.record~ object was used to record the sensors valu
 
 % data numbers and pictures here
 
+\subsection{Experimental Gestures}
+All gestures in this sub section are not common to traditional Clarinet performance, but can easily be utilized in a performance setting with the Cyberinet.
 
 \chapter{Intended Uses}
-Now that we have looked into aspects of augmented instruments and cybernetic music, let us take a moment to see how they apply to the Cyberinet and the device's intended uses before we dive into the creation of and working with the Cyberinet.
+Now that we have looked into Every detail about how the Cyberinet was created and how to utilize its various features, let us take a moment to see how the Cyberinet is intended to be used. This is not an extensive list of all potential uses, but rather how I imagined the Cyberinet being useful to the various people who would want to utilize the instrument.
 
-While adaptable, the Cyberinet was envisioned with a handful of specific uses in mind. As is, the Cyberinet is intended to be an easily-removable add-on for a standard B-flat clarinet. This add on allows for the user to easily include computer augmentation into their timbre repertoire. 
 
 \section{Composition Tool}
 One of the three main intended uses of the Cyberinet is as a compositional tool. Effectively, treating the Cyberinet as a completely new instrument or an add-on to a traditional B-flat clarinet. The flexibility of utilizing the Cyberinet's sensor data can result in a large variety of potential sounds, even without the need for the clarinet to make sounds. A performer can utilize multiple Cyberinet sensors without traditionally playing the instrument, allowing the composer to explore new performance routes.
@@ -1049,15 +1110,14 @@ As additional expansions are created for the Cyberinet, their potential use in a
 
 \chapter{Music Works Written for the Cyberinet}
 
-In addition to creating the hardware and software for this dissertation, I have also created a handful of musical compositions that show off various features of the Cyberinet. These three compositions as listed below, show a gradient from simpler to more complex uses of the Cyberinet’s features.
+In addition to creating the hardware and software for this dissertation, I have also created a handful of musical compositions that show off various features of the Cyberinet. These four compositions as listed below, show a gradient from simpler to more complex uses of the Cyberinet’s features. Each piece's accompanying Max patch was given a unique color to make it easily identifiable to whoever is using the software. Full musical scores for each work are provided in Appendix C.
 
-Before we begin looking at the compositions in detail, I want to explore what it is like performing with the Cyberinet through an interview with the premiere artist for all three of the works mentioned in this chapter\footnote{The scores for all pieces discussed in this chapter are available in the appendices and online at \url{matthewbardin.com}}.
+After looking at the compositions in detail, I want to explore what it is like performing with the Cyberinet through an interview with the premiere artist for all three of the works mentioned in this chapter\footnote{The scores for all pieces discussed in this chapter are available in the appendices and online at \url{matthewbardin.com}}.
 
 
 \section{Puzzle of a Park}
 At its core, this work is the simplest of the three written especially for this project. \textit{Puzzle of a Park} functions as a work written for a loop pedal, but without the pedal. The performer plays through the material from beginning to end, periodically pressing one of the two buttons on the button board accessory. Looking at the max patch we can see that one button will trigger the computer to record a microphone input into a buffer while the second triggers the synchronized playback of all recorded buffers. 
 
-%[show patch snapshot]
 \begin{figure}
     \centering
     \includegraphics[scale=0.2]{diagrams/maxPatches/puzzlePresentation.jpg}
