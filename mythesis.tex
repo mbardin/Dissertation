@@ -84,17 +84,11 @@ Lastly, I would like to thank my cat, Bean. Regardless of whether she was laying
 \tableofcontents
 
  \listoffigures
+ \listoftables
 
 \chapter{Abstract}
 
 % The ``abstract'' is required and is limited to 350 words. % this version 344 words.
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-% Jesse, I know you mentioned adding some things to the abstract, but I apparently didn't write that down and don't recall the specifics. What were they?
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
 
 Augmented instruments have been around in some form for almost as long as instruments, but have had a relatively recent explosion in presence and capabilities due to the progression of technology through the 20th and 21st centuries. One potential use of augmented instruments is to control audio processing on a computer utilizing Max or other software environments. By being able to control the music natural expressive means, the performer and composer are able to experiment with a variety of ways to make sound. A performer is able to hear their sounds and adjust their playing in order to change them in real time, or the sounds are able to react to a performer's movements automatically. creation of future music. One new instrument that works to combine these two ideas is the Cyberinet.
 
@@ -403,15 +397,27 @@ Another series of works with cybernetic principles is Olivero's \textit{Sonic Me
 These prompts range in complexity and specificity ranging from talking a walk with as quiet of steps as possible to singing pitches in groups until a single pitch is established. There are also more complex activities focused on breathing and the acts of making, listening to, imagining, and remembering sounds\cite{OliverosMeditations}. By actively guiding the performer through the \textit{Deep Listening} activities, all of the cybernetic principles of \textit{Deep Listening} become present in the music performance as well. All 25 pieces have in some way the performer listening to a sound occurrence and responding by altering their actions to change the sound environment.
 
 \subsubsection{Onyx Ashanti} %HOW OLD ARE YOU?!
-Onyx Ashanti is a modern composer, performer, and inventor largely known for developing various electronic musical instruments. His music, known as "beatjazz" incorporates a mixture of improvisation, looping, and gestural control. These gestures are incorporated through his instruments, which directly attach to the human body. A few sensors are even located within the performer's mouth. These particular arrangements of data work to remove some of the traditional aspects of music creation and performance and allow for the creation and control of audio to happen solely through the direct measurement of the performer.
+Onyx Ashanti is a modern composer, performer, and inventor largely known for developing "beatjazz", an electronic gesture controller used to utilize a mixture of improvisation, looping, and gestural control. These gestures are incorporated through his instruments, which directly attach to the human body. A few sensors are even located within the performer's mouth. These particular arrangements of data work to remove some of the traditional aspects of music creation and performance and allow for the creation and control of audio to happen solely through the direct measurement of the performer.
 
-in ted video
-accelerometers for each hand position
-FSR
-LED feedback for loop identification (red=drums, blue=bass, green=chords, orange=leads, purple=pads)
-button in mouth
-phone HUD 
+The Beatjazz controllers are held in the performer's hands and utilize accelrometers in order to track the positional data of each hand, FSRs to monitor finger pressure both as buttons and continually, and a wind sensor placed in the performer's mouth. The system is controlled through a computer running the various software patches for each performance. In terms of feedback, Beatjazz utilized a paired smartphone in order to act as a GUI for the performerer. LED's on each sensor allow for the user to easily see which parameter they are controlling using the following setup:
 
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c||c|}
+    \hline
+      red   & drums \\
+      blue   &  bass\\
+      green & chords \\
+      orange & leads\\
+      purple & pads\\
+      \hline
+    \end{tabular}
+    \caption{LED color feedback in BeatJazz}
+    \label{tab:bjLEDs}
+\end{table}
+
+
+The most interesting aspect of Beatjazz is that it removes the need for a traditional instrument or control interface in order to create music in real time. By ergonomically fitting onto the performer, their physical actions are directly used in order to alter the musical environment. By altering how they are moving, the performer can directly change what samples are being used and how they are being digitally processed. This allows for Beatjazz to function cybernetically both in the popular culture and scientific uses of the word. However, because of how it is utilized on the body, it is less of an augmented instrument than something completely new, which has many common similarities with digital augmented instruments.
 
 \section{The Cyberinet}
 
@@ -524,11 +530,7 @@ With the general gestures and sensors determined, the next step is to work out a
 
 These natural gestures are all able to be measured with the Cyberinet. Rotations are easily picked up by the gyroscope, movements by the accelerometer, and breath by the airflow sensor. While Wanderley et. al did not measure the airflow in their study, it is still an important sound-producing gesture\cite{miranda_Wanderley_instrumentControl_2006}. Each of the gestures listed above as well as a handful of airflow gestures were tested with the Cyberinet in order to calculate the various sensor responses to various scenarios. This data was then used to create Max objects that can utilize both slower, gradual movements, as well as faster ones that can be be interpreted as a single action.
 
-\subsection{Sound Synthesis} % more here? all of the objects that work with audio are not generating it, just using incoming signal as the processee to their processors.
 
-The Cyberinet is intended to be able to control a variety of software synthesis and control parameters; it does not directly generate sound outside of those produced by the base Clarinet. Because of this, the software\footnote{Software programming and uses is discussed in Chapter 3.} is intended to take the sensor data, represent it as a number, then utilize those numbers within the Max programming environment. A handful of Max objects have been created to help facilitate this feature, and for new users to quickly implement the Cyberinet without the need for the user to be an expert in Digital Signal Processing (DSP) and audio effect programming.
-
-All of these effects are built in Max and utilize common control parameters for the effects. With the exception of any signal input, receive control messages as floating point numbers between 0 and 1.
 
 \subsection{Gesture Mapping \& Feedback Mechanisms}
 
@@ -537,6 +539,12 @@ Because of the modularity of the programming environment, a single gesture sense
 In terms of feedback mechanism, this proved difficult to determine in initial planning and prototyping. Ultimately, two main methods were determined to be useful for both the performer and someone working in the Max environment. On the physical unit are multiple LED's. Several of these are used to indicate that the sensors are receiving power, but one LED can be programmed when creating the Cyberinet. At the moment, version 1.3 of the software is utilizing the programmable LED to indicate when the sensor data transmits to the computer. This proves useful for determining whether a connection with the computer is established, and if data should be expected by the computer. In order to avoid blinding the user with LED's they are hidden behind the hardware case of the Cyberinet, and small holes are included to allow for intentional inspection.\footnote{Similarly to the metal grates on microwave doors to allow the user to look in on the food while avoiding the microwave radiation.} This programmable LED is located close to the airflow sensor's tubes, allowing for the tube to also function as a light tube to be easily read without needing close internal inspection through the aforementioned holes.
 
 In the software, a handful of options are available to see the incoming data and any errors. If an unrecognized sensor reading or control message is received by the core CNET software object, this is returned to the user via both the final outlet of the object, as well as the Max console. Because a user would have to go out of there way to include monitoring within the patch, the main Cyberinet patches able to display all incoming data in the same Max console, as well as indicate when communication begins and ends. This is useful for monitoring and recording the incoming data, however at times this can be moving to fast to utilize in real time. Because of this, future versions of the software plan to analyze the data and output more helpful notifications such as unexpected data jumps or noise, signal drops, or abnormal ranges of data.
+
+\subsection{Sound Synthesis} % more here? all of the objects that work with audio are not generating it, just using incoming signal as the processee to their processors.
+
+The Cyberinet is intended to be able to control a variety of software synthesis and control parameters; it does not directly generate sound outside of those produced by the base Clarinet. Because of this, the software\footnote{Software programming and uses is discussed in Chapter 3.} is intended to take the sensor data, represent it as a number, then utilize those numbers within the Max programming environment. A handful of Max objects have been created to help facilitate this feature, and for new users to quickly implement the Cyberinet without the need for the user to be an expert in Digital Signal Processing (DSP) and audio effect programming.
+
+All of these effects are built in Max and utilize common control parameters for the effects. With the exception of any signal input, receive control messages as floating point numbers between 0 and 1.
 
 \section{OEM Sensors}
 
@@ -643,6 +651,13 @@ The battery included is rated for 1200 mAh as an improvement over the 320 mAh ba
 
 It should be noted that the device can also run when connected directly to the wall socket power supply. This will also charge the battery, which, while resulting in yet another wire, can result in an indefinite run time.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.08, angle=270]{diagrams/builtUnits/chargingPort.JPG}
+    \caption{Location of the Charging Port on the Cyberinet}
+    \label{fig:chargePortLocation}
+\end{figure}
+
 
 \subsection{I2C Sensors}
 While all of the sensors discussed in this chapter utilize the same compatibility features, not all sensors are the same. The Gyroscope/Accelerometer, Differential Airflow Pressure, and Thermometer are all I2C sensors, which have their own unique protocol. Due to wire routing constraints, all of the expansion units are intentionally not I2C components.
@@ -704,7 +719,7 @@ In addition to the built-in I2C sensors, the Cyberinet utilizes a variety of opt
 
 The Button Expansion is much simpler when compared to the main unit. The unit is composed of only two mechanical buttons with built in LED's, two resistors for those LED's, a USB-C port for communication with the Main Unit, a PCB to route all of the connections and the 3D printed housing. The button expansion is designed to be attached to the performer's thumb rest to allow for easy access with the right thumb. However it is also shaped in a way to allow for it to be held in the hand or placed elsewhere.
 
-In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
+
 
 To assemble the unit, all components are soldered to the PCB. Like the main unit, SMD components are attached first, followed by cables, and finally the larger components. The completed PCB is then secured within the 3D-printed housing to complete the unit. The PCB for the Button Expansion is shown in figure \ref{fig:buttonPCB}, and the versionof the PCB containing all of the components soldered to it is part of figure \ref{fig:CyberinetNoCase}.
 
@@ -732,6 +747,15 @@ Expansion Units are optional and not needed for the Cyberinet main unit to be fu
 \end{center}
 
 This expansion, while optional, is incredibly useful for a performer on stage. They can access the buttons using their right thumb when performing. This maneuver is easier when utilizing a neck strap, so the performer can place the buttons elsewhere if they like using a longer connector cable. The closeness between the buttons and thumb rest is shown in figures \ref{fig:buttonThumbrest} and \ref{fig:thumbOnCase}\footnote{The case has been revised since the initial picture was taken. The small rectangular hole for the connection cable has been moved to the left side to avoid potential collisions with the performer's hand.}. Each button also contains a single, colored LED built into it to provide feedback to the performer. By default, the lights are only illuminated when the button is pressed. The Cyberinet simply detects whether a button has been pressed and transmits that data as a Boolean value to the computer. Using Max, the user can have the buttons achieve functions from near limitless hypothetical list of options. For this project, the buttons were used to trigger microphone recording and buffer playback, however objects that take the button input and move between various presets, trigger DSP, and turn pages of a score have also been developed and included in the software bundle for this project.
+
+\begin{figure} %crop image if I have time
+    \centering 
+    \includegraphics[scale=0.05, angle=270]{diagrams/builtUnits/buttonPort.JPG}
+    \caption{Location of the Button Expansion port on the Cyberinet.}
+    \label{fig:buttonPort}
+\end{figure}
+
+The port for the buttons is located on the upper portion of the Cyberinet main unit in order to reduce the amount of wire needed to reach the PCB, as well as to visually distinguish it from the charging port. Because a differing number of pins is used between this and the other expansion port, located in the same location on the opposite side of the unit, is given the label "buttons". The main unit can be rotated 360 degrees in order to adjust the positioning of the button expansion cable to wherever the performer desires.
 
 \subsubsection{Other Expansions}
 At the time of writing, only the button expansion has been developed and tested completely. However, in-progress plans for a continuing range of expansions exist.
@@ -1038,13 +1062,9 @@ Each help patch is slightly unique, but all follow the same design template. Hel
 In addition to walking the user through how to setup and utilize the CNET object, each help patch contains between four and eight different presets. These are intended to show a variety of different parameter combinations, which reflect the capabilities of the object when used with the Cyberinet. Unless CNET.receive is required for the control object, it is not necessary to connect a Cyberinet to the computer in order to experiment with the help patches and their presets. Help objects where a physical Cyberinet connection is required are: CNET.receive, CNET.record$\sim$, CNET.rangeSet, CNET.test, and CNET.latency.
 
 
-\subsection{Future CNET Software Directions}
-
-
-
 \section{Mapping Gestures to Max} %if super long, may need to make into a seperate chapter.
 
-The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the Clarinet as well as experimental gestures that can be used to explore various effects. We will then explore the data related to these gestures, and in the following chapter, how that gesture data can be applied in various settings.
+The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the Clarinet as well as experimental gestures that can be used to explore various effects.
 
 \subsection{Commonplace Gestures}
 All of the gestures discussed here are ones found commonly in clarinet performances. It is by no means an exhaustive list, but serves to act a s a general outline to the more common movements I have either done as a clarinetist, or seen done in many performances. If heavily exaggerated, each of these movements could easily be defined as more experimental. Table \ref{tab:generalGestures2} is a reproduction of table \ref{tab:generalGestures}. Each of the gestures listed here have been analyzed and given a general data profile for easier application to sensors.
@@ -1052,27 +1072,108 @@ All of the gestures discussed here are ones found commonly in clarinet performan
 
 \begin{table}[]
     \centering
-    \begin{tabular}{c|c}
-       Instrument Movements  & Bell, vertical and circular \\
-        Upper Body Movements & Head, vertical \\
+    \begin{tabular}{|c||c|}
+    \hline
+       \textbf{Instrument Movements:}  & Bell, vertical and circular \\
+        \textbf{Upper Body Movements:} & Head, vertical \\
         & Shoulders, vertical \\
         & Back, curl inwards \\
         & Arms, raising elbows \\
-        Lower Body Movements & Waist, bending \\
+       \textbf{ Lower Body Movements:} & Waist, bending \\
         & Knees, bending \\
         & Feet, walking \\
-        & Weight shifting, left and right
+        & Weight shifting, left and right\\
+        \hline
     \end{tabular}
     \caption{Identified Gestures by Wanderley et. al\cite{wanderleyClarinetGesture2005}, divided by body area.}
     \label{tab:generalGestures2}
 \end{table}
 
-To create this data, the CNET.record$\sim$ object was used to record the sensors values while the movement was performed, slow, medium, and fast, three times each. The data was then averaged and graphically represented with the multislider object in Max. The categorization of the gestures was based on this visual representation. Slow gestures were recorded over at least two seconds per gesture. Medium-speed gestures were performed at between one and two seconds, and fast-speed gestures were performed at under one second. As expected, the main difference between these is the steepness of the data curves.
+To create this data, the CNET.gestureVisualizer object was used to record the sensors values while the movements were performed three times each. The data was then averaged and graphically represented with the multislider object in Max. The categorization of the gestures was based on this visual representation. When looking at all of the data points, the oldest points are presented on the right of each graph, and the newest points are on the left. Because of the manual trigger to start and stop recording, extra noise is present on the right-most side of each graph. 
+
+Throughout all of the data graphs, the Gyroscopic Z-axis values appear more sensitive than the majority of the others. This is due to the positioning of the sensor on the instrument. Longitudinally, all of the motion sensors of the Cyberinet are close to the center of motion in the Cyberinet. However, transversely the sensor is located approximately 9 inches away from the center of motion\footnote{The center of motion is considered to be the thumb-rest/neck-strap attachment point in the center of the instrument.}. Because of this larger distance, the sensors which respond to that axis will register a larger range of motion. This can be adjusted slightly by rotating the Cyberinet main unit on the horn, but utilizing CNET.rangeSet will better scale the values as desired. All of the graphs shown are utilizing unaltered data from CNET.receive.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{diagrams/gestureData/bellVert.png}
+    \caption{Raising the bell expressively.}
+    \label{fig:bellRaiseData}
+\end{figure}
+
+When raising the bell, a gentle slope can clearly be seen in the accelerometer's Y axis as one would expect. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{diagrams/gestureData/bellBob.png}
+    \caption{Small bobbing of the Cyberinet bell.}
+    \label{fig:bellBobData}
+\end{figure}
+
+When bobbing the instrument bell, a clear bump appears in every sensor, similar to the single expressive raising of the horn. By focusing more on horizontal or vertical movements, different sensors will have larger slopes in their data. When testing, the bell movement was approximately four-six inches. Larger bobs will result in larger data spikes.
+
+Mathematically speaking, this relationship between movement size and speed can be easily calculated by working with the slope of the graphs. Taking into account any offset from the sensor's 0-point, moving a large distance or moving quickly will result in a grater change of data values.
+
+\begin{figure}
+    \centering
+    \includegraphics{slopeEqu.png}
+    \caption{Equation for calculating slope of gesture graphs}
+    \label{fig:mequSlope}
+\end{figure}
+
+In practice, when repeating the same movement but highly exaggerated past a natural expressive limit, changes in data become more clear and useful when utilizing the data within Max. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/weightshifting.png}
+    \caption{Horizontal Movements in two directions.}
+    \label{fig:exHor}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/waistLeaning.png}
+    \caption{Exaggerated movements in four directions.}
+    \label{fig:exHor}
+\end{figure}
+
+Air flow gestures have not been recorded in the same way was the movement gestures have. This is because breath control is intrinsically linked to the traditional clarinet performance. As dynamics increase, the values also increase as more air is flowing through the instrument, but a performer can easily control how quickly or slowly the air changes which inherently allows for more intimate control of the sensor. While performing, this range would be tightly attached to the dynamics of the performance, making it impossible to significantly alter the airflow without also altering the dynamics.
 
 % data numbers and pictures here
 
 \subsection{Experimental Gestures}
-All gestures in this sub section are not common to traditional Clarinet performance, but can easily be utilized in a performance setting with the Cyberinet.
+ When looking at traditional gestures that occur naturally\cite{wanderleyClarinetGesture2005}, data changes are observed, but many of them are relatively static. This is to be expected as traditional clarinet performance encourages minimal movements and no rotations of the horn, so when attempting to adhere to traditional practice, the sensor data may prove relatively static. When intentionally utilizing either exaggerated gestures as measured by Wanderley et. al or more experimental movements can take more advantage of the Cyberinet's sensors.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/pointing.png}
+    \caption{Pointing the mouthpiece towards the audience.}
+    \label{fig:pointData}
+\end{figure}
+
+For the gesture shown in figure \ref{fig:pointData}, the mouthpiece was removed from the mouth and pointed forward towards the audience, then returned to playing position. The most clear showing of this has been highlighted, and shows a clear beginning and end to the gesture. Figure \ref{fig:clotRotate} shows data from holding th instrument at arm's length and rotating it 360 degrees in a circle. The high values in the gyroscopic Y-axis show the direction, while all of the accelerometer data moves down and back as the horn passed 180 degrees and began to return to the initial positioning.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/spin Clockwise.png}
+    \caption{Clockwise Rotation of the Cyberinet.}
+    \label{fig:clotRotate}
+\end{figure}
+
+When flicking the Cyberinet, it is held vertically and quickly rotated either left or right, then returned to center. This results in a quick, fairly high peak in the sensors\footnote{The exaggerated nature of the gyroscopic Z values can also be seen in figure \ref{fig:clotRotate}.}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/wristFlick.png}
+    \caption{Flicking the wrist holding the Cyberinet.}
+    \label{fig:cflick}
+\end{figure}
+
+
+\section{Categorizing Gestures}
+While experimenting with gestures, it is helpful to categorize them in various ways in order to effectively utilize them. To do this, a handful of characteristics are needed.
+
+First, the physical movement should be analyzed. Is it fast or slow? Is it a traditional movement or experimental? What direction is the gesture moving?
+
 
 \chapter{Performing with the Cyberinet}
 Now that we have looked into Every detail about how the Cyberinet was created and how to utilize its various features, let us take a moment to see how the Cyberinet is intended to be used. This is not an extensive list of all potential uses, but rather how I imagined the Cyberinet being useful to the various people who would want to utilize the instrument.
@@ -1129,7 +1230,7 @@ After looking at the compositions in detail, I want to explore what it is like p
 
 \subsection{Notation Conventions}
 
-As previously mentioned, the need for specific gestures is a necessity for the creation of meaningful Augmented Instrument functionality, and for the performer to be able to Cybernetically perform. Without these, the Cyberinet's software mapping becomes harder to define in a consistent manner\footnote{I am speaking from experience in this claim. The initial performance of the music happened prior to properly defining these elements, and ultimately resulted in more of a learning experience, rather than a musical demonstration.}. Towards this, I have utilized a small collection of gesture indicators within each of the musical scores. The analysis, testing and applications of gesture notation however, are outside of the scope of this paper. These symbols are intended to clearly indicate a type of movement or action, and are explained in detail in the score front matter. Following the finalization of the Cyberinet system, exploring an effective gesture notation for the instrument would prove both an interesting and fruitful course of study. In lieu of this, performers of the Music discussed in this chapter were asked their opinions on the notation in Chapter 5.5. The remainder of this subsection however will discuss the specific graphics used in the scores here, and not a potential list for every gesture mentioned by Wanderley et al. in figure \ref{tab:generalGestures}.
+As previously mentioned, the need for specific gestures is a necessity for the creation of meaningful Augmented Instrument functionality, and for the performer to be able to Cybernetically perform. Without these, the Cyberinet's software mapping becomes harder to define in a consistent manner\footnote{I am speaking from experience in this claim. The initial performance of the music happened prior to properly defining these elements, and ultimately resulted in more of a learning experience, rather than a musical demonstration.}. Towards this, I have utilized a small collection of gesture indicators within each of the musical scores. The analysis, testing and applications of gesture notation however, are outside of the scope of this paper. These symbols are intended to clearly indicate a type of movement or action, and are explained in detail in the score front matter. Following the finalization of the Cyberinet system, exploring an effective gesture notation for the instrument would prove both an interesting and fruitful course of study. In lieu of this, performers of the Music discussed in this chapter were asked their opinions on the notation in Chapter 5.5. The remainder of this subsection however will discuss the specific graphics used in the scores here, and not a potential list for every gesture mentioned by Wanderley et. al in figure \ref{tab:generalGestures}.
 
 
 \subsubsection{Movement Indicators}
@@ -1359,22 +1460,13 @@ As previously stated, being a new augmented instrument, the aforementioned four 
 In order to protect the identity of the performers, they are referred to by number. Performer 1's responses are shown below: % Adam
 
 \begin{itemize}
-    \item A1:
-    \item A2:
-    \item A3:
-    \item A4:
-    \item A5:
+    \item A1: It's very straightforward, akin to switching clarinets, as one would for an orchestra performance. Just switching out the barrel and adding the thumb rest attachment it all it takes to incorporate the Cyberinet into my performance routine.
+    \item A2: My favorite part about working with the Cyberinet has been exploring how to incorporate the movement sensors into my performance. Normally the way you move doesn't directly affect the sound you're putting out, so it's interesting to see the new ways in which I can express myself! My least favorite part is probably th
+    \item A3: Assuming future versions will be able to connect and transmit data more reliably, I would say I'm very confident in adding and removing the Cyberinet.
+    \item A4: As someone who is not well versed in Max, I'm not confident in my ability to create new sounds on the software side of things. As a performer first, I feel confident in my ability to use the equipment, but not necessarily to create for it.
+    \item A5: The only thing I would change is to reverse the ports that connect the thumb rest buttons to the barrel. Right now, the connecting cable kind of sticks into the player's right hand a bit, but I imagine that would be a non issue if the ports were flipped to the opposite side.
 \end{itemize}
 
-Following the initial performance, a studio recording of the works was made with Performer 1 and the questions were asked again. These are the responses to the same prompts following several weeks of additional practice and software adjustments set to improve the effect application in the premiere performance. 
-
-\begin{itemize}
-    \item A1:
-    \item A2:
-    \item A3:
-    \item A4:
-    \item A5:
-\end{itemize}
 
 The below responses belong to performer 2. % Me
 
@@ -1386,8 +1478,11 @@ The below responses belong to performer 2. % Me
     \item A5: Other than the things I've already mentioned, I suppose I'd say relocating the port on the Button Expansion to a better location and potentially reducing the size of the main unit a little. It isn't too large, but a think a little smaller would be easier to work with.
 \end{itemize}
 
+In general, the people using the Cyberinet find it easy to implement both in terms of hardware and software, but mainly request various tweaks to different aspects of the design. Since these questions have been asked, the thumb rest has been altered to resolve this problem and the Max objects have also been optimized for simpler connections and management, but other improvements will have to wait until the second iteration.
+
 \section{Future Development}
-condense all future development parts into this section.
+
+In the current software version, the button LED's are only illuminated when the buttons are pressed. However they are wired independently of the switches on the expansion. In future versions, the ability to control these LED's via the software is planned.
 
 
 Potential freeware software options such as Pure Data are being considered, but at the time of writing, are not in active development.
@@ -1760,13 +1855,13 @@ The recordings are then compared to determine the time between the real-world ac
 \subsubsection{CNET.tuner$\sim$}
 
 This object is a simple tuner based off of the retune$\sim$ object native to Max. It receives a signal from an external microphone and outputs both the closest MIDI pitch and frequency of the sound. These values are output as signals. In this version of the Cyberinet, it must be located in the Max software as the ESP-32's ADC's are not powerful enough to run a tuner along with everything else. It is recommended for both tuning purposes, as well as pitch identification purposes. 
-% made weird things appear on first page when not uncommented???????????????
-% \begin{figure}
-%     \centering
-%     \includegraphics{diagrams/maxPatches/CNET.tuner$\sim$.png}
-%     \caption{CNET.tuner$\sim$.maxpat}
-%     \label{fig:CNET.tuner$\sim$.maxpat}
-% \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/maxPatches/CNET.tuner~.png}
+    \caption{CNET.tuner$\sim$.maxpat}
+    \label{fig:CNET.tuner~.maxpat}
+\end{figure}
  
 
 \subsubsection{CNET.click$\sim$}
@@ -1809,23 +1904,14 @@ This is a stereo Schroder reverb internally similar to the popular JC reverb dev
 This patch is identical to CNET.reverb$\sim$, except that it outputs a mono signal instead of stereo.
 
 \subsubsection{CNET.compressor$\sim$}
-CNET.compressor is a fairly standard compressor that is able to receive data from the Cyberinet in order to control the threshold, ratio, attack, release, and gain staging before and after the effect. By connecting a meter$\sim$ object to the last outlet, a faux VU meter can be created to show the gain reduction happening in the compressor.
+CNET.compressor is a fairly standard compressor that is able to receive data from the Cyberinet in order to control the threshold, ratio, attack, release, and gain staging before and after the effect. By connecting a meter$\sim$ object to the last outlet, a faux VU meter can be created to show the gain reduction happening in the compressor. One unique feature of this compressor is that it takes in a mono signal and outputs a stereo signal.
 
 \begin{figure}
     \centering
-    \includegraphics{diagrams/maxPatches/CNET.compressor~.png}
-    \caption{CNET.compressor$\sim$.maxpat}
-    \label{fig:compmax}
+    \includegraphics{diagrams/maxPatches/compInner.png}
+    \caption{Inner workings of CNET.compressor~}
+    \label{fig:compressor~Inner}
 \end{figure}
-
-One unique feature of this compressor is that it takes in a mono signal and outputs a stereo signal.
-% made weird things appear on first page when not uncommented???????????????
-% \begin{figure}
-%     \centering
-%     \includegraphics{diagrams/maxPatches/compInner.png}
-%     \caption{inner workings of CNET.compressor~}
-%     \label{fig:compressor~Inner}
-% \end{figure}
 
 \subsubsection{Various Delays}
 A total of four various delays have been created for a variety of different audio effects. these include:
@@ -1899,7 +1985,7 @@ This patch works by taking the incoming audio signal as a sample. When triggered
 \subsection{Full Score}
 Pages are scaled down from the Tabloid (11in by 17in) size of the original score to match the rest of this document. 
 
-\includepdf[pages=1-19]{Scores/raindrops.pdf} 
+\includepdf[pages=1-19]{Scores/raindrops full.pdf} 
 %  list page range and file location
 
 \subsection{Short Story Full Text}
@@ -2009,66 +2095,17 @@ I'm assuming this is where I will put the various permissions from the images?
 
 
 \chapter{Vita}
-% I'm working on this as if I have already completed and graduated
+Dr. Matthew Bardin, originally a native of Central Florida, is currently based in Fort Wayne, ID, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design. 
 
-Dr. Matthew Bardin, originally a native of Central Florida, is currently based in Fort Wayne, ID, and has written music for large ensembles, chamber groups, voice, solo instruments, and electronics. He holds a Ph.D in Experimental Music \& Digital Media from Louisiana State University, a Master of Music from the Boston Conservatory at Berklee, and a  Bachelor of Music from Stetson University. He is currently ASCAP affiliated, and his works are often performed by several student soloists and groups throughout the course of an academic year. He also has presented his music at the annual Electric LaTex festival in 2020 and 2022, co-hosted an online workshop at NIME 2020, and served as the 2021 Composer in Residence of the University Presbyterian Church in Baton Rouge, LA. In 2022 he traveled to Edinburgh, Scotland to run audio for the LSU produced show \textit{Dream Logos}; a show for which he also composed the music and sound design. Following this document, Matthew's upcoming musical projects include a concerto for the Cyberinet, as well as a new choral work.
+Matthew has studied with Drs. Manuel deMurga, Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Matthew has taught the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program, as well as training local teachers in the PDM and Sound Design course material. Matthew also a shortened version of the course for the LSU Pre-College summer program. He has also written a large portion of the programming course's textbook, and is currently working on his own creative coding book: \textit{Creative JavaScript}. Many of these lessons and videos of his cat, Bean can be found on his YouTube channel.
 
-Matthew has studied with Drs. Manuel deMurga, Sydney Hodkinson, Eun Young Lee, Tina Tallon, and most recently, Drs. Jesse Allison, Edgar Berdhal, and Mara Gibson. Matthew has tought the courses Sound Design, Digital Storytelling, and Programming Digital Media to local dual enrollment students through the LSU STEM Pathways Program, as well as training local teachers in the PDM and Sound Design course material. Matthew also a shortened version of the course for the LSU Pre-College summer program. He has also written a large portion of the programming course's textbook, and is currently working on his own creative coding book: \textit{Creative JavaScript}. Many of these lessons and videos of his cat, Bean can be found on his YouTube channel.
-
-Outside of writing and education, Matthew works at Sweetwater Music. %say wha tI will be doing once I can make it sound pretty.
+Outside of writing and education, Matthew works at Sweetwater Music, helping others to learn more about their audio equipment and make new music.
 
 
    \begin{center}
    \vspace{5mm}
-       \includegraphics[scale=0.5]{Matt Bardin_web_head_4370.jpg}\\
+       \includegraphics[scale=0.3]{Matt Bardin_web_head_4370.jpg}\\
         Matthew A. Bardin (photo by Ken Rivard, Dec 2018)
    \end{center}
-    % get a more recent headshot?
-
-
 
 \end{document}
-
-
-
-
-\section{OEM Components Detailed Photos}
-
-% \begin{center}
-%     \begin{figure}
-%         \centering
-%         \includegraphics[scale=0.3]{diagrams/oem/esp-32.jpg}
-%         \caption{ESP-32 DEVKIT V1 Micro-controller}
-%         \label{fig:ESP-32.2}
-%     \end{figure}
-% \end{center}
-
-% \begin{center}
-%     \begin{figure}
-%         \centering
-%         \includegraphics{diagrams/oem/spd31.jpg}
-%         \caption{Sparkfun SDP-31 Differential Airflow Pressure Qwiic Connect Breakout Board}
-%         \label{fig:sdp-3.2}
-%     \end{figure}
-% \end{center}
-
-
-% \begin{center}
-%     \begin{figure}
-%         \centering
-%         \includegraphics[scale=0.2]{diagrams/oem/6050.jpg}
-%         \caption{MPU-6050 Gyroscope and Accelerometer}
-%         \label{fig:6050.2}
-%     \end{figure}
-% \end{center}
-
-% \begin{center}
-%     \begin{figure}
-%         \centering
-%         \includegraphics[scale=0.3]{diagrams/oem/4056.jpg}
-%         \caption{TP-4056 Type C LiPo Battery Charger}
-%         \label{fig4055.2}
-%     \end{figure}
-% \end{center}
-
-
