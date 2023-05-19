@@ -527,7 +527,7 @@ These natural gestures are all able to be measured with the Cyberinet. Rotations
 
 %should I move the breakdown of geasutes adn thier data visualizations to here?
 
-\subsection{Gesture Mapping \& Feedback Mechanisms}
+\subsection{Gesture Mapping}
 
 Because of the modularity of the programming environment, a single gesture sensed by the Cyberinet can be mapped to anything within Max. This leads to a few unique concerns; mainly the idea of determining the most effective parameters to map to an effect. This design feature is to create a wide variety in potential outcomes without the need for the performer to learn an equally large number of control actions. This potentially overwhelming amount of options is made more manageable with the use of a normalized value range for the sensors and a collection of Max objects that either process sound or help prepare the use of the data for use in other ways. 
 
@@ -535,6 +535,117 @@ When deciding which gesture is effective for an effect depends on a few paramete
 
 The second parameter depends on the performer. People will naturally perform differing natural movement when performing\cite{wanderleyClarinetGesture2005}, which could result in varying sensor responses between users. Because of this an object was created in order to adjust the scaling of values as needed for each performer. This way, with minimal setup, the sensitivity of each continuous sensor in the Cyberinet can be scaled to match the movements of varying performers in order to achieve a consistent performance effect.
 
+\subsubsection{Mapping Gestures to Max} %was previously 3.3 before I moved it.
+
+The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. Generally speaking a gesture can be traditional or experimental in nature. Table \ref{tab:generalGestures2} is a reproduction of table \ref{tab:generalGestures}. Each of the gestures listed here have been analyzed and visualized for easier application to sensors.
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c||c|}
+    \hline
+       \textbf{Instrument Movements:}  & Bell, vertical and circular \\
+       \hline
+        \textbf{Upper Body Movements:} & Head, vertical \\
+        & Shoulders, vertical \\
+        & Back, curl inwards \\
+        & Arms, raising elbows \\
+        \hline
+       \textbf{ Lower Body Movements:} & Waist, bending \\
+        & Knees, bending \\
+        & Feet, walking \\
+        & Weight shifting, left and right\\
+        \hline
+    \end{tabular}
+    \caption{Identified Gestures by Wanderley et. al\cite{wanderleyClarinetGesture2005}, divided by body area.}
+    \label{tab:generalGestures2}
+\end{table}
+
+To create this data, the CNET.gestureVisualizer object was used to record the sensors values while the movements were performed three times each. The data was then averaged and graphically represented with the multislider object in Max. The categorization of the gestures was based on this visual representation. When looking at all of the data points, the oldest points are presented on the right of each graph, and the newest points are on the left. Because of the manual trigger to start and stop recording, extra noise is present on the right-most side of each graph. 
+
+Throughout all of the data graphs, the Gyroscopic Z-axis values appear more sensitive than the majority of the others. This is due to the positioning of the sensor on the instrument. Longitudinally, all of the motion sensors of the Cyberinet are close to the center of motion in the Cyberinet. However, transversely the sensor is located approximately 9 inches away from the center of motion\footnote{The center of motion is considered to be the thumb-rest/neck-strap attachment point in the center of the instrument.}. Because of this larger distance, the sensors which respond to that axis will register a larger range of motion. This can be adjusted slightly by rotating the Cyberinet main unit on the horn, but utilizing CNET.rangeSet will better scale the values as desired. All of the graphs shown are utilizing unaltered data from CNET.receive.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{diagrams/gestureData/bellVert.png}
+    \caption{Raising the bell expressively.}
+    \label{fig:bellRaiseData}
+\end{figure}
+
+When raising the bell, a gentle slope can clearly be seen in the accelerometer's Y axis as one would expect. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{diagrams/gestureData/bellBob.png}
+    \caption{Small bobbing of the Cyberinet bell.}
+    \label{fig:bellBobData}
+\end{figure}
+
+When bobbing the instrument bell, a clear bump appears in every sensor, similar to the single expressive raising of the horn. By focusing more on horizontal or vertical movements, different sensors will have larger slopes in their data. When testing, the bell movement was approximately four-six inches. Larger bobs will result in larger data spikes.
+
+Mathematically speaking, this relationship between movement size and speed can be easily calculated by working with the slope of the graphs. Taking into account any offset from the sensor's 0-point, moving a large distance or moving quickly will result in a grater change of data values.
+
+\begin{figure}
+    \centering
+    \includegraphics{slopeEqu.png}
+    \caption{Equation for calculating slope of gesture graphs}
+    \label{fig:mequSlope}
+\end{figure}
+
+In practice, when repeating the same movement but highly exaggerated past a natural expressive limit, changes in data become more clear and useful when utilizing the data within Max. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/weightshifting.png}
+    \caption{Horizontal Movements in two directions.}
+    \label{fig:exHor}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/waistLeaning.png}
+    \caption{Exaggerated movements in four directions.}
+    \label{fig:exHor}
+\end{figure}
+
+Air flow gestures have not been recorded in the same way was the movement gestures have. This is because breath control is intrinsically linked to the traditional clarinet performance. As dynamics increase, the values also increase as more air is flowing through the instrument, but a performer can easily control how quickly or slowly the air changes which inherently allows for more intimate control of the sensor. While performing, this range would be tightly attached to the dynamics of the performance, making it impossible to significantly alter the airflow without also altering the dynamics.
+
+% data numbers and pictures here
+
+
+ When looking at traditional gestures that occur naturally\cite{wanderleyClarinetGesture2005}, data changes are observed, but many of them are relatively static. This is to be expected as traditional clarinet performance encourages minimal movements and no rotations of the horn, so when attempting to adhere to traditional practice, the sensor data may prove relatively static. When intentionally utilizing either exaggerated gestures as measured by Wanderley et. al or more experimental movements can take more advantage of the Cyberinet's sensors.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/pointing.png}
+    \caption{Pointing the mouthpiece towards the audience.}
+    \label{fig:pointData}
+\end{figure}
+
+For the gesture shown in figure \ref{fig:pointData}, the mouthpiece was removed from the mouth and pointed forward towards the audience, then returned to playing position. The most clear showing of this has been highlighted, and shows a clear beginning and end to the gesture. Figure \ref{fig:clotRotate} shows data from holding th instrument at arm's length and rotating it 360 degrees in a circle. The high values in the gyroscopic Y-axis show the direction, while all of the accelerometer data moves down and back as the horn passed 180 degrees and began to return to the initial positioning.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/spin Clockwise.png}
+    \caption{Clockwise Rotation of the Cyberinet.}
+    \label{fig:clotRotate}
+\end{figure}
+
+When flicking the Cyberinet, it is held vertically and quickly rotated either left or right, then returned to center. This results in a quick, fairly high peak in the sensors\footnote{The exaggerated nature of the gyroscopic Z values can also be seen in figure \ref{fig:clotRotate}.}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{diagrams/gestureData/wristFlick.png}
+    \caption{Flicking the wrist holding the Cyberinet.}
+    \label{fig:cflick}
+\end{figure}
+
+
+While experimenting with gestures, it is helpful to categorize them in various ways in order to effectively utilize them. To do this, a handful of characteristics are needed.
+
+First, the physical movement should be analyzed. Is it fast or slow? Is it a traditional movement or experimental? What direction is the gesture moving? 
+
+\subsection{Feedback Mechanisms}
 In terms of feedback mechanisms, this proved difficult to determine in initial planning and prototyping. Ultimately, two main methods were determined to be useful for both the performer and someone working in the Max environment, without distracting the performer. On the physical unit are multiple LED's. Several of these are used to indicate that the sensors are receiving power, but one LED can be programmed when creating the Cyberinet. 
 
 At the moment, version 1.3 of the software is utilizing the programmable LED to indicate when the sensor data transmits to the computer. This proves useful for determining whether a connection with the computer is established, and if data should be expected by the computer. In order to avoid blinding the user with LED's they are hidden behind the hardware case of the Cyberinet, and small holes are included to allow for intentional inspection.\footnote{Similarly to the metal grates on microwave doors to allow the user to look in on the food while avoiding the microwave radiation.} This programmable LED is located close to the airflow sensor's tubes, allowing for the tube to also function as a light tube to be easily read without needing close internal inspection through the aforementioned holes.
@@ -873,7 +984,7 @@ Once the internal electronics have been inserted, secured, and sealed into the 3
 
 
 \chapter{Programming \& Using the Cyberinet}
-This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools and how they can be utilized in a performance. The Arduino code and the Max objects work together in order to achieve the five main steps in the functionality loop of the Cyberinet. Shown below, the functionality is not a full loop from steps one to five. By this I mean that once the data has been transmitted, the hardware will repeat the sensing and transmitting process while the computer will route and apply the data in a separately timed loop. The communication is not two-way between the computer and hardware unit, but the computer-side loop is unable to begin without the completion of the hardware loop. Combined with data smoothing within Max, the end result is a constant stream of data between the two with minimal latency. % revisit this sentance.
+This chapter discusses the code located within the Cyberinet itself, as well as the accompanying library of Max tools and how they can be utilized in a performance. The Arduino code and the Max objects work together in order to achieve the five main steps in the functionality loop of the Cyberinet. 
 
 \begin{itemize}
     \item Step 1: Collect Data
@@ -883,8 +994,10 @@ This chapter discusses the code located within the Cyberinet itself, as well as 
     \item Step 5: Utilize Routed Data
 \end{itemize}
 
+The functionality is not a full loop from steps one to five. By this I mean that once the data has been transmitted, the hardware will repeat the sensing and transmitting process while the computer will route and apply the data in a separately timed loop. The communication is not two-way between the computer and hardware unit, but the computer-side loop is unable to begin without the completion of the hardware loop. Combined with data smoothing within Max, the end result is a constant stream of data between the two with minimal latency.
+
 \section{Arduino Code}
-Another positive feature of the ESP-32 is that it is able to be programmed utilizing a variety of languages and environments. For the Cyberinet, the micro-controller was programmed using the Arduino coding language and Arduino IDE version 1.8\footnote{Arduino IDE Versions 2.0 and 2.1 were both released during the Cyberinet's development, but were not utilized to avoid any potential compatibility issues during development. Future software versions will be created in more up-to-date IDEs.} This section will break down and discuss the components of the Cyberinet's on-board programming. The full .ino file's text can be found in this document's appendices.
+Another positive feature of the ESP-32 is that it is able to be programmed utilizing a variety of languages and environments. For the Cyberinet, the micro-controller was programmed using the Arduino coding language and Arduino IDE version 1.8\footnote{Arduino IDE Versions 2.0 and 2.1 were both released during the Cyberinet's development, but were not utilized to avoid any potential compatibility issues during development. Future software versions will be created in more up-to-date IDEs.} The full .ino file can be found in this document's appendices.
 
 \subsection{Collecting Data}
 In order to collect the data from the sensors, each sensor has been given a function within the Arduino code. These functions serve the main focus of collecting and transmitting data. However because of the differing OEM sensors, each one utilizes a slightly different method of data collection and has a different range of values that can be expected. These functions are called in every loop of the program. Figure \ref{fig:getButtonsGetAir} shows the two most straightforward of these functions in their entirety.
@@ -898,11 +1011,11 @@ In order to collect the data from the sensors, each sensor has been given a func
     \end{figure}
 \end{center}
 
-The function getButtons()is the simplest of these functions. This function looks at pins 12 and 14 on the ESP-32, which are connected to the Button Expansion's USB-C connector. By utilizing the ESP-32's built-in pull-up resistors, the Button Expansion returns a 1 when the button is not being pressed and a 0 when the button has been detected as being clicked.
+The function getButtons() is the simplest of these functions. This function looks at pins 12 and 14 on the ESP-32, which are connected to the Button Expansion's USB-C connector. By utilizing the ESP-32's built-in pull-up resistors, the Button Expansion returns a 1 when the button is not being pressed and a 0 when the button has been detected as being clicked.
 
-getAir() works in a similar function to getButtons(), but with a slightly different code because of the SDP-31's I2C connection and coding library. Because of this, the ESP-32 contacts the SDP-31 on its I2c address and requests the specific data at 2 registers. These data are labelled as 'diffPressure' and 'Temperature' respectively. 
+getAir() works in a similar function to getButtons(), but with a slightly different code because of the SDP-31's I2C connection and coding library. Because of this, the ESP-32 contacts the SDP-31 on its I2c address and requests the specific data at 2 registers. These data are labelled as 'diffPressure' and 'temperature' respectively. 
 
-The function 'get5060()' is shown in figure \ref{fig:get6050}, and contains a few more complicated steps than the previous functions. This function begins by communicating with the MPU-6050; essentially waking it up. Next, the data points for the gyroscope and accelerometer are requested. It is at this point that the function begins to differ from the previously mentioned ones.
+The function 'get5060()' is shown in figure \ref{fig:get6050}, and contains a few more complicated steps than the previous functions. This function begins by communicating with the MPU-6050; essentially waking it up after having communicated with the SDP-31 on the same pins. Next, the data points for the gyroscope and accelerometer are requested like 'diffPressure' and 'temperature'. It is at this point that the function begins to differ from the others.
 
 \begin{center}
     \begin{figure}
@@ -913,13 +1026,13 @@ The function 'get5060()' is shown in figure \ref{fig:get6050}, and contains a fe
     \end{figure}
 \end{center}
 
-All six of the requested data points are then shifted over by 8 bits and then added to a second reading of the remaining data. This is done in order to fully read all 16 bits of data from the MPU-6050 on devices unable to access and process all 16 bits of data at once. 
+All six of the requested data points are then shifted over by 8 bits and then added to a second reading of the remaining data. This is done in order to fully read all 16 bits of data from the MPU-6050 on devices unable to access and process all 16 bits of data at once. Prior to transmitting the data, the values from the MPU-6050 are then scaled. This is done to compensate for both the gravitational pull and rotation of the earth, allowing for more accurate results. This step is done here rather than in Max to eliminate the potential of a user not scaling the data within Max.
 
 
 \subsection{Transmitting Data}
-The final portion of the data collection functions is the transmission of the data. This is done using the bluetoothSerial library, which allows for the ESP-32 to utilize serial communications over a Bluetooth connection. The .ino code's setup function is responsible for setting up these connections. The port is titled "CyberinetV13", indicating the version number with no spaces or punctuation, and utilizes a baud rate of 115200. This library contains the main Serial functionality present in Arduino, and simply is called with the instance name SerialBT to indicate the transmission is a wireless one.
+The final portion of the data collection functions is the transmission of the data. This is done using the bluetoothSerial library, which allows for the ESP-32 to utilize serial communications over a Bluetooth connection. The .ino code's setup function is responsible for setting up these connections. The port is titled "CyberinetV13", indicating the version number with no spaces or punctuation, and utilizes a baud rate of 115200\footnote{In short, the baud rate is the number of changes to the state changes within a digital signal.Larger values allow for more data transmission, if the device is capable of handling the increased data rate}. This library contains the main Serial functionality present in Arduino, and simply is called with the instance name SerialBT to indicate the transmission is a wireless one.
 
-Once all of the data is collected it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are listed in figure \ref{fig:sensorLAbels}. Each sensor receives its own unique label. However, this is technically only true for the sensors present in the main unit. Because they share the same port and have a varying number of pins for returning data, the expansions all utilize the label 'exp' followed by the number. The expansion port contains six pins: power, ground, and four data return pins. Be keeping the data return format consistent between all expansions, it eliminates the need to identify the sensor in the moment. The main downside is that the user will have to remember what the sensor was in the programming environment, but this can be easily rectified with comments and notes.
+Once all of the data is collected within a function, it is transmitted using the SerialBT.print() and SerialBT.println() commands. Utilizing the Max formatting, a label is created for each data point being transferred, then the individual value is transmitted, separated from the label with a space and ending with a carriage return. Each of the labels are listed in figure \ref{fig:sensorLAbels}. Each sensor receives its own unique label. However, this is technically only true for the sensors present in the main unit. Because they share the same port and have a varying number of pins for returning data, the expansions all utilize the label 'exp' followed by the number. The expansion port contains six pins: power, ground, and four data return pins. Be keeping the data return format consistent between all expansions, it eliminates the need to identify the sensor in the moment. The main downside is that the user will have to remember what the sensor was in the programming environment, but this can be easily rectified with comments, notes, and looking at the physical units being utilized.
 
 \begin{figure}
     \centering
@@ -943,31 +1056,22 @@ Once all of the data is collected it is transmitted using the SerialBT.print() a
     \label{fig:sensorLAbels}
 \end{figure}
 
-The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case.
-
-% screenshot of the max console with all the values
-
-The measured latency of the data transmission is measured at approximately % finish testing 
+The data is sent in serial data packets, and the spaces and carriage returns are utilized by Max to help isolate the individual data and label values. The raw data stream as it appears in the Max console is shown below. To indicate that a data transmission has occurred, the red message LED is illuminated immediately before and toggled off immediately following the completion of the transmission. The end result is a rapid blinking of the red light when the Cyberinet is functioning properly. When combined with the green power indicator LED, the result can be perceived as a light changing between green and yellow through the holes in the 3D printed case. The measured latency of the data transmission is measured at approximately % finish testing 
 That value was repeatedly testing with the CNET.latency patch. In order to arrive at the averages shown in figure % need to make figure with values after testing.
-the test was repeated 10 times at 3 different distances from the control computer. 2 meters, 5 meters, and 10 meters were selected to represent a close, medium, and far distance while still remaining in the normal Bluetooth range\footnote{The current version of Bluetooth has a range of approximately 10 meters}.
 
-CNET.latency can be utilized by anyone who needs to test the latency of their hardware unit. When loading the patch, and connecting the Cyberinet, a microphone and the button expansion are also needed. The user will place the microphone close to the buttons and press one of them which makes an audible click. This audible click is recorded, and then used to gate a small burst of white noise, which then is output from the speakers and picked up by the original microphone. Max then compares the number of milliseconds between the first button click and the burst of white noise from the speakers. This comparison calculates the full latency from an action on the Cyberinet to its result being herd by the user. The results of these tests are shown in figure  
+CNET.latency can be utilized by anyone who needs to test the latency of their hardware unit. When loading the patch, and connecting the Cyberinet, a microphone and the button expansion are also needed. The user will place the microphone close to the buttons and press one of them which makes an audible click. This audible click is recorded, and then used to gate a small burst of white noise, which then is output from the speakers and picked up by the original microphone. Max then compares the number of milliseconds between the first button click and the burst of white noise from the speakers. This comparison calculates the full latency from an action on the Cyberinet to its result being herd by the user. Because the majority of latency occurs in the wireless data transmission, this is a good indicator of the transmission speed.  
 
 \section{Max Programming}
 
 To utilize the data being collected by the Cyberinet’s hardware, a small collection of Max objects to help with the collection and usage of said data have been developed. These allow the user to easily implement common effects and the mapping of gestures to effects without needing to worry about compatibility between the objects. It is important to mention that Max is a paid software. The software and hardware components are all open source, however in order to create your own patches, the end-user will need to download the software. If saving patches is desired, then they must purchase a software license. 
 
-When designing the objects, they fall into two main categories: effects and control. Effect objects are commonplace audio effects, with the exception of CNET.dmx. All of these objects are intended to take in data from the Cyberinet and utilize it to alter the performance environment. This is done through the processing of an audio signal. CNET.dmx achieves this goal by outputting values to control DMX lighting, and does not operate at the signal rate. Because of the wide variety of potential sound options with the Cyberinet, a handful of commonplace effects were chosen in order to help the user be able to easily create interesting effects that anyone with general musical knowledge would be able to easily implement.
+Prior to utilizing the CNET objects, however the data being transmitted from the Cyberinet must be received and routed.
 
-Control objects are used to specifically control or monitor the Max environment and other CNET objects. They do not alter signals in any way, but instead work to achieve tasks such as receiving data from the Cyberinet hardware, visualize data, calculate latency, record and playback data in real time, etc. While the Effect objects are optional when using the Cyberinet, the Control objects are more applicable in a large variety of settings and are highly recommended when developing a new composition.
-
-Regardless of category, each CNET object has multiple inputs for those who want to utilize them to control the varied parameters for each object. These inputs are located immediately to the right of the main signal inlet, and are ordered to be a logical progression of controls from left to right. In the following section, each category of objects is listed with a short description. Each CNET object also has a detailed breakdown of its full control parameters, presets, and default values to show off the capabilities of the software both with and without a connected Cyberinet.
 
 
 \subsection{Receiving \& Routing Data}
 
-
-When implemented, the CNET objects are utilized to help receive and route the data within a Max patch. Once the sensor data has been transmitted from the Cyberinet utilizing the SerialBT.println() command in the Arduino code, it moves into the connected computer. This connection utilizes Bluetooth, and can be easily managed in the Max software\footnote{Max version 8.5.x or newer is needed when working with the Cyberinet}. A single object is utilize in order to help receive and parse the data stream from the Cyberinet. CNET.receive allows the user to easily determine which Bluetooth port to receive data from, then sends it to various object outputs for use in the Max environment. The internal workings of CNET.receive are shown in figure \ref{fig:cnet.receive}. There are three main subsections to CNET.receive that allow it to function.
+When implemented, the CNET objects are utilized to help receive and route the data within a Max patch. Once the sensor data has been transmitted from the Cyberinet utilizing the SerialBT.println() command in the Arduino code, it moves into the connected computer. This connection utilizes Bluetooth, and can be easily managed in the Max software\footnote{Max version 8.5.x or newer is needed when working with the Cyberinet}. A single object is utilized in order to help receive and parse the data stream from the Cyberinet. CNET.receive allows the user to easily configure which Bluetooth port to receive data from, then sends that data to various outlets for use in the Max environment. The internal workings of CNET.receive are shown in figure \ref{fig:cnet.receive}. There are three main subsections to CNET.receive that allow it to function.
 
 
 \begin{center}
@@ -979,15 +1083,17 @@ When implemented, the CNET objects are utilized to help receive and route the da
     \end{figure}
 \end{center}
 
-The top section of figure \ref{fig:cnet.receive} shows the setup for beginning communications with the Cyberinet. A bang into the first inlet will begin running a node JavaScript file. This file helps max to communicate with the given port, respond to the data, and give feedback to the status of these communications in the Max console. The Node js debug tool can be helpful when monitoring the status of CNET.receive as well. Inlet two will toggle the printing of the raw data within the Max console in real time. This is useful, but can quickly take up computer memory due to the large number of data points being transferred. Inlet three stops communications, and inlet four will install the various node dependencies when banged\footnote{This is only necessary if a computer does not already have these files installed. Once this has been done once, it is not needed unless moving to a new computer or node was removed.}. When setting up communications, the initializing bang is actually achieving multiple steps. These were condensed in order to simplify and streamline the process. A single bang will begin the node script, set the port, open the port, and begin communications. A short delay is given between each of these steps. This is needed to give the computer enough time to respond to the messages. It is recommended to not change this, but if needed the time can be adjusted with the control message "setupSpeed X" where X is the total delayed duration in milliseconds. that value is divided by four and equally applied to each internal delay object. All other control messages are used with CNET.rangeSet.
+The top section of figure \ref{fig:cnet.receive} shows the setup for beginning communications with the Cyberinet. A bang into the first inlet will begin running a node JavaScript file. This file helps max to communicate with the given port, respond to the data, and give feedback to the status of these communications in the Max console. The Node js debug tool can be helpful when monitoring the status of CNET.receive as well. Inlet two will toggle the printing of the raw data within the Max console in real time. This is useful, but can quickly take up computer memory due to the large number of data points being transferred. Inlet three stops communications, and inlet four will install the various node dependencies when banged\footnote{This is only necessary if a computer does not already have these files installed. Once this has been done once, it is not needed unless moving to a new computer or node was removed.}. 
 
-The middle section of the patch contains the node script\footnote{the full code of the node script is given in Appendix B} and a route object. The base for the node script came from a collection of objects created by LSU's Experimental Music \& Digital Media department. All this script does is receive the raw data and output it. The route object then parses the data based on the accompanying label from the Arduino code.
+When setting up communications, the initializing bang is actually achieving multiple steps. These were condensed in order to simplify and streamline the process. A single bang will begin the node script, set the port, open the port, and begin communications. A short delay is given between each of these steps. This is needed to give the computer enough time to respond to the messages. It is recommended to not change this, but if needed the time can be adjusted with the control message "setupSpeed X" where X is the total delayed duration in milliseconds. that value is divided by four and equally applied to each internal delay object. All other control messages are used with CNET.rangeSet.
 
-The final section of CNET.receive contains a large number of objects, but the process is repeated for the majority of the sensors. The sub-patch called "scalr" simply parses the lists from CNET.rangeSet if that object is used and applies it to the scale object. These objects take the raw values from the Cyberinet hardware and proportionally adjust it to fir a range of 0-1. If a performer is generating a range of raw values that are too large or small for the desired effect, the internal scaling can be adjusted without altering the output range. The sub-patch "CNET.smoothr" is used for the final manipulation of the data, and is shown in figure \ref{fig:smoothr}. This object may potentially move into a more defined control object in the future, and is why it has a CNET name, despite not being a unique patch.
+The middle section of the patch contains the node script\footnote{the full code of the node script is given in Appendix B} and a route object. The base for the node script came from a collection of objects created by LSU's Experimental Music \& Digital Media department. All this script does is receive the raw data on the indicated port and outputs it as a data stream. The route object then parses the data based on the accompanying label from the Arduino code. Each label from figure \ref{fig:sensorLAbels} is utilized within the route object. The routing removes the label, outputting only the accompanying data values to their designated outlets. The data is then formatted for its final use outside of CNET.receive.
+
+The final section of CNET.receive contains a large number of objects, but the process is repeated for the majority of the sensors. The sub-patch called "scalr" simply parses the lists from CNET.rangeSet if that object is used and applies it to the appropriate scale objects below. These objects take the raw values from the Cyberinet hardware and proportionally adjust it to fit a range of 0-1. If a performer is generating a range of raw values that are too large or small for the desired effect, the internal scaling can be adjusted without altering the output range. The sub-patch "CNET.smoothr" is used for the final manipulation of the data, and is shown in figure \ref{fig:smoothr}. This object may potentially move into a more defined control object in the future, and is why it has a CNET name, despite not being a unique object in.
 
 CNET.smoother takes incoming values and gradually slides between them instead of directly setting the values. This helps to make the effects sound continuous and minimize noise and popping. This defaults to being averaged over 20 data points. This value can be adjusted if needed, but experimentation is not recommended with this object. The second portion of this sub-patch compares the current smoothed data point with the previous one and calculates the difference between them. This value is then output back to the main patch, and clipped to the range of 0-1 to remove any outliers and avoid problems in the CNET effect objects. The result of this means that only when a sensor is actively picking up a gesture will it's data be utilized within Max. Using the gyroscope as an example, data will be output from CNET.receive while the instrument is actively rotating. When the performer is not performing a gesture, the values are almost zero.
 
-The values cannot be completely zero due to the continual nature of the sensors and subtle changes to the performer's position and movement, the the values are small enough to be unnoticeable in the majority of situations. Three sensors to not undergo this smoothing process due to their design. Both buttons only output values of 0 or 1. Smoothing those data points would remove the immediacy of a momentary switch. Instead, these values are output only when the button changes state. The third sensors is the temperature sensor. While these values could be smoothed, the difference calculations prove to be problematic in this situation. Generally speaking, any temperature fluctuations large enough to be interpreted as a gesture would be extremely uncomfortable for everyone in the performance space, assuming they are possible to achieve in the first place. If made more sensitive to respond to smaller fluctuations, then the changes cannot be detected as a gesture. To avoid all of these problems, the temperature data is output completely raw in degrees Celsius. This is the only value to not be scaled, as I feel that having the accurate temperature would be more useful than a 0-1 value in most situations when that sensor would be used.
+The values cannot be completely zero due to the continual nature of the sensors and subtle changes to the performer's position and movement, the values are small enough to be unnoticeable in the majority of situations. Three sensors to not undergo this smoothing process due to their design. Both buttons only output values of 0 or 1. Smoothing those data points would remove the immediacy of a momentary switch. Instead, these values are output only when the button changes state. The only change to this data is that the binary data has been flipped from what was received from the Cyberinet. The hardware unit transmits a 0 when the button is pressed, but CNET.receive changes this to output a 1 when pressed and a 0 when released. This is the same for both buttons. The third sensor is the temperature sensor. While these values could be smoothed, the difference calculations prove to be problematic in this situation. Generally speaking, any temperature fluctuations large enough to be interpreted as a gesture would be extremely uncomfortable for everyone in the performance space, assuming they are possible to achieve in the first place. If made more sensitive to respond to smaller fluctuations, then the changes cannot be detected as a gesture. To avoid all of these problems, the temperature data is output completely raw in degrees Celsius. This is the only value to not be scaled, as having the accurate temperature would be more useful than a 0-1 value in most situations when that sensor would be used.
 
 
 \begin{figure}
@@ -998,11 +1104,14 @@ The values cannot be completely zero due to the continual nature of the sensors 
 \end{figure}
 
 \subsection{CNET Objects}
-The CNET collection of max matches works to interface the Cyberinet with Max in multiple different ways. Every object discussed as part of this collection has the prefix CNET, which is an abbreviation of the word Cyberinet. CNET can be broken into two main categories of patches based on how they interact with the Max Environment. Effect objects are largely audio effects that have been designed to work with the Cyberinet's data ranges. Control objects on the other hand are designed to manage the routing of data or provide feedback about the data being received by the various sensors.+
+The CNET collection of max matches works to interface the Cyberinet with Max in multiple different ways. Every object discussed as part of this collection has the prefix CNET, which is an abbreviation of the word Cyberinet. CNET can be broken into two main categories of patches based on how they interact with the Max Environment. Effect objects are largely commonplace audio effects that have been designed to work with the Cyberinet's data ranges. Control objects on the other hand are designed to manage the routing of data or provide feedback about the data being received by the various sensors.
+
+
+Regardless of category, each CNET object has multiple inputs for those who want to utilize them to control the varied parameters for each object. These inputs are located immediately to the right of the main signal inlet, and are ordered to be a logical progression of controls from left to right. In the following section, each category of objects is listed with a short description. Each CNET object also has a detailed breakdown of its full control parameters, presets, and default values to show off the capabilities of the software both with and without a connected Cyberinet.
 
 \subsubsection{Effect Objects}
 
-While not necessary for the functionality of the Cyberinet, I have also created a small collection of Max objects for use with the unit. All of these objects are designed from the ground up to receive data from the Cyberinet in order to control their functionality. The effect objects that can be used to alter the performance environment include:
+Effect objects are commonplace audio effects, with the exception of CNET.dmx. All of these objects are intended to take in data from the Cyberinet and utilize it to alter the performance environment. This is done through the processing of an audio signal. CNET.dmx achieves this goal by outputting values to control DMX lighting, and does not operate at the signal rate. Because of the wide variety of potential sound options with the Cyberinet, a handful of commonplace effects were chosen in order to help the user be able to easily create interesting effects that anyone with general musical knowledge would be able to easily implement. The current list of CNET effect objects is:
 
 \begin{itemize}
     \item reverb$\sim$: A Schroder style reverb based on examples from CCRMA and John Chowning. this has a stereo output, and is similar to effects like JCReverb.
@@ -1017,15 +1126,15 @@ While not necessary for the functionality of the Cyberinet, I have also created 
     \item dmx: Converts data from the Cyberinet into control data for DMX lighting. This object is currently only compatible with the Chauvet DMX-AN 2 controller.
 \end{itemize}
 
-% discuss the patches in more detail here.
+% discuss the patches in more detail here.. include screenshots.
 
 \subsubsection{Control Objects}
 
-In addition to the above objects, the Cyberinet software also includes a few objects intended to be helpful in setting up and trouble shooting. The main one of these objects is the tuner object. This object serves as a tuner within the Max environment, allowing for quick adjustments to be made without needing an additional piece of hardware. These objects include:
+Control objects are used to specifically control or monitor the Max environment and other CNET objects. They do not alter signals in any way, but instead work to achieve tasks such as receiving data from the Cyberinet hardware, visualize data, calculate latency, record and playback data in real time, etc. While the Effect objects are optional when using the Cyberinet, the Control objects are more applicable in a large variety of settings and are highly recommended when developing a new composition. These objects include:
 
 
 \begin{itemize}
-    \item receive: This is the core of the Cyberinet's software functionality. This object communicates with the hardware unit, parses, scales, and smooths all of the values before outputting each sensor's readings to a dedicated outlet. Values output from here are the change between data points, which helps to remove noise from the data and focus on the gestures.
+    \item receive: This is the core of the Cyberinet's Max functionality. This object communicates with the hardware unit, parses, scales, and smooths all of the values before outputting each sensor's readings to a dedicated outlet. Values output from here are the change between data points, which helps to remove noise from the data and focus on the gestures.
     \item rangeSet: CNET.rangeSet can be used in conjunction with CNET.receive to adjust the internal value scaling from the Cyberinet hardware. If a performer's gesture data values are too small or large to be effective, this sets a new range for those expected values.
     \item record$\sim$: This object is used to record both the audio of the Cyberinet's performance, as well as the data points being output from CNET.receive. This object then saves the recordings as separate audio file and text data file. The data file also contains timings for playback.
     \item dataPlayback$\sim$: This object is used in conjunction with CNET.record$\sim$. The audio and text files created in that object are loaded into CNET.dataPlayback$\sim$ and started simultaneously. The timing values are used to schedule when the internal coll object reads each data point, allowing them to sync with the audio recording, thus replicating a physical performance.
@@ -1036,15 +1145,15 @@ In addition to the above objects, the Cyberinet software also includes a few obj
     \item test: This max patch is designed to test the functionality of the Cyberinet and CNET objects. It functions similarly to a help patch for the whole collection by receiving data and touting it to different effects utilizing a matrix interface. This is useful for debugging and prototyping
 \end{itemize}
 
-% discuss the patches in more detail here.
+% discuss the patches in more detail here. include screenshots.
 
-The main downside to the tuner object is that it requires the use of a microphone input to the computer. This is due to the limited ADC capabilities on the Cyberinet's main ESP-32 Board. However, an unexpected upside to the object is it's pitch detection capabilities. The tuner object is able to detect both the musical pitch of the incoming signal, but also fine tuning in cents. Because this information is expressed in MIDI, it can be used to trigger a variety of other events in the max environment. While the list of possibilities is extensive, the idea of having the max patch harmonize with the Clarinet is one of particular interest to the author.
+The main downside to the tuner object is that it requires the use of a microphone input to the computer. This is due to the limited ADC capabilities on the Cyberinet's main ESP-32 Board. However, an unexpected upside to the object is it's pitch detection capabilities. The tuner object is able to detect both the musical pitch of the incoming signal, but also fine tuning in cents. Because this information is expressed both as a signal and in MIDI, it can be used to trigger a variety of other events in the max environment. While the list of possibilities is extensive, the idea of having the max patch harmonize with the Cyberinet is one application that has already been utilized in compositions for the instrument.
 
 \subsubsection{Help \& Tutorial Patches}
 
-Lastly, before discussing how the objects are utilized, it should be mentioned that each CNET object also has a unique help patch associated with it\footnote{To access these help patches, insert the desired CNET object into a Max sketch, \\ then right click and select "Open XXX Help".}. The help patches are intended to help familiarize new users with the intended functionality of the objects, troubleshoot errors, and give various examples of their usage\footnote{Screenshots of all help patches are given in Appendix B.}.
+Lastly, it should be mentioned that each CNET object also has a unique help patch associated with it\footnote{To access these help patches, insert the desired CNET object into a Max sketch, \\ then right click and select "Open XXX Help".}. The help patches are intended to help familiarize new users with the intended functionality of the objects, troubleshoot errors, and give various examples of their usage.
 
-Each help patch is slightly unique, but all follow the same design template. Help patches give the title of the object, its version number and last edited date, and a description of what the object does. Below this, an interactive example is given that is unique to each object. Effect object help patches are used to alter the signal of a sound file, and Control object help patches are used to show off their specific functionality. Figures \ref{fig:compHelp1} and \ref{fig:switchHelp1} show an example of a help patch for both of these categories\footnote{All help patches have a mint-green color do differentiate them as help patches.}.
+Each help patch is unique, named on its functionality and intended usages, but all follow the same design template. Help patches give the title of the object, its version number and last edited date, and a description of what the object does. Below this, an interactive example is given that is unique to each object. Effect object help patches are used to alter the signal of a sound file, and Control object help patches are used to show off their specific functionality. Figures \ref{fig:compHelp1} and \ref{fig:switchHelp1} show an example of a help patch for both of these categories\footnote{All help patches have a mint-green color do differentiate them as help patches.}.
 
 \begin{figure}
     \centering
@@ -1061,119 +1170,6 @@ Each help patch is slightly unique, but all follow the same design template. Hel
 \end{figure}
 
 In addition to walking the user through how to setup and utilize the CNET object, each help patch contains between four and eight different presets. These are intended to show a variety of different parameter combinations, which reflect the capabilities of the object when used with the Cyberinet. Unless CNET.receive is required for the control object, it is not necessary to connect a Cyberinet to the computer in order to experiment with the help patches and their presets. Help objects where a physical Cyberinet connection is required are: CNET.receive, CNET.record$\sim$, CNET.rangeSet, CNET.test, and CNET.latency.
-
-
-\section{Mapping Gestures to Max} %if super long, may need to make into a seperate chapter.
-
-The idea of mapping physical gestures to the sound production/processing created by an augmented has already come up a few times. While indeed this can be done haphazardly or randomly, in order to properly utilize the cybernetic capabilities of the Cyberinet (or any other digital musical instrument), the performer must be able to respond to the current state they are in and create either a positive or negative feedback loop to maintain, grow, or diminish the current state. In order to do this, it is important to identify gestures being used and how they are mapped. This section will go over various common gestures created when performing naturally on the Clarinet as well as experimental gestures that can be used to explore various effects.
-
-\subsection{Commonplace Gestures}
-All of the gestures discussed here are ones found commonly in clarinet performances. It is by no means an exhaustive list, but serves to act a s a general outline to the more common movements I have either done as a clarinetist, or seen done in many performances. If heavily exaggerated, each of these movements could easily be defined as more experimental. Table \ref{tab:generalGestures2} is a reproduction of table \ref{tab:generalGestures}. Each of the gestures listed here have been analyzed and given a general data profile for easier application to sensors.
-
-
-\begin{table}[]
-    \centering
-    \begin{tabular}{|c||c|}
-    \hline
-       \textbf{Instrument Movements:}  & Bell, vertical and circular \\
-        \textbf{Upper Body Movements:} & Head, vertical \\
-        & Shoulders, vertical \\
-        & Back, curl inwards \\
-        & Arms, raising elbows \\
-       \textbf{ Lower Body Movements:} & Waist, bending \\
-        & Knees, bending \\
-        & Feet, walking \\
-        & Weight shifting, left and right\\
-        \hline
-    \end{tabular}
-    \caption{Identified Gestures by Wanderley et. al\cite{wanderleyClarinetGesture2005}, divided by body area.}
-    \label{tab:generalGestures2}
-\end{table}
-
-To create this data, the CNET.gestureVisualizer object was used to record the sensors values while the movements were performed three times each. The data was then averaged and graphically represented with the multislider object in Max. The categorization of the gestures was based on this visual representation. When looking at all of the data points, the oldest points are presented on the right of each graph, and the newest points are on the left. Because of the manual trigger to start and stop recording, extra noise is present on the right-most side of each graph. 
-
-Throughout all of the data graphs, the Gyroscopic Z-axis values appear more sensitive than the majority of the others. This is due to the positioning of the sensor on the instrument. Longitudinally, all of the motion sensors of the Cyberinet are close to the center of motion in the Cyberinet. However, transversely the sensor is located approximately 9 inches away from the center of motion\footnote{The center of motion is considered to be the thumb-rest/neck-strap attachment point in the center of the instrument.}. Because of this larger distance, the sensors which respond to that axis will register a larger range of motion. This can be adjusted slightly by rotating the Cyberinet main unit on the horn, but utilizing CNET.rangeSet will better scale the values as desired. All of the graphs shown are utilizing unaltered data from CNET.receive.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.25]{diagrams/gestureData/bellVert.png}
-    \caption{Raising the bell expressively.}
-    \label{fig:bellRaiseData}
-\end{figure}
-
-When raising the bell, a gentle slope can clearly be seen in the accelerometer's Y axis as one would expect. 
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.25]{diagrams/gestureData/bellBob.png}
-    \caption{Small bobbing of the Cyberinet bell.}
-    \label{fig:bellBobData}
-\end{figure}
-
-When bobbing the instrument bell, a clear bump appears in every sensor, similar to the single expressive raising of the horn. By focusing more on horizontal or vertical movements, different sensors will have larger slopes in their data. When testing, the bell movement was approximately four-six inches. Larger bobs will result in larger data spikes.
-
-Mathematically speaking, this relationship between movement size and speed can be easily calculated by working with the slope of the graphs. Taking into account any offset from the sensor's 0-point, moving a large distance or moving quickly will result in a grater change of data values.
-
-\begin{figure}
-    \centering
-    \includegraphics{slopeEqu.png}
-    \caption{Equation for calculating slope of gesture graphs}
-    \label{fig:mequSlope}
-\end{figure}
-
-In practice, when repeating the same movement but highly exaggerated past a natural expressive limit, changes in data become more clear and useful when utilizing the data within Max. 
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{diagrams/gestureData/weightshifting.png}
-    \caption{Horizontal Movements in two directions.}
-    \label{fig:exHor}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{diagrams/gestureData/waistLeaning.png}
-    \caption{Exaggerated movements in four directions.}
-    \label{fig:exHor}
-\end{figure}
-
-Air flow gestures have not been recorded in the same way was the movement gestures have. This is because breath control is intrinsically linked to the traditional clarinet performance. As dynamics increase, the values also increase as more air is flowing through the instrument, but a performer can easily control how quickly or slowly the air changes which inherently allows for more intimate control of the sensor. While performing, this range would be tightly attached to the dynamics of the performance, making it impossible to significantly alter the airflow without also altering the dynamics.
-
-% data numbers and pictures here
-
-\subsection{Experimental Gestures}
- When looking at traditional gestures that occur naturally\cite{wanderleyClarinetGesture2005}, data changes are observed, but many of them are relatively static. This is to be expected as traditional clarinet performance encourages minimal movements and no rotations of the horn, so when attempting to adhere to traditional practice, the sensor data may prove relatively static. When intentionally utilizing either exaggerated gestures as measured by Wanderley et. al or more experimental movements can take more advantage of the Cyberinet's sensors.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{diagrams/gestureData/pointing.png}
-    \caption{Pointing the mouthpiece towards the audience.}
-    \label{fig:pointData}
-\end{figure}
-
-For the gesture shown in figure \ref{fig:pointData}, the mouthpiece was removed from the mouth and pointed forward towards the audience, then returned to playing position. The most clear showing of this has been highlighted, and shows a clear beginning and end to the gesture. Figure \ref{fig:clotRotate} shows data from holding th instrument at arm's length and rotating it 360 degrees in a circle. The high values in the gyroscopic Y-axis show the direction, while all of the accelerometer data moves down and back as the horn passed 180 degrees and began to return to the initial positioning.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{diagrams/gestureData/spin Clockwise.png}
-    \caption{Clockwise Rotation of the Cyberinet.}
-    \label{fig:clotRotate}
-\end{figure}
-
-When flicking the Cyberinet, it is held vertically and quickly rotated either left or right, then returned to center. This results in a quick, fairly high peak in the sensors\footnote{The exaggerated nature of the gyroscopic Z values can also be seen in figure \ref{fig:clotRotate}.}.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{diagrams/gestureData/wristFlick.png}
-    \caption{Flicking the wrist holding the Cyberinet.}
-    \label{fig:cflick}
-\end{figure}
-
-
-\section{Categorizing Gestures}
-While experimenting with gestures, it is helpful to categorize them in various ways in order to effectively utilize them. To do this, a handful of characteristics are needed.
-
-First, the physical movement should be analyzed. Is it fast or slow? Is it a traditional movement or experimental? What direction is the gesture moving?
 
 
 \chapter{Performing with the Cyberinet}
