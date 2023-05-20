@@ -19,7 +19,76 @@
 \usepackage{url}
 \DeclareUnicodeCharacter{2212}{-}
 \input{arduinoLanguage.tex}  
-
+%Define the listing package
+\usepackage{listings} %code highlighter
+\usepackage{color} %use color
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+ 
+%Customize a bit the look
+\lstset{ %
+backgroundcolor=\color{white}, % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+basicstyle=\footnotesize, % the size of the fonts that are used for the code
+breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+breaklines=true, % sets automatic line breaking
+captionpos=b, % sets the caption-position to bottom
+commentstyle=\color{mygreen}, % comment style
+deletekeywords={...}, % if you want to delete keywords from the given language
+escapeinside={\%*}{*)}, % if you want to add LaTeX within your code
+extendedchars=true, % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+frame=single, % adds a frame around the code
+keepspaces=true, % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{blue}, % keyword style
+% language=Octave, % the language of the code
+morekeywords={*,...}, % if you want to add more keywords to the set
+numbers=left, % where to put the line-numbers; possible values are (none, left, right)
+numbersep=5pt, % how far the line-numbers are from the code
+numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+rulecolor=\color{black}, % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false, % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false, % underline spaces within strings only
+showtabs=false, % show tabs within strings adding particular underscores
+stepnumber=1, % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{mymauve}, % string literal style
+tabsize=2, % sets default tabsize to 2 spaces
+title=\lstname % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%END of listing package%
+ 
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+ 
+%define Javascript language
+\lstdefinelanguage{JavaScript}{
+keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, let, for,break},
+keywordstyle=\color{blue}\bfseries,
+ndkeywords={class, export, boolean, throw, implements, import, this},
+ndkeywordstyle=\color{darkgray}\bfseries,
+identifierstyle=\color{black},
+sensitive=false,
+comment=[l]{//},
+morecomment=[s]{/*}{*/},
+commentstyle=\color{purple}\ttfamily,
+stringstyle=\color{red}\ttfamily,
+morestring=[b]',
+morestring=[b]"
+}
+ 
+\lstset{
+language=JavaScript,
+extendedchars=true,
+basicstyle=\footnotesize\ttfamily,
+showstringspaces=false,
+showspaces=false,
+numbers=left,
+numberstyle=\footnotesize,
+numbersep=9pt,
+tabsize=2,
+breaklines=true,
+showtabs=false,
+captionpos=b
+}
 
 \usepackage{lsutitle}
 \title{CYBERINET: INTEGRATED SEMI-MODULAR SENSORS FOR THE COMPUTER-AUGMENTED CLARINET}
@@ -1762,31 +1831,18 @@ To establish communications, bangs and toggles are utilized in order to simplify
 
 The Node script and functionality comes from a package created by the LSU Experimental Music \& Digital Media department, and the JavaScript code for this is shown below in its entirety.
 
-\begin{verbatim}
-// EMDM Serial communications in Max
+\begin{lstlisting}[language=JavaScript] 
 const path = require('path');
 const Max = require('max-api');
-
 const { SerialPort, ReadlineParser } = require('serialport')
 const baud = 115200;
-let devicePort = '/dev/tty-CyberinetV13'
-
-// Create a port
-let port;
-let availablePorts;
+let devicePort = '/dev/tty-CyberinetV13';
+let port, availablePorts;
 let parser = new ReadlineParser();
-
-
 Max.post(`Loaded the ${path.basename(__filename)} script`);
-
-Max.addHandler("bang", () => {
-	Max.post("Who you think you bangin'?");
-});
-
 Max.addHandler("echo", (msg) => {
 	Max.outlet(msg);
 });
-
 Max.addHandler("portlist", () => {
   SerialPort.list().then((ports)=>{
     Max.post("Ports: ", ports);
@@ -1794,26 +1850,22 @@ Max.addHandler("portlist", () => {
     availablePorts = ports;
   });
 });
-
 Max.addHandler('setPort', (port) => {
   devicePort = port;
 })
-
 Max.addHandler('open', () => {
   port = new SerialPort({
     path: devicePort,
     baudRate: baud,
   }, function (err) {
     if (err) {
-      return console.log('Error: ', err.message)
+      return console.log('Error: ', err.message);
     }
   })
 })
-
 Max.addHandler('enable', () => {
   Max.post('Serial Receive Enabled');
-
-  port.pipe(parser)
+  port.pipe(parser);
   parser.on('data', (cyberData)=>{
     let cyber = cyberData.split(" ");
     let sensor = cyber[0];
@@ -1821,16 +1873,15 @@ Max.addHandler('enable', () => {
     Max.outlet(sensor, value);
   })
 })
-
 Max.addHandler('send', (data) => {
   port.write(data, function(err) {
     if (err) {
-      return console.log('Error on write: ', err.message)
+      return console.log('Error on write: ', err.message);
     }
-    console.log('message written')
+    console.log('message written');
   })
 })
-\end{verbatim}
+\end{lstlisting}
 
 In short, after setting up the port communications, this code will identify the label:value pair and output them separated by a space via the outlet in the Node object. From there, a Max route object separates the values to different outlets based on the labels shown above. Values are scaled to fit a range of 0-1 where appropriate.
 
@@ -2022,7 +2073,6 @@ This is the full text for \textit{Raindrops on a Tin Roof}. The short story was 
 
 \bibitem{coils09} Dan Carson. \emph{Investigation of the Electromagnetic Properties of Electric Guitar Pickups} University of Illinois at Urbana-Champaign, Senior Thesis, 2009.
 
-
 \bibitem{brassMutes1982} Rene Causse and Benny Sluchin. \emph{Mutes of brass instruments—Experiments and calculations}. Journal of the Acoustical Society of America. 1 April 1982; 71 (S1): S91–S92. https://doi.org/10.1121/1.2019634
 
 \bibitem{pnpMaxTools} Austin Franklin.\emph{PnP Maxtools: Autonomous Parameter Control in MaxMSP Utilizing MIR Algorithms} LSU Doctoral Dissertations.
@@ -2034,7 +2084,6 @@ This is the full text for \textit{Raindrops on a Tin Roof}. The short story was 
 
 \bibitem{btSpecs} Cobus Heukelman. \emph{Bluetooth 5 versus Bluetooth 4.2, what’s the difference?} Symmetry Electronics: Symmetry Blog. Originally published 02/08/2017, accessed 03/15/2023. \url{https://www.symmetryelectronics.com/blog/bluetooth-5-versus-bluetooth-4-2-what-s-the-difference/}
 
-
 \bibitem{HolmesElectronicMusic2020} Thom Holmes. \emph{Electronic and Experimental Music: Technology, Music and Culture, 6th Edition}. Routledge/Taylor \& Francis Group, 2020.
 
 \bibitem{Kayn_Elektroakustische_Projekte} Roland Kayn. \emph{Elektroakustische Projekte}. Colosseum Records. 1977.
@@ -2042,7 +2091,6 @@ This is the full text for \textit{Raindrops on a Tin Roof}. The short story was 
 \bibitem{KvifteJenseniusDescription} Telled Kvifte and Alexander Jensenius. \emph{Towards a Coherent Terminology and Model of Isntrument Description and Design}. Proceedings of the International Conference on New Interfaces for Musical Expression, 2006.
 
 \bibitem{6050HowTo} Last Minute Engineers. \emph{Interface MPU6050 Accelerometer and Gyroscope Sensor with Arduino}. https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/. Accessed 07/30/2022.
-
 
 \bibitem{cyberneticsScoreSite} Fosco Lucarelli. \emph{Roland Kayn and the Development of Cybernetic Music}. Socks Studio, \url{https://socks-studio.com/2014/11/03/roland-kayn-and-the-development-of-cybernetic-music/}. 11/03/2013. Accessed 04/10/2023.
 
